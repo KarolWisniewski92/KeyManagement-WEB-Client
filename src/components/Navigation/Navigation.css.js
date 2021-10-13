@@ -1,13 +1,9 @@
 import styled from "styled-components"
 
 export const NavigationWrapper = styled.div`
-background-color: red;
-height: 100px;
-width: 100%;
-padding:10px;
-
+background-color: #333;
 display:flex;
-justify-content:center;
-align-items:center;
-
+flex-flow: row wrap;
+padding:20px;
+justify-content:space-between;
 `
