@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LoginBox = styled.div`
+export const RegisterBox = styled.div`
 padding:30px;
 
 background-color: #1f96c5;

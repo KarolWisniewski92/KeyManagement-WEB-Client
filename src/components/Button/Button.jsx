@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { MenuButton, PrimaryButton, SecondaryButton } from './Button.css';
 import PropTypes from 'prop-types';
 
-const Button = ({ variant, children, color, size, high }) => {
+const Button = ({ variant, children, color, size, high, type, onClick }) => {
 
     const Component = (() => {
         switch (variant) {
@@ -22,7 +22,7 @@ const Button = ({ variant, children, color, size, high }) => {
 
     const content = (() => (
 
-        <Component color={color} high={high}>
+        <Component color={color} high={high} type={type} onClick={onClick} >
             {children}
         </Component >
     ))();
