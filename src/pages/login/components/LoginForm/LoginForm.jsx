@@ -77,7 +77,6 @@ const LoginForm = () => {
                             >
                                 Zresetuj
                             </Button>
-
                             <Button
                                 type="button"
                                 color={'green'}
