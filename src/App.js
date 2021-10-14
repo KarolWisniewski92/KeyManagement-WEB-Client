@@ -7,7 +7,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { LoginForm } from 'pages/login/components';
+import { LoginForm, RegisterForm } from 'pages/login/components';
 
 
 
@@ -42,6 +42,9 @@ function App() {
           <Switch>
             <Route path="/login" exact>
               <LoginForm />
+            </Route>
+            <Route path="/register" exact>
+              <RegisterForm />
             </Route>
           </Switch>
         </Wrapper>
