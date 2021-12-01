@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import API from '../../../../Data/Fetch'
+import API from '../../../../Data/fetch'
 import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {

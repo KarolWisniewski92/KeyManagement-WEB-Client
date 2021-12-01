@@ -3,7 +3,7 @@ import { LoginBox } from './LoginForm.css';
 import { Form, Field } from 'react-final-form';
 import { Link, useHistory } from 'react-router-dom';
 import { Button, Input, StyledText } from 'components';
-import API from '../../../../Data/Fetch'
+import API from '../../../../Data/fetch'
 
 const LoginForm = () => {
 
