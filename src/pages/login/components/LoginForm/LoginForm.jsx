@@ -4,8 +4,11 @@ import { Form, Field } from 'react-final-form';
 import { Link, useHistory } from 'react-router-dom';
 import { Button, Input, StyledText } from 'components';
 import API from '../../../../Data/fetch'
+import { connect } from 'react-redux';
+import { fetchUser } from 'Data/actions/user.action';
 
-const LoginForm = () => {
+const LoginForm = ({ user, fetchUser }) => {
+    console.log(user);
 
     let history = useHistory();
 
@@ -25,6 +28,7 @@ const LoginForm = () => {
         API.authentication.fetchLogIn(values)
             .then(data => {
                 console.log(data);
+                fetchUser();
                 history.push("/dashboard");
             })
             .catch(err => {
@@ -36,13 +40,6 @@ const LoginForm = () => {
         API.authentication.checkUser()
             .then(response => response.json())
             .then((data) => {
-                console.log(data);
-            })
-    };
-
-    const checkSession = () => {
-        API.authentication.checkSession()
-            .then((err, data) => {
                 console.log(data);
             })
     };
@@ -78,7 +75,7 @@ const LoginForm = () => {
                             {({ input, meta }) => (
                                 <div>
                                     <Input {...input} name="remember" id="remember" type="checkbox" />
-                                    <label for="remember">Zapamiętaj mnie! </label>
+                                    <label htmlFor="remember">Zapamiętaj mnie! </label>
                                 </div>
                             )}
                         </Field>
@@ -105,17 +102,6 @@ const LoginForm = () => {
                                 Check
                             </Button>
 
-                            <Button
-                                type="button"
-                                color={'orange'}
-                                onClick={() => {
-                                    API.authentication.fetchLogOut();
-                                }}
-                                disabled={submitting || pristine}
-                            >
-                                LogOut
-                            </Button>
-
                         </div>
                         <Link to="/register">Nie masz jeszcze konta? Zarejestruj się!</Link>
                     </form>
@@ -126,4 +112,8 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm;
+export default connect(state => {
+    return {
+        user: state.user.user
+    }
+}, { fetchUser })(LoginForm);

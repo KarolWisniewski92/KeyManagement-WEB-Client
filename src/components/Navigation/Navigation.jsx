@@ -1,14 +1,17 @@
 import React from 'react';
-import { NavigationWrapper } from './Navigation.css';
+import { NavigationWrapper, NavigationMiniWrapper, NavigationWelcomeText, ButtonLogout } from './Navigation.css';
 import { Button } from 'components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import API from '../../Data/fetch'
+import { fetchUser } from 'Data/actions/user.action';
 
-const Navigation = ({ item }) => {
+const Navigation = ({ item, user, fetchUser }) => {
+    let history = useHistory();
 
     const buttons = item.map((el) => {
-        // console.log(el);
         return (
-            <Link {...el}>
+            <Link key={el.content} {...el} >
                 <Button variant='menu'>{el.content}</Button>
             </Link >)
     })
@@ -16,13 +19,38 @@ const Navigation = ({ item }) => {
 
         <NavigationWrapper>
             <div>{buttons}</div>
-            <Link to="/login">
-                <Button variant="secondary" color="yellow">Zaloguj</Button>
-            </Link >
+            <NavigationMiniWrapper>
+                {Object.keys(user).length > 0 &&
+                    <NavigationWelcomeText>Witaj {user.name} {user.surname}!</NavigationWelcomeText>
+                }
+                {Object.keys(user).length === 0 &&
+                    <Link to="/login">
+                        <Button variant="secondary" color="yellow">Zaloguj</Button>
+                    </Link >
+                }
+                {Object.keys(user).length > 0 &&
+                    <ButtonLogout
+                        type="button"
+                        color={'orange'}
+                        onClick={() => {
+                            API.authentication.fetchLogOut()
+                                .then(() => {
+                                    fetchUser()
+                                    history.push("/");
+                                })
+                        }}
+                    >Wyloguj
+                    </ButtonLogout>
+                }
+            </NavigationMiniWrapper>
         </NavigationWrapper>
     )
 
 
 }
 
-export default Navigation;
+export default connect(state => {
+    return {
+        user: state.user.user
+    }
+}, { fetchUser })(Navigation);

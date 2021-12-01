@@ -37,13 +37,3 @@ export const checkUser = async () => {
         credentials: 'include',
     });
 };
-
-// export const checkUser = async () => {
-//     const response = await fetch(`${process.env.REACT_APP_SERVER}/user`, {
-//         method: "GET",
-//         withCredentials: true,
-//         credentials: 'include',
-//     });
-//     const data = await response.json();
-//     return data;
-// }

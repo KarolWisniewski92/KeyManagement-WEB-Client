@@ -41,9 +41,6 @@ function App() {
       }, {
         content: 'kolejna podstrona',
         to: '/otherPage2'
-      }, {
-        content: 'kolejna podstrona',
-        to: '/otherPage2'
       }]} />
 
       <Wrapper>

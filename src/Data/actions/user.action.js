@@ -1,12 +1,15 @@
 import API from '../fetch'
-import { USER_GET } from '../constans'
+import { USER_LOGGED } from '../constans'
 
-export const fetchUser = () => {
-    const promise = API.authentication.checkUser()
+export const fetchUser = () => async (dispatch) => {
 
-    return ({
-        type: USER_GET,
-        promise
+    const response = await API.authentication.checkUser()
+    const user = await response.json();
+
+    console.log(user)
+    dispatch({
+        type: USER_LOGGED,
+        payload: user
     })
 
 }

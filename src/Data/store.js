@@ -1,29 +1,20 @@
-import { applyMiddleware, createStore } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-// import promiseMiddleware from './middlewares/promise';
-// import notificationMiddleware from './middlewares/notifications';
+import { configureStore } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk'
+import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 
 import rootReducer from './reducers'
 
-export default function configureStore(preloadedState) {
-    const middlewares = [
-        // promiseMiddleware,
-        // notificationMiddleware
-    ]
-
-    const middlewareEnhancer = applyMiddleware(...middlewares)
-
-    const enhancers = [
-        middlewareEnhancer
-    ]
-
-    const composedEnhancers = composeWithDevTools(...enhancers)
-
-    const store = createStore(rootReducer, preloadedState, composedEnhancers)
-
-    if (process.env.NODE_ENV !== 'production' && module.hot) {
-        module.hot.accept('./reducers', () => store.replaceReducer(rootReducer))
-    }
-
-    return store
+const persistConfig = {
+    key: 'root',
+    storage,
 }
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = configureStore({
+    reducer: persistedReducer,
+    devTools: process.env.NODE_ENV !== 'production',
+    middleware: [thunk],
+});
+export default store;

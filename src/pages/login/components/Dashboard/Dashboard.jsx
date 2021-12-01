@@ -1,10 +1,13 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
+import { connect } from 'react-redux';
 import API from '../../../../Data/fetch'
 import { useHistory } from "react-router-dom";
+import { fetchUser } from 'Data/actions/user.action';
 
-const Dashboard = () => {
+const Dashboard = ({ user, changeUserData, fetchUser }) => {
 
     let history = useHistory();
+
 
     useEffect(() => {
         API.authentication.checkUser()
@@ -16,9 +19,28 @@ const Dashboard = () => {
             })
     }, [history])
 
+
     return (
-        <div>Witaj</div>
+        <Fragment>
+            <div>Witaj {user.user.name} {user.user.surname}</div>
+            <button onClick={() => {
+                changeUserData({
+                    name: "Tom",
+                    surname: "Inny",
+                    age: 50
+                });
+            }}>Test</button>
+            <button onClick={() => {
+                fetchUser()
+            }} >Test 2</button>
+        </Fragment>
     )
 }
 
-export default Dashboard;
+
+
+export default connect(state => {
+    return {
+        user: state.user
+    }
+}, { fetchUser })(Dashboard);

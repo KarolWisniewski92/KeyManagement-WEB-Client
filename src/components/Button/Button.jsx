@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { MenuButton, PrimaryButton, SecondaryButton } from './Button.css';
 import PropTypes from 'prop-types';
 

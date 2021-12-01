@@ -1,1 +1,1 @@
-export const USER_GET = 'USER_GET';
+export const USER_LOGGED = 'USER_LOGGED';

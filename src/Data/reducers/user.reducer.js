@@ -1,13 +1,15 @@
-const { USER_GET } = require("Data/constans");
+const { USER_LOGGED } = require("Data/constans");
 
 const initialState = {
-    user: {}
+    user: {
+    }
 
 }
 
 function user(state = initialState, action) {
+
     switch (action.type) {
-        case USER_GET:
+        case USER_LOGGED:
             return {
                 ...state,
                 user: action.payload
