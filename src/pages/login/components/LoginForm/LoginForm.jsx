@@ -1,33 +1,52 @@
-import React from 'react';
-import { LoginForm_H1, LoginBox } from './LoginForm.css';
+import React, { useEffect } from 'react';
+import { LoginBox } from './LoginForm.css';
 import { Form, Field } from 'react-final-form';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Button, Input, StyledText } from 'components';
-import API from './../../../../Fetch'
-
-const onSubmit = (values) => {
-    console.log(values)
-    API.authentication.fetchLogIn(values)
-        .catch(err => {
-            console.log(err);
-        })
-}
-
-const checkUser = () => {
-    API.authentication.checkUser()
-        .then((err, data) => {
-            console.log(data);
-        })
-}
-
-const checkSession = () => {
-    API.authentication.checkSession()
-        .then((err, data) => {
-            console.log(data);
-        })
-}
+import API from '../../../../Data/Fetch'
 
 const LoginForm = () => {
+
+    let history = useHistory();
+
+    useEffect(() => {
+        API.authentication.checkUser()
+            .then(response => response.json())
+            .then((data) => {
+                if (Object.keys(data).length !== 0) {
+                    history.push("/dashboard");
+                }
+            })
+    }, [history])
+
+    const onSubmit = (values) => {
+
+        console.log(values)
+        API.authentication.fetchLogIn(values)
+            .then(data => {
+                console.log(data);
+                history.push("/dashboard");
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    };
+
+    const checkUser = () => {
+        API.authentication.checkUser()
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data);
+            })
+    };
+
+    const checkSession = () => {
+        API.authentication.checkSession()
+            .then((err, data) => {
+                console.log(data);
+            })
+    };
+
     return (
         <LoginBox>
             <StyledText color="white" type="header">Zaloguj się:</StyledText>

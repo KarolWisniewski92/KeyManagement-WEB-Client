@@ -1,12 +1,36 @@
 import { RegisterBox } from "./RegisterForm.css";
 import { Input, Button, StyledText } from 'components';
 import { Form, Field } from 'react-final-form';
+import API from '../../../../Data/Fetch'
+import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
+
 
 const onSubmit = (values) => {
-    console.log(values);
+    API.authentication.fetchRegister(values)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(err => {
+            throw err;
+        })
 };
 
 const RegisterForm = () => {
+
+    let history = useHistory();
+
+    useEffect(() => {
+        API.authentication.checkUser()
+            .then(response => response.json())
+            .then((data) => {
+                if (Object.keys(data).length !== 0) {
+                    history.push("/dashboard");
+                }
+            })
+    }, [history])
+
     return (
         <RegisterBox>
             <StyledText color="white" type="header">Zarejestruj się!</StyledText>

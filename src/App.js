@@ -2,53 +2,72 @@ import theme from './utils/theme';
 import { ThemeProvider } from 'styled-components';
 import { Navigation, Button, Wrapper } from 'components';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  useHistory
 } from "react-router-dom";
-import { LoginForm, RegisterForm } from 'pages/login/components';
+import { LoginForm, RegisterForm, Dashboard } from 'pages/login/components';
+import { useEffect } from 'react';
+import API from '../src/Data/Fetch'
+
 
 
 
 function App() {
+
+  let history = useHistory();
+
+  useEffect(() => {
+    API.authentication.checkUser()
+      .then(response => response.json())
+      .then((data) => {
+        if (Object.keys(data).length !== 0) {
+          history.push("/dashboard");
+        }
+      })
+  }, [history]);
+
+
+
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <Navigation item={[{
-          content: 'zaloguj',
-          to: "/login"
-        }, {
-          content: 'podstrona',
-          to: '/otherPage'
-        }, {
-          content: 'kolejna podstrona',
-          to: '/otherPage2'
-        }, {
-          content: 'kolejna podstrona',
-          to: '/otherPage2'
-        }]} />
 
-        <Wrapper>
-          <Route path="/" exact>
-            <Button variant="menu" color="blue"> menu button</Button>
-            <Button variant="secondary" color="red"> primary button</Button>
-            <Button variant="primary" color="green"> secondary button</Button>
-            <Button variant="primary" color="pink"> secondary button</Button>
-            <Button variant="primary" color="yellow"> secondary button</Button>
-            <Button variant="secondary" color="orange"> secondary button</Button>
+      <Navigation item={[{
+        content: 'zaloguj',
+        to: "/login"
+      }, {
+        content: 'podstrona',
+        to: '/otherPage'
+      }, {
+        content: 'kolejna podstrona',
+        to: '/otherPage2'
+      }, {
+        content: 'kolejna podstrona',
+        to: '/otherPage2'
+      }]} />
+
+      <Wrapper>
+        <Route path="/" exact>
+          <Button variant="menu" color="blue"> menu button</Button>
+          <Button variant="secondary" color="red"> primary button</Button>
+          <Button variant="primary" color="green"> secondary button</Button>
+          <Button variant="primary" color="pink"> secondary button</Button>
+          <Button variant="primary" color="yellow"> secondary button</Button>
+          <Button variant="secondary" color="orange"> secondary button</Button>
+        </Route>
+
+        <Switch>
+          <Route path="/login" exact>
+            <LoginForm />
           </Route>
-
-          <Switch>
-            <Route path="/login" exact>
-              <LoginForm />
-            </Route>
-            <Route path="/register" exact>
-              <RegisterForm />
-            </Route>
-          </Switch>
-        </Wrapper>
-      </Router>
+          <Route path="/register" exact>
+            <RegisterForm />
+          </Route>
+          <Route path="/dashboard" exact>
+            <Dashboard />
+          </Route>
+        </Switch>
+      </Wrapper>
     </ThemeProvider >
   );
 }

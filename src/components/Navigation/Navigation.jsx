@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Navigation = ({ item }) => {
 
     const buttons = item.map((el) => {
-        console.log(el);
+        // console.log(el);
         return (
             <Link {...el}>
                 <Button variant='menu'>{el.content}</Button>
