@@ -1,8 +1,9 @@
 import { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
-import API from '../../../../Data/fetch'
+import API from '../../Data/fetch'
 import { useHistory } from "react-router-dom";
 import { fetchUser } from 'Data/actions/user.action';
+import { KeyBox, UserBox } from './components';
 
 const Dashboard = ({ user, changeUserData, fetchUser }) => {
 
@@ -14,6 +15,7 @@ const Dashboard = ({ user, changeUserData, fetchUser }) => {
             .then(response => response.json())
             .then((data) => {
                 if (Object.keys(data).length === 0) {
+                    fetchUser()
                     history.push("/");
                 }
             })
@@ -22,17 +24,8 @@ const Dashboard = ({ user, changeUserData, fetchUser }) => {
 
     return (
         <Fragment>
-            <div>Witaj {user.user.name} {user.user.surname}</div>
-            <button onClick={() => {
-                changeUserData({
-                    name: "Tom",
-                    surname: "Inny",
-                    age: 50
-                });
-            }}>Test</button>
-            <button onClick={() => {
-                fetchUser()
-            }} >Test 2</button>
+            <KeyBox></KeyBox>
+            <UserBox></UserBox>
         </Fragment>
     )
 }

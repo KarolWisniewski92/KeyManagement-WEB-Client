@@ -17,6 +17,7 @@ align-items: center;
 `
 
 export const NavigationWelcomeText = styled.div`
+font-size: 20px;
 display:flex;
 color: white;
 padding: 0 20px;

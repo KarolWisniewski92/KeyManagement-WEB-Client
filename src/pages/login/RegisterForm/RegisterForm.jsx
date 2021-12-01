@@ -1,7 +1,7 @@
 import { RegisterBox } from "./RegisterForm.css";
 import { Input, Button, StyledText } from 'components';
 import { Form, Field } from 'react-final-form';
-import API from '../../../../Data/fetch'
+import API from '../../../Data/fetch'
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 

@@ -6,7 +6,7 @@ import {
   Route,
   useHistory
 } from "react-router-dom";
-import { LoginForm, RegisterForm, Dashboard } from 'pages/login/components';
+import { LoginForm, RegisterForm, Dashboard } from 'pages';
 import { useEffect } from 'react';
 import API from './Data/fetch'
 
