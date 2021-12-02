@@ -11,5 +11,13 @@ export const fetchUser = () => async (dispatch) => {
         type: USER_LOGGED,
         payload: user
     })
+}
+
+export const logoutUser = (dispatch) => {
+
+    dispatch({
+        type: USER_LOGGED,
+        payload: {}
+    })
 
 }

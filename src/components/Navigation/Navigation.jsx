@@ -5,9 +5,13 @@ import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import API from '../../Data/fetch'
 import { fetchUser } from 'Data/actions/user.action';
+import useLogOut from 'hooks/useLogOut';
 
 const Navigation = ({ item, user, fetchUser }) => {
     let history = useHistory();
+    let logout = useLogOut();
+
+    console.log(logout);
 
     const buttons = item.map((el) => {
         return (
@@ -32,13 +36,7 @@ const Navigation = ({ item, user, fetchUser }) => {
                     <ButtonLogout
                         type="button"
                         color={'orange'}
-                        onClick={() => {
-                            API.authentication.fetchLogOut()
-                                .then(() => {
-                                    fetchUser()
-                                    history.push("/");
-                                })
-                        }}
+                        onClick={logout.logOut}
                     >Wyloguj
                     </ButtonLogout>
                 }
