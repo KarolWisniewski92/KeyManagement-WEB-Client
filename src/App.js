@@ -32,16 +32,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
 
-      <Navigation item={[{
-        content: 'zaloguj',
-        to: "/login"
-      }, {
-        content: 'podstrona',
-        to: '/otherPage'
-      }, {
-        content: 'kolejna podstrona',
-        to: '/otherPage2'
-      }]} />
+      <Navigation />
 
       <Wrapper>
         <Route path="/" exact>

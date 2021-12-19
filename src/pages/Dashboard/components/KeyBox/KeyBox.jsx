@@ -39,7 +39,7 @@ const keys = [{
 const KeyBox = () => {
 
     const singleKeyList = keys.map((el) => {
-        return <SingleKeyComponent keyData={el}></SingleKeyComponent>
+        return <SingleKeyComponent key={el.keyID} keyData={el}></SingleKeyComponent>
     })
     return (
         <KeyBoxBody>

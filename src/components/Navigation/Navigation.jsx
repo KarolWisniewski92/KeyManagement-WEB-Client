@@ -13,17 +13,10 @@ const Navigation = ({ item, user, fetchUser }) => {
     let logout = useLogOut();
     const dispatch = useDispatch();
 
-
-    const buttons = item.map((el) => {
-        return (
-            <Link key={el.content} {...el} >
-                <Button variant='menu'>{el.content}</Button>
-            </Link >)
-    })
     const setsList = ["KP", "NOC", "DUS"];
 
     const sets = setsList.map(el => {
-        return <Button variant='menu' onClick={e => {
+        return <Button key={el} variant='menu' onClick={e => {
 
             selectSet(dispatch, el);
         }}>{el}</Button>
@@ -32,8 +25,10 @@ const Navigation = ({ item, user, fetchUser }) => {
     return (
 
         <NavigationWrapper>
-            <div>{buttons}</div>
-            
+            {Object.keys(user).length === 0 &&
+                <div></div>
+            }
+
             {Object.keys(user).length > 0 &&
                 <div> {sets}</div>
             }
@@ -43,7 +38,9 @@ const Navigation = ({ item, user, fetchUser }) => {
                 }
                 {Object.keys(user).length === 0 &&
                     <Link to="/login">
-                        <Button variant="secondary" color="yellow">Zaloguj</Button>
+                        <Button variant="secondary" color="yellow" onClick={() => {
+                            history.push('/login')
+                        }}>Zaloguj</Button>
                     </Link >
                 }
                 {Object.keys(user).length > 0 &&
