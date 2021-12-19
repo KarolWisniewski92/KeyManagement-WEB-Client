@@ -2,6 +2,7 @@ import { SingleKeyComponent } from 'components';
 import { KeyBoxBody, HiddenComponent } from './KeyBox.css';
 
 const keys = [{
+    keyID: "KP_3213",
     set: "KP",
     name: "Grodzisk WLKP",
     isTaken: true,
@@ -9,6 +10,7 @@ const keys = [{
     isTakenData: "02.12.2021",
     adres: "ul.Czereśniowa 20"
 }, {
+    keyID: "KP_5433",
     set: "KP",
     name: "Czempiń",
     isTaken: true,
@@ -16,6 +18,7 @@ const keys = [{
     isTakenData: "02.12.2021",
     adres: "ul. Powstańców WLKP dom 15 mieszkanie 25"
 }, {
+    keyID: "KP_3234",
     set: "KP",
     name: "Mosina",
     isTaken: false,
@@ -23,6 +26,7 @@ const keys = [{
     isTakenData: "",
     adres: "ul.Miś 1"
 }, {
+    keyID: "KP_3123",
     set: "KP",
     name: "Mosina pod Poznaniem",
     isTaken: false,
@@ -33,18 +37,13 @@ const keys = [{
 
 
 const KeyBox = () => {
+
+    const singleKeyList = keys.map((el) => {
+        return <SingleKeyComponent keyData={el}></SingleKeyComponent>
+    })
     return (
         <KeyBoxBody>
-
-            <SingleKeyComponent keyData={keys[0]}></SingleKeyComponent>
-            <SingleKeyComponent keyData={keys[1]}></SingleKeyComponent>
-            <SingleKeyComponent keyData={keys[2]}></SingleKeyComponent>
-            <SingleKeyComponent keyData={keys[2]}></SingleKeyComponent>
-            <SingleKeyComponent keyData={keys[2]}></SingleKeyComponent>
-            <SingleKeyComponent keyData={keys[3]}></SingleKeyComponent>
-            <SingleKeyComponent keyData={keys[2]}></SingleKeyComponent>
-            <SingleKeyComponent keyData={keys[2]}></SingleKeyComponent>
-            <SingleKeyComponent keyData={keys[2]}></SingleKeyComponent>
+            {singleKeyList}
             <HiddenComponent></HiddenComponent>
             <HiddenComponent></HiddenComponent>
             <HiddenComponent></HiddenComponent>

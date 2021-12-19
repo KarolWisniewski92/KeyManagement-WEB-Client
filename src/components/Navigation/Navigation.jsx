@@ -3,15 +3,16 @@ import { NavigationWrapper, NavigationMiniWrapper, NavigationWelcomeText, Button
 import { Button } from 'components';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import API from '../../Data/fetch'
 import { fetchUser } from 'Data/actions/user.action';
 import useLogOut from 'hooks/useLogOut';
+import { useDispatch } from 'react-redux';
+import { selectSet } from 'Data/actions/main.action';
 
 const Navigation = ({ item, user, fetchUser }) => {
     let history = useHistory();
     let logout = useLogOut();
+    const dispatch = useDispatch();
 
-    console.log(logout);
 
     const buttons = item.map((el) => {
         return (
@@ -19,10 +20,23 @@ const Navigation = ({ item, user, fetchUser }) => {
                 <Button variant='menu'>{el.content}</Button>
             </Link >)
     })
+    const setsList = ["KP", "NOC", "DUS"];
+
+    const sets = setsList.map(el => {
+        return <Button variant='menu' onClick={e => {
+
+            selectSet(dispatch, el);
+        }}>{el}</Button>
+
+    })
     return (
 
         <NavigationWrapper>
             <div>{buttons}</div>
+            
+            {Object.keys(user).length > 0 &&
+                <div> {sets}</div>
+            }
             <NavigationMiniWrapper>
                 {Object.keys(user).length > 0 &&
                     <NavigationWelcomeText>Witaj {user.name} {user.surname}!</NavigationWelcomeText>
@@ -41,7 +55,7 @@ const Navigation = ({ item, user, fetchUser }) => {
                     </ButtonLogout>
                 }
             </NavigationMiniWrapper>
-        </NavigationWrapper>
+        </NavigationWrapper >
     )
 
 

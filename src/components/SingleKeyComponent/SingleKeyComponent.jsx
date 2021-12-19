@@ -4,6 +4,7 @@ import keyIcon from '../../image/png/Key1.png';
 import { fetchUserData } from 'Data/fetch/authentication.fetch';
 
 const defaultKeyData = {
+    keyID: "",
     set: "",
     name: "",
     isTaken: false,
@@ -34,7 +35,6 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
 
     }, [keyData.isTaken, keyData.isTakenBy])
 
-
     // console.log(keyData);
     return (
         <SingleKeyBody>
@@ -44,8 +44,8 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
             {keyData.isTaken &&
                 <SigleKeyInfo>
                     <p><b>{users.name} {users.surname}</b></p>
-                    <p>tel. {users.phone} </p>
-                    <p>Data: {keyData.isTakenData}</p>
+                    <p><b>tel.</b> {users.phone} </p>
+                    <p><b>Data:</b> {keyData.isTakenData}</p>
 
                 </SigleKeyInfo>
             }
@@ -56,7 +56,7 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
             }
 
             <SingleKeyFooter>
-                <div>{keyData.name}</div>
+                <div><b>{keyData.name}</b></div>
                 <div>{keyData.adres}</div>
             </SingleKeyFooter>
 

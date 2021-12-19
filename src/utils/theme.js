@@ -20,6 +20,11 @@ const theme = {
             normal: 'rgb(219, 112, 147)',
         },
     },
+    templateColors: {
+        yellow: 'rgb(85, 150, 0)',
+        green: 'rgb(85, 150, 0)',
+        blue: '#87b7ce',
+    }
 }
 
 export default theme;

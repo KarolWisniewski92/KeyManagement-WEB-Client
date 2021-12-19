@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const SingleKeyBody = styled.div`
 display:flex;
 flex-direction:column;
@@ -24,12 +25,14 @@ align-content: center;
 position: relative;
 flex-flow: column wrap;
 min-height:40px;
+background-color: ${({ theme }) => theme.templateColors.blue};
 `
 
 export const SingleKeyHeader = styled(SingleKeyAddon)`
 top:0px;
-background-color: #87b7ce;
+
 `
+
 
 export const SingleKeyIconBox = styled.div`
 position: relative;
@@ -37,7 +40,6 @@ position: relative;
 `
 
 export const SingleKeyNavigation = styled(SingleKeyAddon)`
-background-color:#87b7ce;
 padding-bottom:15px;
 `
 
@@ -45,7 +47,6 @@ export const SingleKeyFooter = styled(SingleKeyAddon)`
 padding:0px 15px;
 height:100%;
 bottom:0px;
-background-color:#87b7ce;
 word-break: break-word;
 text-align:center;
 
@@ -72,7 +73,7 @@ margin-top:50px;
 margin-bottom: 20px;
 padding:10px;
 
-background-color:#87b7ce;
+background-color: ${({ theme }) => theme.templateColors.blue};
 p{
     text-align: center;
     margin: 5px;
