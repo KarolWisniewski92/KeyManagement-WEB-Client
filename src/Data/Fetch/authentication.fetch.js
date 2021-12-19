@@ -37,3 +37,15 @@ export const checkUser = async () => {
         credentials: 'include',
     });
 };
+
+export const fetchUserData = async (userID) => {
+    return await fetch(`${process.env.REACT_APP_SERVER}/getUserData`, {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        withCredentials: true,
+        credentials: 'include',
+        body: JSON.stringify({userID:userID})
+    });
+}

@@ -5,14 +5,11 @@ import { useHistory } from "react-router-dom";
 import { fetchUser } from 'Data/actions/user.action';
 import { KeyBox, UserBox } from './components';
 import useLogOut from 'hooks/useLogOut';
+import { DashboardBody } from './Dashboard.css';
 
 const Dashboard = ({ user, changeUserData, fetchUser }) => {
 
     let history = useHistory();
-
-    let logout = useLogOut();
-    console.log(logout);
-
 
     useEffect(() => {
         API.authentication.checkUser()
@@ -27,12 +24,11 @@ const Dashboard = ({ user, changeUserData, fetchUser }) => {
 
 
     return (
-        <Fragment>
-            <button onClick={() => { logout.logOut() }}>Test</button>
+        <DashboardBody>
             <KeyBox>
             </KeyBox>
             <UserBox></UserBox>
-        </Fragment>
+        </DashboardBody>
     )
 }
 
