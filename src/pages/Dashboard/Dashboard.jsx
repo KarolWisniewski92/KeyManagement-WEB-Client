@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { fetchUser } from 'Data/actions/user.action';
 import { KeyBox, UserBox } from './components';
 import { DashboardBody } from './Dashboard.css';
-import { fetchKeysData } from 'Data/fetch/data.fetch';
+import { fetchKeysData, fetchMyKeysData } from 'Data/fetch/data.fetch';
 import { activeKeys } from 'Data/actions/data.action';
 import { useDispatch } from 'react-redux';
 
@@ -20,9 +20,13 @@ const Dashboard = ({ user, changeUserData, selectedSet, fetchUser }) => {
             .then(response => response.json())
             .then((data) => {
                 console.log(data);
-                activeKeys(dispatch, data)
+                activeKeys(dispatch, data);
             })
     }, [selectedSet]);
+
+    useEffect(() => {
+        fetchMyKeysData(user.user_id)
+    }, [user.user_id])
 
 
     //Sprawdzamy czy użytkownik jest nadal zalogowany po stronie serwera.
