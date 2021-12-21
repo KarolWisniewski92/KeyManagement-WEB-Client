@@ -1,17 +1,33 @@
-import { Fragment, useEffect } from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import API from '../../Data/fetch'
 import { useHistory } from "react-router-dom";
 import { fetchUser } from 'Data/actions/user.action';
 import { KeyBox, UserBox } from './components';
-import useLogOut from 'hooks/useLogOut';
 import { DashboardBody } from './Dashboard.css';
+import { fetchKeysData } from 'Data/fetch/data.fetch';
+import { activeKeys } from 'Data/actions/data.action';
+import { useDispatch } from 'react-redux';
 
-const Dashboard = ({ user, changeUserData, fetchUser }) => {
+const Dashboard = ({ user, changeUserData, selectedSet, fetchUser }) => {
 
     let history = useHistory();
+    const dispatch = useDispatch();
 
+    //Pobieramy dane kluczy dla aktualnie wybranego setu.
     useEffect(() => {
+        fetchKeysData(selectedSet)
+            .then(response => response.json())
+            .then((data) => {
+                console.log(data);
+                activeKeys(dispatch, data)
+            })
+    }, [selectedSet]);
+
+
+    //Sprawdzamy czy użytkownik jest nadal zalogowany po stronie serwera.
+    useEffect(() => {
+
         API.authentication.checkUser()
             .then(response => response.json())
             .then((data) => {
@@ -20,7 +36,7 @@ const Dashboard = ({ user, changeUserData, fetchUser }) => {
                     history.push("/");
                 }
             })
-    }, [history])
+    }, [history, fetchUser]);
 
 
     return (
@@ -36,6 +52,7 @@ const Dashboard = ({ user, changeUserData, fetchUser }) => {
 
 export default connect((state) => {
     return ({
-        state: state.user.user
+        user: state.user.user,
+        selectedSet: state.main.selected_set
     })
 }, { fetchUser })(Dashboard);
