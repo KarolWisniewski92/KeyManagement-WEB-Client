@@ -1,11 +1,12 @@
 import styled from "styled-components"
 
-export const KeyBoxBody = styled.div`
-/* background-color:pink; */
-/* border: 2px solid black; */
+export const KeyBoxWrapper = styled.div`
+width:80%;
+display:flex;
+flex-direction: column;
+`
 
-width:100%;
-height: 100%;
+export const KeyBoxBody = styled.div`
 margin-right:10px;
 display:flex;
 flex-flow: row wrap;
@@ -19,7 +20,4 @@ export const HiddenComponent = styled.div` //Tworzy niewidzialny obiekt który u
   height: 0;
   width:200px; //Musi być taki sam jak ma SingleKeyBody
 `
-export const KeyBoxWrapper = styled.div`
-display:flex;
-flex-direction: column;
-`
+
