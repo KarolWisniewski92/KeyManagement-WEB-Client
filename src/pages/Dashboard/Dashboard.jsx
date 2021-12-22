@@ -6,7 +6,7 @@ import { fetchUser } from 'Data/actions/user.action';
 import { KeyBox, UserBox } from './components';
 import { DashboardBody } from './Dashboard.css';
 import { fetchKeysData, fetchMyKeysData } from 'Data/fetch/data.fetch';
-import { activeKeys } from 'Data/actions/data.action';
+import { activeKeys, myKeys } from 'Data/actions/data.action';
 import { useDispatch } from 'react-redux';
 
 const Dashboard = ({ user, changeUserData, selectedSet, fetchUser }) => {
@@ -24,8 +24,13 @@ const Dashboard = ({ user, changeUserData, selectedSet, fetchUser }) => {
             })
     }, [selectedSet]);
 
+    //Pobieramy klucze przypisane do aktualnie zalogowanego użytkownika.
     useEffect(() => {
         fetchMyKeysData(user.user_id)
+            .then(response => response.json())
+            .then(data => {
+                myKeys(dispatch, data)
+            })
     }, [user.user_id])
 
 

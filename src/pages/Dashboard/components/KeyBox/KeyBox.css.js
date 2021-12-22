@@ -6,7 +6,6 @@ export const KeyBoxBody = styled.div`
 
 width:100%;
 height: 100%;
-margin:20px 0px;
 margin-right:10px;
 display:flex;
 flex-flow: row wrap;
@@ -19,4 +18,8 @@ export const HiddenComponent = styled.div` //Tworzy niewidzialny obiekt który u
   margin: 10px; //Musi być taki sam jak ma SingleKeyBody
   height: 0;
   width:200px; //Musi być taki sam jak ma SingleKeyBody
+`
+export const KeyBoxWrapper = styled.div`
+display:flex;
+flex-direction: column;
 `

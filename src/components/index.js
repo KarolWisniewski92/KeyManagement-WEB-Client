@@ -4,3 +4,4 @@ export { default as Wrapper } from './Wrapper';
 export { default as Input } from './Input';
 export { default as StyledText } from './StyledText';
 export { default as SingleKeyComponent } from './SingleKeyComponent';
+export { default as MySingleKeyComponent } from './MySingleKeyComponent';

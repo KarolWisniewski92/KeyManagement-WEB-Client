@@ -1,4 +1,4 @@
-const { ACTIVE_KEYS } = require("Data/constans");
+const { ACTIVE_KEYS, MY_KEYS } = require("Data/constans");
 
 const initialState = {
     keys: []
@@ -12,6 +12,12 @@ function data(state = initialState, action) {
             return {
                 ...state,
                 keys: action.payload
+            }
+
+        case MY_KEYS:
+            return {
+                ...state,
+                myKeys: action.payload
             }
 
         default:

@@ -1,4 +1,4 @@
-const { ACTIVE_KEYS } = require("Data/constans");
+const { ACTIVE_KEYS, MY_KEYS } = require("Data/constans");
 
 export const activeKeys = (dispatch, keys) => {
 
@@ -7,4 +7,11 @@ export const activeKeys = (dispatch, keys) => {
         payload: keys
     })
 
+}
+
+export const myKeys = (dispatch, keys) => {
+    dispatch({
+        type: MY_KEYS,
+        payload: keys
+    })
 }
