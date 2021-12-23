@@ -10,7 +10,7 @@ import useIsLogged from 'hooks/useIsLogged';
 import { useDispatch } from 'react-redux';
 import { selectSet } from 'Data/actions/main.action';
 
-const Navigation = ({ item, user, fetchUser }) => {
+const Navigation = ({ user }) => {
     let history = useHistory();
     let logout = useLogOut();
     let isLogged = useIsLogged();

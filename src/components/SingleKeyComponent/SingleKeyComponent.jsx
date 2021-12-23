@@ -1,7 +1,8 @@
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SingleKeyBody, SingleKeyHeader, SingleKeyFooter, SingleKeyIcon, SigleKeyInfo, SingleKeyNavigation, SingleKeyButton, SingleKeyIconBox } from './SingleKeyComponent.css'
 import keyIcon from '../../image/png/Key1.png';
 import { fetchUserData } from 'Data/fetch/authentication.fetch';
+import useKeyAction from 'hooks/useKeyAction';
 
 const defaultKeyData = {
     keyID: "",
@@ -18,7 +19,8 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
 
     const [users, setUsers] = useState([]);
 
-    console.log(users);
+    const keyActions = useKeyAction();
+
 
     useEffect(() => {
         (async () => {
@@ -62,7 +64,9 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
 
             {!keyData.isTaken &&
                 <SingleKeyNavigation>
-                    <SingleKeyButton> Pobierz klucz!</SingleKeyButton>
+                    <SingleKeyButton onClick={() => {
+                        keyActions.getKey(keyData.keyID)
+                    }}> Pobierz klucz!</SingleKeyButton>
                 </SingleKeyNavigation>}
         </SingleKeyBody>
     )

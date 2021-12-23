@@ -1,8 +1,12 @@
 import { MyKeyBox, Navigation, SingleKeyIcon, KeyIconBox, HeaderBox, FotterBox, MySingleKeyButton } from "./MySingleKeyComponent.css"
 import { StyledText } from "components";
 import keyIcon from '../../image/png/Key1.png';
+import useKeyAction from 'hooks/useKeyAction';
 
 const MySingleKeyComponent = ({ keyData }) => {
+
+    const keyActions = useKeyAction();
+
     return (
         <MyKeyBox>
             <HeaderBox>
@@ -16,7 +20,9 @@ const MySingleKeyComponent = ({ keyData }) => {
             </HeaderBox>
 
             <Navigation>
-                <MySingleKeyButton>Zwróć klucz</MySingleKeyButton>
+                <MySingleKeyButton onClick={() => {
+                    keyActions.returnKey(keyData.keyID)
+                }}>Zwróć klucz</MySingleKeyButton>
                 <MySingleKeyButton>Przekaż klucz</MySingleKeyButton>
             </Navigation>
 

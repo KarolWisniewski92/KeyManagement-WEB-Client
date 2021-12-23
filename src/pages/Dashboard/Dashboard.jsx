@@ -5,33 +5,22 @@ import { useHistory } from "react-router-dom";
 import { fetchUser } from 'Data/actions/user.action';
 import { KeyBox, UserBox } from './components';
 import { DashboardBody } from './Dashboard.css';
-import { fetchKeysData, fetchMyKeysData } from 'Data/fetch/data.fetch';
-import { activeKeys, myKeys } from 'Data/actions/data.action';
-import { useDispatch } from 'react-redux';
+import useKeyAction from 'hooks/useKeyAction';
 
-const Dashboard = ({ user, changeUserData, selectedSet, fetchUser }) => {
+const Dashboard = ({ user, selectedSet, fetchUser }) => {
 
     let history = useHistory();
-    const dispatch = useDispatch();
+    const keyActions = useKeyAction();
 
     //Pobieramy dane kluczy dla aktualnie wybranego setu.
     useEffect(() => {
-        fetchKeysData(selectedSet)
-            .then(response => response.json())
-            .then((data) => {
-                console.log(data);
-                activeKeys(dispatch, data);
-            })
-    }, [selectedSet]);
+        keyActions.getKeysData();
+    }, [keyActions, selectedSet]);
 
     //Pobieramy klucze przypisane do aktualnie zalogowanego użytkownika.
     useEffect(() => {
-        fetchMyKeysData(user.user_id)
-            .then(response => response.json())
-            .then(data => {
-                myKeys(dispatch, data)
-            })
-    }, [user.user_id])
+        keyActions.getMyKeysData();
+    }, [keyActions, user.user_id])
 
 
     //Sprawdzamy czy użytkownik jest nadal zalogowany po stronie serwera.
