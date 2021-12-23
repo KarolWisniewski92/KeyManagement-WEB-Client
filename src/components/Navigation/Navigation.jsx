@@ -1,17 +1,24 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { NavigationWrapper, NavigationMiniWrapper, NavigationWelcomeText, ButtonLogout } from './Navigation.css';
 import { Button } from 'components';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUser } from 'Data/actions/user.action';
 import useLogOut from 'hooks/useLogOut';
+import useIsLogged from 'hooks/useIsLogged';
 import { useDispatch } from 'react-redux';
 import { selectSet } from 'Data/actions/main.action';
 
 const Navigation = ({ item, user, fetchUser }) => {
     let history = useHistory();
     let logout = useLogOut();
+    let isLogged = useIsLogged();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        isLogged.isLogged()
+    }, [])
 
     const setsList = ["KP", "NOC", "DUS"];
 
