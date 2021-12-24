@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { SingleKeyBody, SingleKeyHeader, SingleKeyFooter, SingleKeyIcon, SigleKeyInfo, SingleKeyNavigation, SingleKeyButton, SingleKeyIconBox } from './SingleKeyComponent.css'
+import { SingleKeyBody, SingleKeyHeader, SingleKeyFooter, SingleKeyIcon, SigleKeyInfo, SingleKeyNavigation, SingleKeyButton, SingleKeyIconBox, SingleKeyButtonYes, SingleKeyButtonNo, NavigationWrapper, ButtonWrapper } from './SingleKeyComponent.css'
 import keyIcon from '../../image/png/Key1.png';
 import { fetchUserData } from 'Data/fetch/authentication.fetch';
 import useKeyAction from 'hooks/useKeyAction';
+import StyledText from 'components/StyledText/StyledText';
 
 const defaultKeyData = {
     keyID: "",
@@ -18,6 +19,7 @@ const defaultKeyData = {
 const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
 
     const [users, setUsers] = useState([]);
+    const [confirmAction, setConfirmAction] = useState(false);
 
     const keyActions = useKeyAction();
 
@@ -64,9 +66,29 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
 
             {!keyData.isTaken &&
                 <SingleKeyNavigation>
-                    <SingleKeyButton onClick={() => {
-                        keyActions.getKey(keyData.keyID)
-                    }}> Pobierz klucz!</SingleKeyButton>
+                    {!confirmAction &&
+                        <SingleKeyButton onClick={() => {
+
+                            setConfirmAction(true)
+                        }}> Pobierz klucz!</SingleKeyButton>
+                    }
+
+                    {confirmAction &&
+                        <NavigationWrapper>
+                            <StyledText marginVertical="10px">Potwierdz pobranie:</StyledText>
+                            <ButtonWrapper>
+                                <SingleKeyButtonYes onClick={() => {
+                                    keyActions.getKey(keyData.keyID)
+                                    setConfirmAction(false);
+                                }}>Tak</SingleKeyButtonYes>
+                                <SingleKeyButtonNo onClick={() => {
+                                    setConfirmAction(false);
+                                }}>Nie</SingleKeyButtonNo>
+                            </ButtonWrapper>
+
+                        </NavigationWrapper>
+                    }
+
                 </SingleKeyNavigation>}
         </SingleKeyBody>
     )
