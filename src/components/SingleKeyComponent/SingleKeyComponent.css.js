@@ -44,11 +44,13 @@ padding-bottom:15px;
 `
 
 export const SingleKeyFooter = styled(SingleKeyAddon)`
+justify-content:flex-start;
 padding:0px 15px;
-height:100%;
 bottom:0px;
 word-break: break-word;
 text-align:center;
+flex-grow:1;
+padding-bottom:15px;
 
 `
 
@@ -90,4 +92,26 @@ transition: transform 0.5s;
 &:hover{
 transform:scale(1.05)
 }
+`
+
+export const NavigationWrapper = styled.div`
+display:flex;
+flex-direction: column;
+`
+export const ButtonWrapper = styled.div`
+display:flex;
+flex-direction: row;
+justify-content: space-evenly;
+`
+
+export const SingleKeyButtonYes = styled(SingleKeyButton)`
+background:#63ba30;
+color:#345c1d;
+padding:7px 15px;
+`
+
+export const SingleKeyButtonNo = styled(SingleKeyButton)`
+background:#e52828;
+color:#601919;
+padding:7px 15px;
 `

@@ -22,7 +22,7 @@ function App() {
       .then(response => response.json())
       .then((data) => {
         if (Object.keys(data).length !== 0) {
-          history.push("/dashboard");
+          history.push("/dashboard")
         }
       })
   }, [history]);
@@ -31,17 +31,9 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-
       <Navigation />
-
       <Wrapper>
         <Route path="/" exact>
-          <Button variant="menu" color="blue"> menu button</Button>
-          <Button variant="secondary" color="red"> primary button</Button>
-          <Button variant="primary" color="green"> secondary button</Button>
-          <Button variant="primary" color="pink"> secondary button</Button>
-          <Button variant="primary" color="yellow"> secondary button</Button>
-          <Button variant="secondary" color="orange"> secondary button</Button>
         </Route>
 
         <Switch>
