@@ -91,3 +91,25 @@ transition: transform 0.5s;
 transform:scale(1.05)
 }
 `
+
+export const NavigationWrapper = styled.div`
+display:flex;
+flex-direction: column;
+`
+export const ButtonWrapper = styled.div`
+display:flex;
+flex-direction: row;
+justify-content: space-evenly;
+`
+
+export const SingleKeyButtonYes = styled(SingleKeyButton)`
+background:#63ba30;
+color:#345c1d;
+padding:7px 15px;
+`
+
+export const SingleKeyButtonNo = styled(SingleKeyButton)`
+background:#e52828;
+color:#601919;
+padding:7px 15px;
+`
