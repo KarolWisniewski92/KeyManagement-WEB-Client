@@ -1,6 +1,6 @@
 import theme from './utils/theme';
 import { ThemeProvider } from 'styled-components';
-import { Navigation, Button, Wrapper } from 'components';
+import { Navigation, Wrapper } from 'components';
 import {
   Switch,
   Route,
@@ -9,9 +9,6 @@ import {
 import { LoginForm, RegisterForm, Dashboard } from 'pages';
 import { useEffect } from 'react';
 import API from './Data/fetch'
-
-
-
 
 function App() {
 
@@ -26,8 +23,6 @@ function App() {
         }
       })
   }, [history]);
-
-
 
   return (
     <ThemeProvider theme={theme}>

@@ -1,11 +1,14 @@
 import { MyKeyBox, Navigation, SingleKeyIcon, KeyIconBox, HeaderBox, FotterBox, MySingleKeyButton } from "./MySingleKeyComponent.css"
-import { StyledText } from "components";
+import { ConfirmBox, StyledText } from "components";
 import keyIcon from '../../image/png/Key1.png';
 import useKeyAction from 'hooks/useKeyAction';
+import { useState } from 'react';
+import { Fragment } from "react";
 
 const MySingleKeyComponent = ({ keyData }) => {
 
     const keyActions = useKeyAction();
+    const [confirmAction, setConfirmAction] = useState(false);
 
     return (
         <MyKeyBox>
@@ -20,11 +23,29 @@ const MySingleKeyComponent = ({ keyData }) => {
             </HeaderBox>
 
             <Navigation>
-                <MySingleKeyButton onClick={() => {
-                    keyActions.returnKey(keyData.keyID)
-                }}>Zwróć klucz</MySingleKeyButton>
-                <MySingleKeyButton>Przekaż klucz</MySingleKeyButton>
+                {!confirmAction &&
+                    <Fragment>
+                        <MySingleKeyButton onClick={() => {
+                            setConfirmAction(true);
+                            console.log(confirmAction)
+                        }}>Zwróć klucz</MySingleKeyButton>
+                        <MySingleKeyButton>Przekaż klucz</MySingleKeyButton>
+                    </Fragment>
+                }
+                {confirmAction &&
+                    <ConfirmBox YesCallback={() => {
+                        keyActions.returnKey(keyData.keyID)
+                        setConfirmAction(false)
+                    }
+                    } NoCallback={() => {
+                        setConfirmAction(false)
+                    }} Title='Potwierdź zwrot' ></ConfirmBox>
+                }
+
             </Navigation>
+
+
+
 
         </MyKeyBox>
     )

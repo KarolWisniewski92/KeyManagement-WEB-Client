@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { SingleKeyBody, SingleKeyHeader, SingleKeyFooter, SingleKeyIcon, SigleKeyInfo, SingleKeyNavigation, SingleKeyButton, SingleKeyIconBox, SingleKeyButtonYes, SingleKeyButtonNo, NavigationWrapper, ButtonWrapper } from './SingleKeyComponent.css'
+import { SingleKeyBody, SingleKeyHeader, SingleKeyFooter, SingleKeyIcon, SigleKeyInfo, SingleKeyNavigation, SingleKeyButton, SingleKeyIconBox } from './SingleKeyComponent.css'
 import keyIcon from '../../image/png/Key1.png';
 import { fetchUserData } from 'Data/fetch/authentication.fetch';
 import useKeyAction from 'hooks/useKeyAction';
-import StyledText from 'components/StyledText/StyledText';
+import { StyledText, ConfirmBox } from 'components';
 
 const defaultKeyData = {
     keyID: "",
@@ -74,19 +74,13 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
                     }
 
                     {confirmAction &&
-                        <NavigationWrapper>
-                            <StyledText marginVertical="10px">Potwierdz pobranie:</StyledText>
-                            <ButtonWrapper>
-                                <SingleKeyButtonYes onClick={() => {
-                                    keyActions.getKey(keyData.keyID)
-                                    setConfirmAction(false);
-                                }}>Tak</SingleKeyButtonYes>
-                                <SingleKeyButtonNo onClick={() => {
-                                    setConfirmAction(false);
-                                }}>Nie</SingleKeyButtonNo>
-                            </ButtonWrapper>
-
-                        </NavigationWrapper>
+                        <ConfirmBox YesCallback={() => {
+                            keyActions.getKey(keyData.keyID)
+                            setConfirmAction(false)
+                        }
+                        } NoCallback={() => {
+                            setConfirmAction(false)
+                        }} Title='Potwierdź pobranie' ></ConfirmBox>
                     }
 
                 </SingleKeyNavigation>}
