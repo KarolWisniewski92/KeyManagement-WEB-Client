@@ -1,0 +1,17 @@
+.fadeInOut-enter {
+    opacity: 0;
+}
+
+.fadeInOut-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.fadeInOut-exit {
+    opacity: 1;
+}
+
+.fadeInOut-exit-active {
+    opacity: 0;
+    transition: opacity 500ms ease-in;
+}

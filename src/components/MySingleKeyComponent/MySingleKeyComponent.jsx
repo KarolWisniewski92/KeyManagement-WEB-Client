@@ -1,9 +1,8 @@
 import { MyKeyBox, Navigation, SingleKeyIcon, KeyIconBox, HeaderBox, FotterBox, MySingleKeyButton, TransferedInput, Li, Ul } from "./MySingleKeyComponent.css"
-import { ConfirmBox, StyledText, Button } from "components";
+import { ConfirmBox, StyledText } from "components";
 import keyIcon from '../../image/png/Key1.png';
 import useKeyAction from 'hooks/useKeyAction';
-import { useState } from 'react';
-import { Fragment } from "react";
+import { Fragment, useState } from 'react';
 import { fetchFindUserToTransfer, fetchIsTransferedToUpdate } from "Data/fetch/data.fetch";
 import { fetchUserData } from "Data/fetch/authentication.fetch";
 
@@ -42,7 +41,7 @@ const MySingleKeyComponent = ({ keyData }) => {
     //Sprawdza czy klucz jest przekazywany, jeżeli tak to pobiera dane użytkownika docelowego.
     if (keyData.isTransferedTo) {
         (async () => {
-            const user = await fetchUserData(keyData.isTransferedTo)
+            await fetchUserData(keyData.isTransferedTo)
                 .then(response => response.json())
                 .then(user => {
                     setIsTransferedTo(user)
@@ -137,6 +136,7 @@ const MySingleKeyComponent = ({ keyData }) => {
                     <StyledText align="center" marginVertical="5px"> Oczekuje na potwierdzenie: {isTransferedTo.name} {isTransferedTo.surname}</StyledText>
                 </Fragment>
             }
+
 
             {isTransfered &&
                 <div>

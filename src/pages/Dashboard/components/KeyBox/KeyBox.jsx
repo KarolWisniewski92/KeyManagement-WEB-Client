@@ -34,7 +34,7 @@ const KeyBox = ({ keys, localization }) => {
 
 
             </KeyBoxBody>
-        </KeyBoxWrapper>
+        </KeyBoxWrapper >
 
 
     )

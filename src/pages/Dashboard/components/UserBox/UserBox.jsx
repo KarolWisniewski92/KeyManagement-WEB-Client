@@ -1,6 +1,8 @@
 import { MySingleKeyComponent, StyledText } from 'components';
 import { UserBoxBody, UserBoxWrapper } from './UserBox.css';
 import { connect } from 'react-redux';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import '../../../../utils/animation.css';
 
 const UserBox = ({ myKeys }) => {
 
@@ -8,12 +10,15 @@ const UserBox = ({ myKeys }) => {
     if (myKeys.length !== 0) {
         myKeysList = myKeys.map(el => {
             return (
-                <MySingleKeyComponent keyData={el} key={el.keyID}></MySingleKeyComponent>
+                <CSSTransition
+                    key={el.keyID}
+                    timeout={500}
+                    classNames="fadeInOut">
+                    <MySingleKeyComponent keyData={el} key={el.keyID}></MySingleKeyComponent>
+                </CSSTransition>
             )
         })
-
     }
-
 
     return (
 
@@ -23,7 +28,9 @@ const UserBox = ({ myKeys }) => {
                 align="center">MOJE KLUCZE:</StyledText>
 
             <UserBoxBody>
-                {myKeysList}
+                <TransitionGroup>
+                    {myKeysList}
+                </TransitionGroup>
             </UserBoxBody>
         </UserBoxWrapper>
     )
