@@ -34,3 +34,15 @@ export const fetchFindUserToTransfer = async (user) => {
         credentials: 'include'
     });
 }
+
+export const fetchIsTransferedToUpdate = async (data) => {
+    return await fetch(`${process.env.REACT_APP_SERVER}/isTransferedToUpdate`, {
+        method: "POST",
+        withCredentials: true,
+        credentials: 'include',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+}

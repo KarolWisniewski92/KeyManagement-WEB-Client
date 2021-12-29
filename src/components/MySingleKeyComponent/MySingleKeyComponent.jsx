@@ -4,15 +4,19 @@ import keyIcon from '../../image/png/Key1.png';
 import useKeyAction from 'hooks/useKeyAction';
 import { useState } from 'react';
 import { Fragment } from "react";
-import { fetchFindUserToTransfer } from "Data/fetch/data.fetch";
+import { fetchFindUserToTransfer, fetchIsTransferedToUpdate } from "Data/fetch/data.fetch";
+import { fetchUserData } from "Data/fetch/authentication.fetch";
 
 const MySingleKeyComponent = ({ keyData }) => {
 
     const keyActions = useKeyAction();
+
     const [confirmAction, setConfirmAction] = useState(false);
     const [isTransfered, setIsTransfered] = useState(false);
     const [availableUser, setAvailableUser] = useState([]);
     const [selectedUser, setSelectedUser] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [isTransferedTo, setIsTransferedTo] = useState({});
 
 
     //Uruchom funkcję po 2 sekundach bezczynności w input
@@ -24,90 +28,169 @@ const MySingleKeyComponent = ({ keyData }) => {
             fetchFindUserToTransfer(e.target.value)
                 .then(response => response.json())
                 .then(data => {
+                    data.length === 0 ? setErrorMessage("Nie znaleziono użytkownika!") : setErrorMessage("")
                     setAvailableUser(data);
                 })
-        }, 2000)
-
-    }
+        }, 1000)
+    };
 
     //Wyczyść timeout dla funkcji findUserTimeout
     const clearFindUserTimeout = () => {
         clearTimeout(findUserTimeout);
-    }
+    };
 
-    let userListToTransfer = <StyledText align="center">Nie znaleziono użytkownika!</StyledText>
+    //Sprawdza czy klucz jest przekazywany, jeżeli tak to pobiera dane użytkownika docelowego.
+    if (keyData.isTransferedTo) {
+        (async () => {
+            const user = await fetchUserData(keyData.isTransferedTo)
+                .then(response => response.json())
+                .then(user => {
+                    setIsTransferedTo(user)
+                })
+        })();
+    };
+
+    //Tworzymy Listę wyszukanych użytkowników do wyświetlenia
+    let userListToTransfer;
 
     if (availableUser.length > 0) {
         userListToTransfer = availableUser.map(el => {
-            return (<Li key={el.user_id} name={el.user_id} isSelected={(() => {
-                return el.user_id === selectedUser ? true : false;
-            })()} onClick={(e) => {
-                if (selectedUser === e.target.getAttribute('name')) {
-                    setSelectedUser("");
-                } else {
-                    setSelectedUser(e.target.getAttribute('name'));
-                }
-            }}>{el.name} {el.surname}</Li>)
+            return (
+                <Li
+                    key={el.user_id}
+                    name={el.user_id}
+                    isSelected={(() => {
+                        return el.user_id === selectedUser ? true : false;
+                    })()}
+                    onClick={(e) => {
+                        if (selectedUser === e.target.getAttribute('name')) {
+                            setSelectedUser("");
+                        } else {
+                            setSelectedUser(e.target.getAttribute('name'));
+                        }
+                    }}>{el.name} {el.surname}</Li>)
         })
-    }
+    };
 
     return (
         <MyKeyBox>
             <HeaderBox>
                 <KeyIconBox>
-                    <SingleKeyIcon src={keyIcon} alt="Key Icon" />
+                    <SingleKeyIcon
+                        src={keyIcon}
+                        alt="Key Icon" />
                 </KeyIconBox>
                 <FotterBox>
-                    <StyledText type='header' size='20px' align="center">{keyData.name}</StyledText>
-                    <StyledText align="center" margin="0px"> {keyData.adres}</StyledText>
+
+                    <StyledText
+                        type='header'
+                        size='20px'
+                        align="center">
+                        {keyData.name}
+                    </StyledText>
+
+                    <StyledText
+                        align="center"
+                        margin="0px">
+                        {keyData.adres}
+                    </StyledText>
+
                 </FotterBox>
             </HeaderBox>
 
             <Navigation>
                 {!confirmAction &&
                     <Fragment>
-                        <MySingleKeyButton onClick={() => {
-                            setConfirmAction(true);
-                        }}>
+                        <MySingleKeyButton
+                            onClick={() => {
+                                setConfirmAction(true);
+                            }}>
                             Zwróć klucz
                         </MySingleKeyButton>
 
-                        <MySingleKeyButton onClick={() => {
-                            setIsTransfered(true);
-                        }}>
+                        <MySingleKeyButton
+                            onClick={() => {
+                                setIsTransfered(true);
+                            }}>
                             Przekaż klucz
                         </MySingleKeyButton>
                     </Fragment>
                 }
+
                 {confirmAction &&
-                    <ConfirmBox YesCallback={() => {
-                        keyActions.returnKey(keyData.keyID)
-                        setConfirmAction(false)
-                    }
-                    } NoCallback={() => {
-                        setConfirmAction(false)
-                    }} Title='Potwierdź zwrot' ></ConfirmBox>
+                    <ConfirmBox
+                        YesCallback={() => {
+                            keyActions.returnKey(keyData.keyID)
+                            setConfirmAction(false)
+                        }}
+                        NoCallback={() => {
+                            setConfirmAction(false)
+                        }}
+                        Title='Potwierdź zwrot'>
+                    </ConfirmBox>
                 }
-
-
-
             </Navigation>
+
+            {keyData.isTransferedTo !== "" &&
+                <Fragment>
+                    <StyledText align="center" marginVertical="5px">Klucz jest obecnie przekazywany!</StyledText>
+                    <StyledText align="center" marginVertical="5px"> Oczekuje na potwierdzenie: {isTransferedTo.name} {isTransferedTo.surname}</StyledText>
+                </Fragment>
+            }
 
             {isTransfered &&
                 <div>
-                    <TransferedInput onKeyUp={findUserToTransfer} onKeyDown={clearFindUserTimeout} type="text" placeholder="Wyszukaj użytkownika..." />
+                    <TransferedInput
+                        onKeyUp={findUserToTransfer}
+                        onKeyDown={clearFindUserTimeout}
+                        type="text"
+                        placeholder="Wyszukaj użytkownika..." />
                     <Ul>
                         {userListToTransfer}
                     </Ul>
-                    <MySingleKeyButton>Przekaż</MySingleKeyButton>
-                    <MySingleKeyButton onClick={() => {
-                        setIsTransfered(false);
-                        setAvailableUser([]);
-                        setSelectedUser("");
-                    }}>Anuluj</MySingleKeyButton>
+                    <StyledText
+                        align="center"
+                        color="red">
+                        {errorMessage}
+                    </StyledText>
+                    <div>
+                        <MySingleKeyButton
+                            onClick={() => {
+                                if (selectedUser === "") {
+                                    setErrorMessage("Nie wybrano użytkownika!")
+                                } else {
+                                    fetchIsTransferedToUpdate({
+                                        keyID: keyData.keyID,
+                                        user_id: selectedUser
+                                    })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            if (data.error === false) {
+                                                setIsTransfered(false);
+                                                setAvailableUser([]);
+                                                setSelectedUser("");
+                                                keyActions.getMyKeysData();
+                                            } else {
+                                                setErrorMessage("Wystąpił błąd! Spróbuj ponownie!")
+                                            }
+                                        })
+                                }
+                            }}>
+                            Przekaż
+                        </MySingleKeyButton>
+
+                        <MySingleKeyButton
+                            onClick={() => {
+                                setIsTransfered(false);
+                                setAvailableUser([]);
+                                setSelectedUser("");
+                            }}>
+                            Anuluj
+                        </MySingleKeyButton>
+                    </div>
+
                 </div>
             }
-
 
         </MyKeyBox>
     )
