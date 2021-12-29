@@ -4,6 +4,7 @@ import keyIcon from '../../image/png/Key1.png';
 import { fetchUserData } from 'Data/fetch/authentication.fetch';
 import useKeyAction from 'hooks/useKeyAction';
 import { StyledText, ConfirmBox } from 'components';
+import data from 'Data/reducers/data.reducer';
 
 const defaultKeyData = {
     keyID: "",
@@ -42,11 +43,11 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
     // console.log(keyData);
     return (
         <SingleKeyBody>
-            <SingleKeyHeader>
+            <SingleKeyHeader set={keyData.set}>
                 <p>INEA</p>
-            </SingleKeyHeader>
+            </SingleKeyHeader >
             {keyData.isTaken &&
-                <SigleKeyInfo>
+                <SigleKeyInfo set={keyData.set}>
                     <p><b>{users.name} {users.surname}</b></p>
                     <p><b>tel.</b> {users.phone} </p>
                     <p><b>Data:</b> {keyData.isTakenData}</p>
@@ -59,13 +60,13 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
                 </SingleKeyIconBox>
             }
 
-            <SingleKeyFooter>
+            <SingleKeyFooter set={keyData.set}>
                 <StyledText marginVertical="10px"><b>{keyData.name}</b></StyledText>
                 <StyledText>{keyData.adres}</StyledText>
             </SingleKeyFooter>
 
             {!keyData.isTaken &&
-                <SingleKeyNavigation>
+                <SingleKeyNavigation set={keyData.set}>
                     {!confirmAction &&
                         <SingleKeyButton onClick={() => {
 

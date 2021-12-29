@@ -21,8 +21,8 @@ const theme = {
         },
     },
     templateColors: {
-        yellow: 'rgb(85, 150, 0)',
-        green: 'rgb(85, 150, 0)',
+        yellow: '#e7d862',
+        green: '#63bb63',
         blue: '#87b7ce',
     }
 }

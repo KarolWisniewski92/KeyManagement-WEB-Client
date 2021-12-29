@@ -18,10 +18,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
   }
   
-
   #root {
-    display:flex;
-    flex-flow: column wrap;
   }
   
 `

@@ -4,12 +4,11 @@ const Wrapper = styled.div`
 margin: 0 auto;
 width: 80%;
 flex-grow:1;
-/* height: 100%; */
 display:flex;
-flex-direction: row;
+flex-direction: ${({ direction }) => direction};
 justify-content: center;
-align-items:center;
-/* background-color: pink; */
+align-items: center;
+align-content: center;
 `
 
 export default Wrapper;

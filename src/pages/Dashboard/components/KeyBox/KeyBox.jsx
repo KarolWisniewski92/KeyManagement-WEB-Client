@@ -29,6 +29,8 @@ const KeyBox = ({ keys, localization }) => {
                         <HiddenComponent></HiddenComponent>
                         <HiddenComponent></HiddenComponent>
                         <HiddenComponent></HiddenComponent>
+                        <HiddenComponent></HiddenComponent>
+                        <HiddenComponent></HiddenComponent>
                     </Fragment>
                 }
 

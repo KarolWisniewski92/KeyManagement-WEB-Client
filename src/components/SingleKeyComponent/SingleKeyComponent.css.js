@@ -1,5 +1,19 @@
 import styled from "styled-components";
 
+const handleSet = (set, theme) => {
+    switch (set) {
+        case "KP":
+            return theme.templateColors.blue;
+        case "NOC":
+            return theme.templateColors.green;
+        case "DUS":
+            return theme.templateColors.yellow;
+        default:
+            return theme.templateColors.blue;
+    }
+
+}
+
 
 export const SingleKeyBody = styled.div`
 display:flex;
@@ -25,7 +39,7 @@ align-content: center;
 position: relative;
 flex-flow: column wrap;
 min-height:40px;
-background-color: ${({ theme }) => theme.templateColors.blue};
+background: ${({ set, theme }) => handleSet(set, theme)};
 `
 
 export const SingleKeyHeader = styled(SingleKeyAddon)`
@@ -73,7 +87,8 @@ margin-top:50px;
 margin-bottom: 20px;
 padding:10px;
 
-background-color: ${({ theme }) => theme.templateColors.blue};
+background: ${({ set, theme }) => handleSet(set, theme)};
+
 p{
     text-align: center;
     margin: 5px;

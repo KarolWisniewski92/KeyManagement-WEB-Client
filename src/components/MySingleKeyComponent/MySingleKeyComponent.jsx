@@ -72,7 +72,7 @@ const MySingleKeyComponent = ({ keyData }) => {
     };
 
     return (
-        <MyKeyBox>
+        <MyKeyBox set={keyData.set}>
             <HeaderBox>
                 <KeyIconBox>
                     <SingleKeyIcon

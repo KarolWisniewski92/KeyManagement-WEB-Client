@@ -1,11 +1,25 @@
 import styled from "styled-components";
 
+const handleSet = (set, theme) => {
+    switch (set) {
+        case "KP":
+            return theme.templateColors.blue;
+        case "NOC":
+            return theme.templateColors.green;
+        case "DUS":
+            return theme.templateColors.yellow;
+        default:
+            return theme.templateColors.blue;
+    }
+
+}
+
 export const MyKeyBox = styled.div`
 display:flex;
 box-shadow: 2px 2px 5px  gray;
 flex-direction:column;
 width:100%;
-background: ${({ theme }) => theme.templateColors.blue};
+background: ${({ set, theme }) => handleSet(set, theme)};
 padding:10px;
 margin-bottom:20px;
 transition: 0.5s;

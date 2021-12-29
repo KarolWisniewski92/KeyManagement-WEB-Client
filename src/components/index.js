@@ -6,3 +6,4 @@ export { default as StyledText } from './StyledText';
 export { default as SingleKeyComponent } from './SingleKeyComponent';
 export { default as MySingleKeyComponent } from './MySingleKeyComponent';
 export { default as ConfirmBox } from './ConfirmBox';
+export { default as MainWrapper } from './MainWrapper';

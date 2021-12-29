@@ -1,6 +1,6 @@
 import theme from './utils/theme';
 import { ThemeProvider } from 'styled-components';
-import { Navigation, Wrapper } from 'components';
+import { Navigation, Wrapper, MainWrapper } from 'components';
 import {
   Switch,
   Route,
@@ -26,23 +26,28 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Navigation />
-      <Wrapper>
+      <MainWrapper>
+        <Navigation />
+
         <Route path="/" exact>
         </Route>
-
-        <Switch>
-          <Route path="/login" exact>
+        <Route path="/login" exact>
+          <Wrapper direction="center">
             <LoginForm />
-          </Route>
-          <Route path="/register" exact>
+          </Wrapper>
+        </Route>
+        <Route path="/register" exact>
+          <Wrapper direction="center">
             <RegisterForm />
-          </Route>
-          <Route path="/dashboard" exact>
+          </Wrapper>
+        </Route>
+
+        <Route path="/dashboard" exact>
+          <Wrapper direction="flex-start">
             <Dashboard />
-          </Route>
-        </Switch>
-      </Wrapper>
+          </Wrapper>
+        </Route>
+      </MainWrapper>
     </ThemeProvider >
   );
 }
