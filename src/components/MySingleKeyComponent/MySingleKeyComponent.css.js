@@ -60,3 +60,29 @@ transition: transform 0.5s;
 transform:scale(1.05)
 }
 `
+
+export const TransferedInput = styled.input`
+width: calc(100% - 20px);
+padding:5px;
+margin:10px;
+`
+
+export const Ul = styled.ul`
+padding-left:20px;
+margin-top:5px;
+`
+
+
+export const Li = styled.li`
+
+background:${props => props.isSelected ? '#45a5d3' : null};
+padding:${props => props.isSelected ? '5px' : null};
+padding-left:${props => props.isSelected ? '10px' : null};
+margin-bottom: 5px;
+list-style-type: none;
+cursor: pointer;
+transition: transform 0.5s;
+&:hover{
+    transform: scale(1.05);
+}
+`

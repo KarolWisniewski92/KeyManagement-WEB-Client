@@ -26,3 +26,11 @@ export const fetchIsTakenByUpdate = async (data) => {
         body: JSON.stringify(data)
     })
 }
+
+export const fetchFindUserToTransfer = async (user) => {
+    return await fetch(`${process.env.REACT_APP_SERVER}/findUserToTransfer?user=${user}`, {
+        method: "GET",
+        withCredentials: true,
+        credentials: 'include'
+    });
+}
