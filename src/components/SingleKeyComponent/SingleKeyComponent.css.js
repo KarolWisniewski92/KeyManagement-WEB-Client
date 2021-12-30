@@ -20,15 +20,17 @@ display:flex;
 flex-direction:column;
 width:200px;
 height: auto;
-background-color:white;
-box-shadow: 2px 2px 5px  gray;
+background: white;
 position:relative;
 overflow: hidden;
 margin:10px;
-transition: transform 0.6s;
+box-shadow: 0px 0px 10px 0px rgba(0,0,0,28%);
+transition-property: transform, box-shadow;
+transition-duration:0.6s;
 
 &:hover{
     transform: scale(1.05);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,50%);
 }
 `
 
@@ -47,6 +49,7 @@ top:0px;
 `
 
 export const SingleKeyIconBox = styled.div`
+background:white;
 position: relative;
 /* padding: 20px 0px; */
 `

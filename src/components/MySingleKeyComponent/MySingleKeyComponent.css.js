@@ -23,7 +23,9 @@ const handleSet = (set, theme) => {
 
 export const MyKeyBox = styled.div`
 display:flex;
-box-shadow: 2px 2px 5px  gray;
+box-shadow: 0px 0px 10px 0px rgba(0,0,0,28%);
+transition-property: transform, box-shadow;
+transition-duration:0.6s;
 flex-direction:column;
 width:100%;
 padding:10px;

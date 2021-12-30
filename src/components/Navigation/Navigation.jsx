@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { NavigationWrapper, NavigationMiniWrapper, NavigationWelcomeText, ButtonLogout } from './Navigation.css';
+import { NavigationWrapper, NavigationMiniWrapper, NavigationWelcomeText, ButtonLogout, SetsBox } from './Navigation.css';
 import { Button } from 'components';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -37,7 +37,7 @@ const Navigation = ({ user }) => {
             }
 
             {Object.keys(user).length > 0 &&
-                <div> {sets}</div>
+                <SetsBox> {sets}</SetsBox>
             }
             <NavigationMiniWrapper>
                 {Object.keys(user).length > 0 &&

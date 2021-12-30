@@ -39,7 +39,7 @@ const MySingleKeyComponent = ({ keyData }) => {
     };
 
     //Sprawdza czy klucz jest przekazywany, jeżeli tak to pobiera dane użytkownika docelowego.
-    if (keyData.isTransferedTo) {
+    if (keyData.isTransferedTo && Object.keys(isTransferedTo).length === 0) {
         (async () => {
             await fetchUserData(keyData.isTransferedTo)
                 .then(response => response.json())
@@ -78,6 +78,7 @@ const MySingleKeyComponent = ({ keyData }) => {
                     <SingleKeyIcon
                         src={keyIcon}
                         alt="Key Icon" />
+
                 </KeyIconBox>
                 <InfoBox>
 
@@ -95,6 +96,7 @@ const MySingleKeyComponent = ({ keyData }) => {
                     </StyledText>
 
                 </InfoBox>
+
             </HeaderBox>
 
             <Navigation>
