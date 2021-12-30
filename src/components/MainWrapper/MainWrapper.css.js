@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import img from "../../image/jpg/Background_Image_001.jpg";
 
 export const MainWrapperDiv = styled.div`
 height:auto;

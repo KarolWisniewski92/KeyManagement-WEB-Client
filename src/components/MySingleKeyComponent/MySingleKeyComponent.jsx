@@ -1,4 +1,4 @@
-import { MyKeyBox, Navigation, SingleKeyIcon, KeyIconBox, HeaderBox, InfoBox, MySingleKeyButton, TransferedInput, Li, Ul } from "./MySingleKeyComponent.css"
+import { MyKeyBox, Navigation, SingleKeyIcon, KeyIconBox, HeaderBox, InfoBox, MySingleKeyButton, TransferedInput, Li, Ul, CancelButton } from "./MySingleKeyComponent.css"
 import { ConfirmBox, StyledText } from "components";
 import keyIcon from '../../image/png/Key1.png';
 import useKeyAction from 'hooks/useKeyAction';
@@ -135,12 +135,27 @@ const MySingleKeyComponent = ({ keyData }) => {
             {keyData.isTransferedTo !== "" &&
                 <Fragment>
                     <StyledText align="center" marginVertical="5px">Klucz jest obecnie przekazywany!</StyledText>
-                    <StyledText align="center" marginVertical="5px"> Oczekuje na potwierdzenie: {isTransferedTo.name} {isTransferedTo.surname}</StyledText>
-                </Fragment>
+                    <StyledText align="center" marginVertical="5px"> Oczekuje na potwierdzenie:</StyledText>
+                    <StyledText align="center" marginVertical="5px">{isTransferedTo.name} {isTransferedTo.surname}<CancelButton onClick={() => {
+                        fetchIsTransferedToUpdate({
+                            keyID: keyData.keyID,
+                            user_id: ""
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.error === false) {
+                                    keyActions.getMyKeysData();
+                                } else {
+                                    setErrorMessage("Wystąpił błąd! Spróbuj ponownie!")
+                                }
+                            })
+                    }}>Anuluj</CancelButton></StyledText>
+                </Fragment >
             }
 
 
-            {isTransfered &&
+            {
+                isTransfered &&
                 <div>
                     <TransferedInput
                         onKeyUp={findUserToTransfer}
@@ -194,7 +209,7 @@ const MySingleKeyComponent = ({ keyData }) => {
                 </div>
             }
 
-        </MyKeyBox>
+        </MyKeyBox >
     )
 }
 

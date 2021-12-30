@@ -40,7 +40,6 @@ function App() {
             <RegisterForm />
           </Wrapper>
         </Route>
-
         <Route path="/dashboard" exact>
           <Wrapper direction="column" justify="flex-start">
             <Dashboard />

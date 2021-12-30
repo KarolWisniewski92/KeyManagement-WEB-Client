@@ -130,3 +130,18 @@ transition: transform 0.5s;
     transform: scale(1.05);
 }
 `
+
+export const CancelButton = styled.button`
+background: #df1d1d;
+color:white;
+padding:5px 10px;
+margin-left:10px;
+border: none;
+font-size:14px;
+border-radius:5px;
+transition: background 0.5s;
+cursor:pointer;
+&:hover{
+    background: #a91212;
+}
+`
