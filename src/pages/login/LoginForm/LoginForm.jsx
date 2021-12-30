@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import { fetchUser } from 'Data/actions/user.action';
 
 const LoginForm = ({ user, fetchUser }) => {
-    console.log(user);
 
     let history = useHistory();
 
@@ -24,10 +23,8 @@ const LoginForm = ({ user, fetchUser }) => {
 
     const onSubmit = (values) => {
 
-        console.log(values)
         API.authentication.fetchLogIn(values)
             .then(data => {
-                console.log(data);
                 fetchUser();
                 history.push("/dashboard");
             })
@@ -40,7 +37,6 @@ const LoginForm = ({ user, fetchUser }) => {
         API.authentication.checkUser()
             .then(response => response.json())
             .then((data) => {
-                console.log(data);
             })
     };
 

@@ -21,6 +21,7 @@ const theme = {
         },
     },
     templateColors: {
+        red: '#ff4f4f',
         yellow: '#e7d862',
         green: '#63bb63',
         blue: '#87b7ce',

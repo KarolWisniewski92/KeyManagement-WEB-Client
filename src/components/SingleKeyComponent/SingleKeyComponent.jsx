@@ -4,7 +4,6 @@ import keyIcon from '../../image/png/Key1.png';
 import { fetchUserData } from 'Data/fetch/authentication.fetch';
 import useKeyAction from 'hooks/useKeyAction';
 import { StyledText, ConfirmBox } from 'components';
-import data from 'Data/reducers/data.reducer';
 
 const defaultKeyData = {
     keyID: "",
@@ -33,14 +32,12 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
                     .then(data => {
                         return data;
                     })
-                console.log(user);
                 setUsers(user)
             }
         })()
 
     }, [keyData.isTaken, keyData.isTakenBy])
 
-    // console.log(keyData);
     return (
         <SingleKeyBody>
             <SingleKeyHeader set={keyData.set}>

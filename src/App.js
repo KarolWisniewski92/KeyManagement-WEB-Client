@@ -2,7 +2,6 @@ import theme from './utils/theme';
 import { ThemeProvider } from 'styled-components';
 import { Navigation, Wrapper, MainWrapper } from 'components';
 import {
-  Switch,
   Route,
   useHistory
 } from "react-router-dom";
@@ -32,18 +31,18 @@ function App() {
         <Route path="/" exact>
         </Route>
         <Route path="/login" exact>
-          <Wrapper direction="center">
+          <Wrapper direction="column" justify="center">
             <LoginForm />
           </Wrapper>
         </Route>
         <Route path="/register" exact>
-          <Wrapper direction="center">
+          <Wrapper direction="column" justify="center">
             <RegisterForm />
           </Wrapper>
         </Route>
 
         <Route path="/dashboard" exact>
-          <Wrapper direction="flex-start">
+          <Wrapper direction="column" justify="flex-start">
             <Dashboard />
           </Wrapper>
         </Route>

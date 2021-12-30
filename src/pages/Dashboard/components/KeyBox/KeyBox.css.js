@@ -1,9 +1,13 @@
 import styled from "styled-components"
 
 export const KeyBoxWrapper = styled.div`
-width:80%;
+width:70%;
 display:flex;
 flex-direction: column;
+@media (min-width: 992px) {
+    width:80%;
+
+  }
 `
 
 export const KeyBoxBody = styled.div`

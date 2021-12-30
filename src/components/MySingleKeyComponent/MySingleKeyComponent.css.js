@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+// xs: 0,
+// sm: 576px,
+// md: 768px,
+// lg: 992px,
+// xl: 1200px,
+// xxl: 1400px
+
 const handleSet = (set, theme) => {
     switch (set) {
         case "KP":
@@ -19,9 +26,9 @@ display:flex;
 box-shadow: 2px 2px 5px  gray;
 flex-direction:column;
 width:100%;
-background: ${({ set, theme }) => handleSet(set, theme)};
 padding:10px;
 margin-bottom:20px;
+background: ${({ set, theme }) => handleSet(set, theme)};
 transition: 0.5s;
 
 &:hover{
@@ -30,12 +37,38 @@ transition: 0.5s;
 `
 
 export const HeaderBox = styled.div`
+width: 100%;
 display:flex;
-flex-direction:row;
+flex-direction:column;
 margin-bottom:15px;
+font-size:14px;
+overflow-wrap: break-word;
+
+@media (min-width: 1200px) {
+    flex-direction:row;
+    font-size:1em;
+  }
 `
 
-export const FotterBox = styled.div`
+export const KeyIconBox = styled.div`
+display:flex;
+justify-content:center;
+align-items:center;
+background:white;
+width:100%;
+height:120px;
+padding:5px;
+
+margin-right:10px;
+
+@media (min-width: 1400px) {
+    width:100px;
+    height:100px;
+    
+  }
+`
+
+export const InfoBox = styled.div`
 width:100%;
 `
 
@@ -45,12 +78,7 @@ flex-direction: row;
 justify-content: center;
 margin:10px 0px;
 `
-export const KeyIconBox = styled.div`
-background:white;
-width:100px;
-height:100px;
-margin-right:10px;
-`
+
 
 export const SingleKeyIcon = styled.img`
 position: relative;

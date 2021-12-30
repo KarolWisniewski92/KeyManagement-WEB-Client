@@ -19,7 +19,6 @@ function useKeyAction() {
         fetchKeysData(selectedSet)
             .then(response => response.json())
             .then((data) => {
-                console.log(data);
                 activeKeys(dispatch, data);
             })
     }

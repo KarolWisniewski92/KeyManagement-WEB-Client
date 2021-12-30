@@ -39,8 +39,7 @@ const Dashboard = ({ user, selectedSet, fetchUser }) => {
 
     return (
         <DashboardBody>
-            <KeyBox>
-            </KeyBox>
+            <KeyBox></KeyBox>
             <UserBox></UserBox>
         </DashboardBody>
     )

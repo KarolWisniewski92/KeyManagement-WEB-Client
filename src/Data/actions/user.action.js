@@ -5,8 +5,7 @@ export const fetchUser = () => async (dispatch) => {
 
     const response = await API.authentication.checkUser()
     const user = await response.json();
-
-    console.log(user)
+    
     dispatch({
         type: USER_LOGGED,
         payload: user

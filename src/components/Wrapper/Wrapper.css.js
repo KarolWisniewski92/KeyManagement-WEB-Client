@@ -6,9 +6,10 @@ width: 80%;
 flex-grow:1;
 display:flex;
 flex-direction: ${({ direction }) => direction};
-justify-content: center;
+justify-content: ${({ justify }) => justify};
 align-items: center;
 align-content: center;
+flex-wrap: wrap;
 `
 
 export default Wrapper;

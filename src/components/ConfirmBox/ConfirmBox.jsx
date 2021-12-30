@@ -2,7 +2,6 @@ import { NavigationWrapper, ButtonWrapper, ConfirmButtonYes, ConfirmButtonNo } f
 import { StyledText } from "components";
 
 const ConfirmBox = ({ YesCallback, NoCallback, Title }) => {
-    console.log(YesCallback)
 
     return (
         <NavigationWrapper>

@@ -1,4 +1,4 @@
-import { MyKeyBox, Navigation, SingleKeyIcon, KeyIconBox, HeaderBox, FotterBox, MySingleKeyButton, TransferedInput, Li, Ul } from "./MySingleKeyComponent.css"
+import { MyKeyBox, Navigation, SingleKeyIcon, KeyIconBox, HeaderBox, InfoBox, MySingleKeyButton, TransferedInput, Li, Ul } from "./MySingleKeyComponent.css"
 import { ConfirmBox, StyledText } from "components";
 import keyIcon from '../../image/png/Key1.png';
 import useKeyAction from 'hooks/useKeyAction';
@@ -79,7 +79,7 @@ const MySingleKeyComponent = ({ keyData }) => {
                         src={keyIcon}
                         alt="Key Icon" />
                 </KeyIconBox>
-                <FotterBox>
+                <InfoBox>
 
                     <StyledText
                         type='header'
@@ -94,7 +94,7 @@ const MySingleKeyComponent = ({ keyData }) => {
                         {keyData.adres}
                     </StyledText>
 
-                </FotterBox>
+                </InfoBox>
             </HeaderBox>
 
             <Navigation>

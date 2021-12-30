@@ -5,8 +5,12 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import '../../../../utils/animation.css';
 
 const UserBox = ({ myKeys }) => {
+    let myKeysList;
 
-    let myKeysList = <StyledText align="center">Nie masz obecnie żadnych kluczy!</StyledText>
+    if (myKeys.length === 0) {
+        myKeysList = <StyledText align="center">Nie masz obecnie żadnych kluczy!</StyledText>
+    }
+
     if (myKeys.length !== 0) {
         myKeysList = myKeys.map(el => {
             return (
