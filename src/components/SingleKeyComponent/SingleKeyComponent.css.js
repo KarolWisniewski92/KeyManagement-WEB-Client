@@ -20,13 +20,14 @@ display:flex;
 flex-direction:column;
 width:200px;
 height: auto;
-background: white;
+background: ${({ set, theme }) => handleSet(set, theme)};
 position:relative;
 overflow: hidden;
 margin:10px;
 box-shadow: 0px 0px 10px 0px rgba(0,0,0,28%);
 transition-property: transform, box-shadow;
 transition-duration:0.6s;
+
 
 &:hover{
     transform: scale(1.05);
@@ -49,6 +50,7 @@ top:0px;
 `
 
 export const SingleKeyIconBox = styled.div`
+height:150px;
 background:white;
 position: relative;
 /* padding: 20px 0px; */
@@ -81,13 +83,20 @@ transition: 0.5s;
 }
 `
 
+export const SingleKeyInfoBox = styled.div`
+background: white;
+display:flex;
+justify-content: center;
+align-items:center;
+height:150px;
+
+`
+
 
 export const SigleKeyInfo = styled.div`
 position: relative;
 margin:0px 10px;
 box-shadow:2px 2px 10px -2px gray;
-margin-top:50px;
-margin-bottom: 20px;
 padding:10px;
 
 background: ${({ set, theme }) => handleSet(set, theme)};

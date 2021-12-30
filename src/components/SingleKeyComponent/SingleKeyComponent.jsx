@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { SingleKeyBody, SingleKeyHeader, SingleKeyFooter, SingleKeyIcon, SigleKeyInfo, SingleKeyNavigation, SingleKeyButton, SingleKeyIconBox } from './SingleKeyComponent.css'
+import { SingleKeyBody, SingleKeyHeader, SingleKeyFooter, SingleKeyIcon, SigleKeyInfo, SingleKeyNavigation, SingleKeyButton, SingleKeyIconBox, SingleKeyInfoBox } from './SingleKeyComponent.css'
 import keyIcon from '../../image/png/Key1.png';
 import { fetchUserData } from 'Data/fetch/authentication.fetch';
 import useKeyAction from 'hooks/useKeyAction';
@@ -44,13 +44,16 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
                 <p>INEA</p>
             </SingleKeyHeader >
             {keyData.isTaken &&
-                <SigleKeyInfo set={keyData.set}>
-                    <p><b>{users.name} {users.surname}</b></p>
-                    <p><b>tel.</b> {users.phone} </p>
-                    <p><b>Data:</b> {keyData.isTakenData}</p>
+                <SingleKeyInfoBox>
+                    <SigleKeyInfo set={keyData.set}>
+                        <p><b>{users.name} {users.surname}</b></p>
+                        <p><b>tel.</b> {users.phone} </p>
+                        <p><b>Data:</b> {keyData.isTakenData}</p>
 
-                </SigleKeyInfo>
+                    </SigleKeyInfo>
+                </SingleKeyInfoBox>
             }
+
             {!keyData.isTaken &&
                 <SingleKeyIconBox>
                     <SingleKeyIcon src={keyIcon} alt="Key Icon" />
@@ -58,7 +61,9 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
             }
 
             <SingleKeyFooter set={keyData.set}>
-                <StyledText marginVertical="10px"><b>{keyData.name}</b></StyledText>
+                <StyledText
+                    margin="20px 0px 10px 0px"
+                    textTransform="UPPERCASE"><b>{keyData.name}</b></StyledText>
                 <StyledText>{keyData.adres}</StyledText>
             </SingleKeyFooter>
 
@@ -66,7 +71,6 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
                 <SingleKeyNavigation set={keyData.set}>
                     {!confirmAction &&
                         <SingleKeyButton onClick={() => {
-
                             setConfirmAction(true)
                         }}> Pobierz klucz!</SingleKeyButton>
                     }

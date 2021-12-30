@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   
   body {
     font-family: 'Roboto', sans-serif;
+    font-family: 'Lato', sans-serif;
   }
   
   html, body, #root, .App {

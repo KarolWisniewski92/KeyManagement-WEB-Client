@@ -85,7 +85,8 @@ const MySingleKeyComponent = ({ keyData }) => {
                     <StyledText
                         type='header'
                         size='20px'
-                        align="center">
+                        align="center"
+                        textTransform="UPPERCASE">
                         {keyData.name}
                     </StyledText>
 

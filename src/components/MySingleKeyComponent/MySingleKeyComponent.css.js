@@ -119,7 +119,7 @@ margin-top:5px;
 
 export const Li = styled.li`
 
-background:${props => props.isSelected ? '#45a5d3' : null};
+background:${props => props.isSelected ? '#00000024' : null};
 padding:${props => props.isSelected ? '5px' : null};
 padding-left:${props => props.isSelected ? '10px' : null};
 margin-bottom: 5px;
