@@ -1,7 +1,7 @@
 import API from '../Data/fetch';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchKeysData } from 'Data/fetch/data.fetch';
-import { activeKeys } from 'Data/actions/data.action';
+import { activeKeys, keysTransferedToMe } from 'Data/actions/data.action';
 import { fetchMyKeysData } from 'Data/fetch/data.fetch';
 import { myKeys } from 'Data/actions/data.action';
 
@@ -70,12 +70,21 @@ function useKeyAction() {
             })
     }
 
+    const getKeysTransferedToMe = () => {
+        API.data.fetchKeysTrasferedToMe(user.user_id)
+            .then(response => response.json())
+            .then(data => {
+                keysTransferedToMe(dispatch, data)
+            })
+    }
+
 
     return ({
         getKeysData,
         getMyKeysData,
         getKey,
-        returnKey
+        returnKey,
+        getKeysTransferedToMe
     })
 }
 

@@ -1,3 +1,5 @@
+
+//Gets all key for selected set
 export const fetchKeysData = async (set) => {
     return await fetch(`${process.env.REACT_APP_SERVER}/getKeysData?set=${set}`, {
         method: "GET",
@@ -6,6 +8,7 @@ export const fetchKeysData = async (set) => {
     });
 };
 
+//Get all keys taken by the indicated user
 export const fetchMyKeysData = async (userID) => {
     return await fetch(`${process.env.REACT_APP_SERVER}/getMyKeysData?user_id=${userID}`, {
         method: "GET",
@@ -15,6 +18,7 @@ export const fetchMyKeysData = async (userID) => {
 
 }
 
+// Get or return key by user
 export const fetchIsTakenByUpdate = async (data) => {
     return await fetch(`${process.env.REACT_APP_SERVER}/isTakenByUpdate`, {
         method: "POST",
@@ -27,6 +31,7 @@ export const fetchIsTakenByUpdate = async (data) => {
     })
 }
 
+//Get users that match to your search
 export const fetchFindUserToTransfer = async (user) => {
     return await fetch(`${process.env.REACT_APP_SERVER}/findUserToTransfer?user=${user}`, {
         method: "GET",
@@ -35,6 +40,8 @@ export const fetchFindUserToTransfer = async (user) => {
     });
 }
 
+
+//Update isTransferedTo by indicated user
 export const fetchIsTransferedToUpdate = async (data) => {
     return await fetch(`${process.env.REACT_APP_SERVER}/isTransferedToUpdate`, {
         method: "POST",
@@ -45,4 +52,12 @@ export const fetchIsTransferedToUpdate = async (data) => {
         },
         body: JSON.stringify(data)
     })
+}
+
+export const fetchKeysTrasferedToMe = async (user) => {
+    return await fetch(`${process.env.REACT_APP_SERVER}/keysTransferedToMe?user=${user}`, {
+        method: "GET",
+        withCredentials: true,
+        credentials: 'include'
+    });
 }
