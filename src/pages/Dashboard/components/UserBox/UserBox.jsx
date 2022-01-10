@@ -8,7 +8,13 @@ const UserBox = ({ myKeys }) => {
     let myKeysList;
 
     if (myKeys.length === 0) {
-        myKeysList = <StyledText align="center">Nie masz obecnie żadnych kluczy!</StyledText>
+        myKeysList =
+            <CSSTransition
+                timeout={500}
+                classNames="fadeInOut">
+                <StyledText align="center">Nie masz obecnie żadnych kluczy!</StyledText>
+            </CSSTransition>
+
     }
 
     if (myKeys.length !== 0) {

@@ -11,6 +11,8 @@ const TransferredKey = () => {
     const [currentKeyUser, setCurrentKeyUser] = useState([]); // List user_id collected from keysTransferedToMe!
     const [currentKeyUserData, setCurrentKeyUserData] = useState([]); //List userData for currentKeyUser!
 
+    const keyActions = useKeyAction();
+
     const getUsersPersonalData = async () => {
 
         const users = await Promise.all(currentKeyUser.map(async el => {
@@ -48,7 +50,6 @@ const TransferredKey = () => {
                 }
             })
             userData = userData[0];
-
             return (
                 <TransferredKeyBox key={el.name}>
                     <StyledText align="center">Użytkownik <b>{userData.name} {userData.surname}</b> chce ci przekazać klucz do lokalizacji:</StyledText>
@@ -62,10 +63,10 @@ const TransferredKey = () => {
                     <FlexWrapper>
                         <ConfirmBox
                             yesCallback={() => {
-
+                                keyActions.getKey(el.keyID);
                             }}
                             noCallback={() => {
-
+                                keyActions.rejectTransferredKey(el.keyID);
                             }}
                             title="Potwierdź odbiór"></ConfirmBox>
                     </FlexWrapper>

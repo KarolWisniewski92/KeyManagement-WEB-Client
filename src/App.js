@@ -25,27 +25,29 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <MainWrapper>
-        <Navigation />
+      <Navigation />
+      <Route path={["/", "/login", "/register"]} exact>
+        <MainWrapper>
+          <Route path="/" exact>
+          </Route>
+          <Route path="/login" exact>
+            <Wrapper direction="column" justify="center">
+              <LoginForm />
+            </Wrapper>
+          </Route>
+          <Route path="/register" exact>
+            <Wrapper direction="column" justify="center">
+              <RegisterForm />
+            </Wrapper>
+          </Route>
+        </MainWrapper>
+      </Route>
 
-        <Route path="/" exact>
-        </Route>
-        <Route path="/login" exact>
-          <Wrapper direction="column" justify="center">
-            <LoginForm />
-          </Wrapper>
-        </Route>
-        <Route path="/register" exact>
-          <Wrapper direction="column" justify="center">
-            <RegisterForm />
-          </Wrapper>
-        </Route>
-        <Route path="/dashboard" exact>
-          <Wrapper direction="column" justify="flex-start">
-            <Dashboard />
-          </Wrapper>
-        </Route>
-      </MainWrapper>
+      <Route path="/dashboard" exact>
+        <Wrapper direction="column" justify="flex-start">
+          <Dashboard />
+        </Wrapper>
+      </Route>
     </ThemeProvider >
   );
 }

@@ -77,7 +77,7 @@ const MySingleKeyComponent = ({ keyData }) => {
         <MyKeyBox set={keyData.set}>
             <HeaderBox>
                 <KeyIconBox>
-                    
+
                     <SingleKeyIcon
                         src={keyIcon}
                         alt="Key Icon" />
@@ -141,18 +141,7 @@ const MySingleKeyComponent = ({ keyData }) => {
                     <StyledText align="center" marginVertical="5px">Klucz jest obecnie przekazywany!</StyledText>
                     <StyledText align="center" marginVertical="5px"> Oczekuje na potwierdzenie:</StyledText>
                     <StyledText align="center" marginVertical="5px">{isTransferedTo.name} {isTransferedTo.surname}<CancelButton onClick={() => {
-                        fetchIsTransferedToUpdate({
-                            keyID: keyData.keyID,
-                            user_id: ""
-                        })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.error === false) {
-                                    keyActions.getMyKeysData();
-                                } else {
-                                    setErrorMessage("Wystąpił błąd! Spróbuj ponownie!")
-                                }
-                            })
+                        keyActions.rejectTransferredKey(keyData.keyID)
                     }}>Anuluj</CancelButton></StyledText>
                 </Fragment >
             }

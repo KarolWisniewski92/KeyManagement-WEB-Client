@@ -89,14 +89,6 @@ const LoginForm = ({ user, fetchUser }) => {
                             >
                                 Zresetuj
                             </Button>
-                            <Button
-                                type="button"
-                                color={'green'}
-                                onClick={checkUser}
-                                disabled={submitting || pristine}
-                            >
-                                Check
-                            </Button>
 
                         </div>
                         <Link to="/register">Nie masz jeszcze konta? Zarejestruj się!</Link>
