@@ -1,18 +1,18 @@
 import { NavigationWrapper, ButtonWrapper, ConfirmButtonYes, ConfirmButtonNo } from './ConfirmBox.css';
 import { StyledText } from "components";
 
-const ConfirmBox = ({ YesCallback, NoCallback, Title }) => {
+const ConfirmBox = ({ yesCallback, noCallback, title }) => {
 
     return (
         <NavigationWrapper>
-            <StyledText marginVertical="10px" align="center">{Title}:</StyledText>
+            <StyledText marginVertical="10px" align="center">{title}:</StyledText>
             <ButtonWrapper>
                 <ConfirmButtonYes onClick={() => {
-                    YesCallback()
+                    yesCallback()
 
                 }}>Tak</ConfirmButtonYes>
                 <ConfirmButtonNo onClick={() => {
-                    NoCallback()
+                    noCallback()
                 }}>Nie</ConfirmButtonNo>
             </ButtonWrapper>
 

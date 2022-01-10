@@ -27,7 +27,9 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
     useEffect(() => {
         (async () => {
             if (keyData.isTaken) {
+
                 const user = await fetchUserData(keyData.isTakenBy)
+
                     .then(response => response.json())
                     .then(data => {
                         return data;
@@ -76,13 +78,16 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
                     }
 
                     {confirmAction &&
-                        <ConfirmBox YesCallback={() => {
-                            keyActions.getKey(keyData.keyID)
-                            setConfirmAction(false)
-                        }
-                        } NoCallback={() => {
-                            setConfirmAction(false)
-                        }} Title='Potwierdź pobranie' ></ConfirmBox>
+                        <ConfirmBox
+                            yesCallback={() => {
+                                keyActions.getKey(keyData.keyID)
+                                setConfirmAction(false)
+                            }
+                            }
+                            noCallback={() => {
+                                setConfirmAction(false)
+                            }}
+                            title='Potwierdź pobranie' ></ConfirmBox>
                     }
 
                 </SingleKeyNavigation>}

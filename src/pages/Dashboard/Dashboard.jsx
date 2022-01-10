@@ -22,7 +22,10 @@ const Dashboard = ({ user, selectedSet, fetchUser }) => {
         keyActions.getMyKeysData();
     }, [keyActions, user.user_id])
 
+    useEffect(() => {
+        keyActions.getKeysTransferedToMe();
 
+    })
     //Sprawdzamy czy użytkownik jest nadal zalogowany po stronie serwera.
     useEffect(() => {
 

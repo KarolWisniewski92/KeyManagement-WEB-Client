@@ -27,6 +27,7 @@ const MySingleKeyComponent = ({ keyData }) => {
             fetchFindUserToTransfer(e.target.value)
                 .then(response => response.json())
                 .then(data => {
+
                     data.length === 0 ? setErrorMessage("Nie znaleziono użytkownika!") : setErrorMessage("")
                     setAvailableUser(data);
                 })
@@ -55,6 +56,7 @@ const MySingleKeyComponent = ({ keyData }) => {
     if (availableUser.length > 0) {
         userListToTransfer = availableUser.map(el => {
             return (
+
                 <Li
                     key={el.user_id}
                     name={el.user_id}
@@ -75,6 +77,7 @@ const MySingleKeyComponent = ({ keyData }) => {
         <MyKeyBox set={keyData.set}>
             <HeaderBox>
                 <KeyIconBox>
+                    
                     <SingleKeyIcon
                         src={keyIcon}
                         alt="Key Icon" />
@@ -121,14 +124,14 @@ const MySingleKeyComponent = ({ keyData }) => {
 
                 {confirmAction &&
                     <ConfirmBox
-                        YesCallback={() => {
+                        yesCallback={() => {
                             keyActions.returnKey(keyData.keyID)
                             setConfirmAction(false)
                         }}
-                        NoCallback={() => {
+                        noCallback={() => {
                             setConfirmAction(false)
                         }}
-                        Title='Potwierdź zwrot'>
+                        title='Potwierdź zwrot'>
                     </ConfirmBox>
                 }
             </Navigation>

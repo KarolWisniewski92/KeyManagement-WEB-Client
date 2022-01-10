@@ -1,4 +1,4 @@
-import { MySingleKeyComponent, StyledText } from 'components';
+import { MySingleKeyComponent, StyledText, TransferredKey } from 'components';
 import { UserBoxBody, UserBoxWrapper } from './UserBox.css';
 import { connect } from 'react-redux';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
@@ -32,6 +32,7 @@ const UserBox = ({ myKeys }) => {
                 align="center">MOJE KLUCZE:</StyledText>
 
             <UserBoxBody>
+                <TransferredKey></TransferredKey>
                 <TransitionGroup>
                     {myKeysList}
                 </TransitionGroup>

@@ -31,7 +31,6 @@ width:100%;
 padding:10px;
 margin-bottom:20px;
 background: ${({ set, theme }) => handleSet(set, theme)};
-transition: 0.5s;
 
 &:hover{
     transform: scale(1.05)

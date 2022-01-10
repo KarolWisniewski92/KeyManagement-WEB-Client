@@ -1,7 +1,9 @@
-const { ACTIVE_KEYS, MY_KEYS } = require("Data/constans");
+const { ACTIVE_KEYS, MY_KEYS, TRANSFERED_TO_ME } = require("Data/constans");
 
 const initialState = {
-    keys: []
+    keys: [],
+    myKeys: [],
+    keysTransferedToMe: []
 
 }
 
@@ -18,6 +20,12 @@ function data(state = initialState, action) {
             return {
                 ...state,
                 myKeys: action.payload
+            }
+
+        case TRANSFERED_TO_ME:
+            return {
+                ...state,
+                keysTransferedToMe: action.payload
             }
 
         default:
