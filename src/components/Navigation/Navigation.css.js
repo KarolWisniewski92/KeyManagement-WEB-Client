@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const NavigationWrapper = styled.div`
+export const NavigationWrapper = styled.div `
 background-color: #333;
 display:flex;
 flex-flow: row wrap;
@@ -8,7 +8,7 @@ padding:20px;
 justify-content:space-between;
 `
 
-export const NavigationMiniWrapper = styled.div`
+export const NavigationMiniWrapper = styled.div `
 flex:1;
 display:flex;
 flex-direction: row;
@@ -17,14 +17,14 @@ align-items: center;
 
 `
 
-export const NavigationWelcomeText = styled.div`
+export const NavigationWelcomeText = styled.div `
 font-size: 20px;
 display:flex;
 color: white;
 padding: 0 20px;
 `
 
-export const ButtonLogout = styled.button`
+export const ButtonLogout = styled.button `
 color: white;
 background-color: orange;
 cursor: pointer;
@@ -37,7 +37,20 @@ padding:10px;
 
 `
 
-export const SetsBox = styled.div`
+export const NavigationLoginButton = styled.button `
+padding:7px 25px;
+margin-right:20px;
+background-color: yellow;
+border:none;
+cursor: pointer;
+transition:0.5s;
+:hover{
+  background-color: #ffbc00
+}
+
+`
+
+export const SetsBox = styled.div `
 flex:1;
 display:flex;
 flex-direction: row;

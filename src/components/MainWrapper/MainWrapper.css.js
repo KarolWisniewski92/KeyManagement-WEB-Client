@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 export const MainWrapperDiv = styled.div `
 --name: "MainWrapper";
-height:100%;
+height: 100%;
 background-image: ${props => props.backgrounds};
 transition: 2s linear;
 display:flex;

@@ -25,9 +25,9 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Navigation />
       <Route path={["/", "/login", "/register"]} exact>
         <MainWrapper>
+          <Navigation />
           <Route path="/" exact>
           </Route>
           <Route path="/login" exact>
@@ -44,6 +44,7 @@ function App() {
       </Route>
 
       <Route path="/dashboard" exact>
+        <Navigation />
         <Wrapper direction="column" justify="flex-start">
           <Dashboard />
         </Wrapper>

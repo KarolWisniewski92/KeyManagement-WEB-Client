@@ -15,15 +15,14 @@ const handleSet = (set, theme) => {
 }
 
 
-export const SingleKeyBody = styled.div`
+export const SingleKeyBody = styled.div `
 display:flex;
 flex-direction:column;
 width:200px;
 height: auto;
 background: ${({ set, theme }) => handleSet(set, theme)};
 position:relative;
-overflow: hidden;
-margin:10px;
+margin:20px 10px;
 box-shadow: 0px 0px 10px 0px rgba(0,0,0,28%);
 transition-property: transform, box-shadow;
 transition-duration:0.6s;
@@ -35,7 +34,7 @@ transition-duration:0.6s;
 }
 `
 
-export const SingleKeyAddon = styled.div`
+export const SingleKeyAddon = styled.div `
 display:flex;
 justify-content:center;
 align-content: center;
@@ -45,22 +44,26 @@ min-height:40px;
 background: ${({ set, theme }) => handleSet(set, theme)};
 `
 
-export const SingleKeyHeader = styled(SingleKeyAddon)`
-top:0px;
+export const SingleKeyHeader = styled.div
+`
+height:25px;
+background:white;
 `
 
-export const SingleKeyIconBox = styled.div`
+export const SingleKeyIconBox = styled.div `
 height:150px;
 background:white;
 position: relative;
 /* padding: 20px 0px; */
 `
 
-export const SingleKeyNavigation = styled(SingleKeyAddon)`
+export const SingleKeyNavigation = styled(SingleKeyAddon)
+`
 padding-bottom:15px;
 `
 
-export const SingleKeyFooter = styled(SingleKeyAddon)`
+export const SingleKeyFooter = styled(SingleKeyAddon)
+`
 justify-content:flex-start;
 padding:0px 15px;
 bottom:0px;
@@ -71,7 +74,7 @@ padding-bottom:15px;
 
 `
 
-export const SingleKeyIcon = styled.img`
+export const SingleKeyIcon = styled.img `
 position: relative;
 left:50%;
 transform: translate(-50%, 0%);
@@ -83,7 +86,7 @@ transition: 0.5s;
 }
 `
 
-export const SingleKeyInfoBox = styled.div`
+export const SingleKeyInfoBox = styled.div `
 background: white;
 display:flex;
 justify-content: center;
@@ -93,7 +96,7 @@ height:150px;
 `
 
 
-export const SigleKeyInfo = styled.div`
+export const SigleKeyInfo = styled.div `
 position: relative;
 margin:0px 10px;
 box-shadow:2px 2px 10px -2px gray;
@@ -107,7 +110,7 @@ p{
 }
 `
 
-export const SingleKeyButton = styled.button`
+export const SingleKeyButton = styled.button `
 border:none;
 padding: 5px;
 border-radius:5px;
@@ -119,24 +122,41 @@ transform:scale(1.05)
 }
 `
 
-export const NavigationWrapper = styled.div`
+export const NavigationWrapper = styled.div `
 display:flex;
 flex-direction: column;
 `
-export const ButtonWrapper = styled.div`
+export const ButtonWrapper = styled.div `
 display:flex;
 flex-direction: row;
 justify-content: space-evenly;
 `
 
-export const SingleKeyButtonYes = styled(SingleKeyButton)`
+export const SingleKeyButtonYes = styled(SingleKeyButton)
+`
 background:#63ba30;
 color:#345c1d;
 padding:7px 15px;
 `
 
-export const SingleKeyButtonNo = styled(SingleKeyButton)`
+export const SingleKeyButtonNo = styled(SingleKeyButton)
+`
 background:#e52828;
 color:#601919;
 padding:7px 15px;
+`
+
+export const MiniBox = styled.div `
+padding:10px 20px;
+height:40px;
+background: ${({ set, theme }) => handleSet(set, theme)};
+position:absolute;
+top:-15px;
+left:15px;
+z-index:10;
+display:flex;
+justify-content:center;
+align-items: center;
+box-shadow: 0px 0px 10px 0px rgba(0,0,0,28%);
+
 `

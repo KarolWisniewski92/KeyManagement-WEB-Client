@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { SingleKeyBody, SingleKeyHeader, SingleKeyFooter, SingleKeyIcon, SigleKeyInfo, SingleKeyNavigation, SingleKeyButton, SingleKeyIconBox, SingleKeyInfoBox } from './SingleKeyComponent.css'
+import { SingleKeyBody, SingleKeyHeader, SingleKeyFooter, SingleKeyIcon, SigleKeyInfo, SingleKeyNavigation, SingleKeyButton, SingleKeyIconBox, SingleKeyInfoBox, MiniBox } from './SingleKeyComponent.css'
 import keyIcon from '../../image/png/Key1.png';
 import { fetchUserData } from 'Data/fetch/authentication.fetch';
 import useKeyAction from 'hooks/useKeyAction';
@@ -9,6 +9,7 @@ const defaultKeyData = {
     keyID: "",
     set: "",
     name: "",
+    owner:"",
     isTaken: false,
     isTakenBy: "",
     isTakenData: "",
@@ -42,8 +43,8 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
 
     return (
         <SingleKeyBody>
+            <MiniBox set={keyData.set}>{keyData.owner}</MiniBox>
             <SingleKeyHeader set={keyData.set}>
-                <p>INEA</p>
             </SingleKeyHeader >
             {keyData.isTaken &&
                 <SingleKeyInfoBox>

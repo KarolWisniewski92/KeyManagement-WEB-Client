@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { NavigationWrapper, NavigationMiniWrapper, NavigationWelcomeText, ButtonLogout, SetsBox } from './Navigation.css';
+import { NavigationWrapper, NavigationMiniWrapper, NavigationWelcomeText, ButtonLogout, SetsBox, NavigationLoginButton } from './Navigation.css';
 import { Button } from 'components';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -9,6 +9,7 @@ import useLogOut from 'hooks/useLogOut';
 import useIsLogged from 'hooks/useIsLogged';
 import { useDispatch } from 'react-redux';
 import { selectSet } from 'Data/actions/main.action';
+import { Fragment } from 'react';
 
 const Navigation = ({ user }) => {
     let history = useHistory();
@@ -44,11 +45,14 @@ const Navigation = ({ user }) => {
                     <NavigationWelcomeText>Witaj {user.name} {user.surname}!</NavigationWelcomeText>
                 }
                 {Object.keys(user).length === 0 &&
-                    <Link to="/login">
-                        <Button variant="secondary" color="yellow" onClick={() => {
-                            history.push('/login')
-                        }}>Zaloguj</Button>
-                    </Link >
+                    <Fragment>
+                        <Link to="/login">
+                            <NavigationLoginButton>Zaloguj do aplikacji</NavigationLoginButton>
+                        </Link >
+                        <Link to="/register">
+                            <NavigationLoginButton>Zarejestruj</NavigationLoginButton>
+                        </Link >
+                    </Fragment>
                 }
                 {Object.keys(user).length > 0 &&
                     <ButtonLogout

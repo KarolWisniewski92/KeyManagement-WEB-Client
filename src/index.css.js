@@ -15,11 +15,15 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   html, body, #root, .App {
-    height: 100%;
     box-sizing:border-box;
+  }
+
+  html, body, .App {
+    height: 100%;
   }
   
   #root {
+    height:100vh;
   }
   
 `
