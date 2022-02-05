@@ -34,6 +34,9 @@ function useKeyAction() {
             .then((data) => {
                 activeKeys(dispatch, data);
             })
+            .catch(err => {
+                console.log(err.message)
+            })
     };
 
     //Get all keys matched to me.
@@ -43,6 +46,9 @@ function useKeyAction() {
             .then(data => {
                 myKeys(dispatch, data)
             })
+            .catch(err => {
+                console.log(err.message)
+            })
     };
 
     //Get all keys transferred to me.
@@ -51,6 +57,9 @@ function useKeyAction() {
             .then(response => response.json())
             .then(data => {
                 keysTransferedToMe(dispatch, data)
+            })
+            .catch(err => {
+                console.log(err.message)
             })
     };
 
@@ -70,8 +79,8 @@ function useKeyAction() {
                 getMyKeysData();
                 getKeysTransferedToMe();
             })
-            .catch((err) => {
-                throw err;
+            .catch(err => {
+                console.log(err.message)
             })
     };
 
@@ -89,8 +98,8 @@ function useKeyAction() {
                 getKeysData();
                 getMyKeysData();
             })
-            .catch((err) => {
-                throw err;
+            .catch(err => {
+                console.log(err.message)
             })
     };
 
@@ -109,6 +118,9 @@ function useKeyAction() {
             .then(data => {
                 getMyKeysData();
                 getKeysTransferedToMe();
+            })
+            .catch(err => {
+                console.log(err.message)
             })
     }
 

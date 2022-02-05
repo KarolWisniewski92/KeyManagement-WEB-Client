@@ -12,3 +12,10 @@ flex-direction:column;
 justify-content: center;
 align-items: center;
 `
+
+export const ErrorBox = styled.div`
+background: white;
+padding: 5px;
+margin:10px 0px;
+border-radius:5px;
+`

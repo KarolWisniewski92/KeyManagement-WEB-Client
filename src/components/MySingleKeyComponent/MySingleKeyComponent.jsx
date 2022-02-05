@@ -31,6 +31,9 @@ const MySingleKeyComponent = ({ keyData }) => {
                     data.length === 0 ? setErrorMessage("Nie znaleziono użytkownika!") : setErrorMessage("")
                     setAvailableUser(data);
                 })
+                .catch(err => {
+                    console.log(err.message)
+                })
         }, 1000)
     };
 
@@ -46,6 +49,9 @@ const MySingleKeyComponent = ({ keyData }) => {
                 .then(response => response.json())
                 .then(user => {
                     setIsTransferedTo(user)
+                })
+                .catch(err => {
+                    console.log(err.message)
                 })
         })();
     };
@@ -183,6 +189,9 @@ const MySingleKeyComponent = ({ keyData }) => {
                                             } else {
                                                 setErrorMessage("Wystąpił błąd! Spróbuj ponownie!")
                                             }
+                                        })
+                                        .catch(err => {
+                                            console.log(err.message)
                                         })
                                 }
                             }}>

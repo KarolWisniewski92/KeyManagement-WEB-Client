@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
-import { LoginBox } from './LoginForm.css';
+import React, { useEffect, useState } from 'react';
+import { LoginBox, ErrorBox } from './LoginForm.css';
 import { Form, Field } from 'react-final-form';
 import { Link, useHistory } from 'react-router-dom';
 import { Button, Input, StyledText } from 'components';
 import API from '../../../Data/fetch'
 import { connect } from 'react-redux';
-import { fetchUser } from 'Data/actions/user.action';
+import { setUserInStore } from 'Data/actions/user.action';
 
-const LoginForm = ({ user, fetchUser }) => {
+const LoginForm = ({ user, setUserInStore }) => {
 
     let history = useHistory();
+    const [errorText, setTextError] = useState("");
 
     useEffect(() => {
         API.authentication.checkUser()
@@ -19,17 +20,33 @@ const LoginForm = ({ user, fetchUser }) => {
                     history.push("/dashboard");
                 }
             })
+            .catch(err => {
+                console.log(err.message);
+            })
     }, [history])
 
     const onSubmit = (values) => {
 
         API.authentication.fetchLogIn(values)
+            .then(response => response.json())
             .then(data => {
-                fetchUser();
-                history.push("/dashboard");
+                if (data.error === false) {
+                    setUserInStore();
+                    history.push("/dashboard");
+                }
+                else {
+                    setTextError(data.message)
+                }
+
             })
+
             .catch(err => {
-                console.log(err);
+                console.log(err.message);
+
+                if (err.message === "Failed to fetch") {
+                    setTextError("Wystąpił błąd po stronie serwera!")
+                }
+
             })
     };
 
@@ -37,6 +54,9 @@ const LoginForm = ({ user, fetchUser }) => {
         API.authentication.checkUser()
             .then(response => response.json())
             .then((data) => {
+            })
+            .catch(err => {
+                console.log(err.message);
             })
     };
 
@@ -91,6 +111,12 @@ const LoginForm = ({ user, fetchUser }) => {
                             </Button>
 
                         </div>
+                        {errorText !== "" &&
+                            <ErrorBox>
+                                <StyledText margin="0px" align="center" color="red">{errorText}</StyledText>
+                            </ErrorBox>
+                        }
+
                         <Link to="/register">Nie masz jeszcze konta? Zarejestruj się!</Link>
                     </form>
                 )}
@@ -104,4 +130,4 @@ export default connect(state => {
     return {
         user: state.user.user
     }
-}, { fetchUser })(LoginForm);
+}, { setUserInStore })(LoginForm);

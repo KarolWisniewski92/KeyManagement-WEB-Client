@@ -9,7 +9,7 @@ const defaultKeyData = {
     keyID: "",
     set: "",
     name: "",
-    owner:"",
+    owner: "",
     isTaken: false,
     isTakenBy: "",
     isTakenData: "",
@@ -35,12 +35,14 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
                     .then(data => {
                         return data;
                     })
+                    .catch(err => {
+                        console.log(err.message);
+                    })
                 setUsers(user)
             }
         })()
 
     }, [keyData.isTaken, keyData.isTakenBy])
-
     return (
         <SingleKeyBody>
             <MiniBox set={keyData.set}>{keyData.owner}</MiniBox>
@@ -48,12 +50,14 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
             </SingleKeyHeader >
             {keyData.isTaken &&
                 <SingleKeyInfoBox>
-                    <SigleKeyInfo set={keyData.set}>
-                        <p><b>{users.name} {users.surname}</b></p>
-                        <p><b>tel.</b> {users.phone} </p>
-                        <p><b>Data:</b> {keyData.isTakenData}</p>
+                    {typeof users !== "undefined" &&
+                        <SigleKeyInfo set={keyData.set}>
+                            <p><b>{users.name} {users.surname}</b></p>
+                            <p><b>tel.</b> {users.phone} </p>
+                            <p><b>Data:</b> {keyData.isTakenData}</p>
+                        </SigleKeyInfo>
+                    }
 
-                    </SigleKeyInfo>
                 </SingleKeyInfoBox>
             }
 

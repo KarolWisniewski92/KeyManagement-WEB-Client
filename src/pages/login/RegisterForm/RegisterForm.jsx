@@ -13,7 +13,7 @@ const onSubmit = (values) => {
             console.log(data);
         })
         .catch(err => {
-            throw err;
+            console.log(err.message);
         })
 };
 
@@ -28,6 +28,9 @@ const RegisterForm = () => {
                 if (Object.keys(data).length !== 0) {
                     history.push("/dashboard");
                 }
+            })
+            .catch(err => {
+                console.log(err.message);
             })
     }, [history])
 

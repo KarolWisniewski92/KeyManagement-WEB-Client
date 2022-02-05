@@ -4,7 +4,6 @@ import { NavigationWrapper, NavigationMiniWrapper, NavigationWelcomeText, Button
 import { Button } from 'components';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchUser } from 'Data/actions/user.action';
 import useLogOut from 'hooks/useLogOut';
 import useIsLogged from 'hooks/useIsLogged';
 import { useDispatch } from 'react-redux';
@@ -73,4 +72,4 @@ export default connect(state => {
     return {
         user: state.user.user
     }
-}, { fetchUser })(Navigation);
+}, null)(Navigation);

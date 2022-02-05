@@ -2,12 +2,12 @@ import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import API from '../../Data/fetch'
 import { useHistory } from "react-router-dom";
-import { fetchUser } from 'Data/actions/user.action';
+import { setUserInStore } from 'Data/actions/user.action';
 import { KeyBox, UserBox } from './components';
 import { DashboardBody } from './Dashboard.css';
 import useKeyAction from 'hooks/useKeyAction';
 
-const Dashboard = ({ user, selectedSet, fetchUser }) => {
+const Dashboard = ({ user, selectedSet, setUserInStore }) => {
 
     let history = useHistory();
     const keyActions = useKeyAction();
@@ -33,11 +33,14 @@ const Dashboard = ({ user, selectedSet, fetchUser }) => {
             .then(response => response.json())
             .then((data) => {
                 if (Object.keys(data).length === 0) {
-                    fetchUser()
+                    setUserInStore()
                     history.push("/");
                 }
             })
-    }, [history, fetchUser]);
+            .catch(err => {
+                console.log(err.message)
+            })
+    }, [history, setUserInStore]);
 
 
     return (
@@ -55,4 +58,4 @@ export default connect((state) => {
         user: state.user.user,
         selectedSet: state.main.selected_set
     })
-}, { fetchUser })(Dashboard);
+}, { setUserInStore })(Dashboard);

@@ -1,8 +1,7 @@
 import API from '../fetch'
 import { USER_LOGGED } from '../constans'
 
-export const fetchUser = () => async (dispatch) => {
-
+export const setUserInStore = () => async (dispatch) => {
     const response = await API.authentication.checkUser()
     const user = await response.json();
     
