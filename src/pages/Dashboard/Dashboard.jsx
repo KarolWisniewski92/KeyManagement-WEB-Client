@@ -22,10 +22,11 @@ const Dashboard = ({ user, selectedSet, setUserInStore }) => {
         keyActions.getMyKeysData();
     }, [keyActions, user.user_id])
 
+    //Pobieramy klucze przekazywane do aktualnie zalogowanego użytkownika.
     useEffect(() => {
         keyActions.getKeysTransferedToMe();
+    }, [keyActions, user.user_id])
 
-    })
     //Sprawdzamy czy użytkownik jest nadal zalogowany po stronie serwera.
     useEffect(() => {
 

@@ -83,7 +83,6 @@ const MySingleKeyComponent = ({ keyData }) => {
         <MyKeyBox set={keyData.set}>
             <HeaderBox>
                 <KeyIconBox>
-
                     <SingleKeyIcon
                         src={keyIcon}
                         alt="Key Icon" />

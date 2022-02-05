@@ -1,11 +1,16 @@
-import { useHistory } from "react-router";
+import {
+    useHistory
+} from "react-router";
 import API from '../Data/fetch';
-import { useDispatch } from "react-redux";
-import { logoutUser } from '../Data/actions/user.action'
+import {
+    useDispatch
+} from "react-redux";
+import {
+    logoutUser
+} from '../Data/actions/user.action'
 
 
-function useLogOut(friendID) {
-    console.log(`test`)
+function useLogOut() {
 
     let history = useHistory();
     const dispatch = useDispatch();
@@ -14,8 +19,8 @@ function useLogOut(friendID) {
 
         API.authentication.fetchLogOut()
             .then(() => {
-                logoutUser(dispatch);
                 history.push("/");
+                logoutUser(dispatch);
             })
             .catch((err) => {
                 throw err;
