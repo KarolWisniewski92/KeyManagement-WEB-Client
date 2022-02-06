@@ -45,6 +45,9 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
 
     }, [keyData.isTaken, keyData.isTakenBy])
 
+    const sourceData = new Date(keyData.isTakenData);
+    const date = `${sourceData.getDate()}.${sourceData.getMonth() + 1}.${sourceData.getFullYear()} ${sourceData.getHours()}:${sourceData.getMinutes()}`
+
     return (
         <SingleKeyBody>
             <MiniBox set={keyData.set}>{keyData.owner}</MiniBox>
@@ -56,7 +59,7 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
                         <SigleKeyInfo set={keyData.set}>
                             <p><b>{users.name} {users.surname}</b></p>
                             <p><b>tel.</b> {users.phone} </p>
-                            <p><b>Data:</b> {keyData.isTakenData}</p>
+                            <p><b>Data:</b> {date}</p>
                         </SigleKeyInfo>
                     }
                 </SingleKeyInfoBox>
@@ -64,7 +67,7 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
 
             {!keyData.isTaken &&
                 <SingleKeyIconBox>
-                    <SingleKeyIcon src={keys[keyData.imageID-1]} alt="Key Icon" />
+                    <SingleKeyIcon src={keys[keyData.imageID - 1]} alt="Key Icon" />
                 </SingleKeyIconBox>
             }
 

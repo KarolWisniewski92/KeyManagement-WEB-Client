@@ -24,8 +24,13 @@ function useKeyAction() {
     const selectedSet = useSelector(state => state.main.selected_set);
     const dispatch = useDispatch();
 
-    const dateNow = new Date();
-    const date = `${dateNow.getDate()}.${dateNow.getMonth() + 1}.${dateNow.getFullYear()}`
+    const dateNowJSON = new Date().toJSON();
+
+    const compareDate = (dateA, dateB) => {
+        const dateToCompareA = new Date(dateA.isTakenData);
+        const dateToCompareB = new Date(dateB.isTakenData);
+        return dateToCompareA - dateToCompareB
+    }
 
     //Get all keys in selected set.
     const getKeysData = () => {
@@ -44,6 +49,8 @@ function useKeyAction() {
         fetchMyKeysData(user.user_id)
             .then(response => response.json())
             .then(data => {
+
+                data.sort(compareDate).reverse()
                 myKeys(dispatch, data)
             })
             .catch(err => {
@@ -69,7 +76,7 @@ function useKeyAction() {
             keyID: keyID,
             isTakenBy: user.user_id,
             isTaken: true,
-            isTakenData: date
+            isTakenData: dateNowJSON
         }
 
         API.data.fetchIsTakenByUpdate(dataToUpdate)
