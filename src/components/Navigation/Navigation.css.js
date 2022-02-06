@@ -16,6 +16,7 @@ const handleSet = (set, theme) => {
 
 export const NavigationWrapper = styled.div `
 --name: "NavigationWrapper";
+min-height:80px;
 background-color: #333;
 display:flex;
 flex-flow: row wrap;
