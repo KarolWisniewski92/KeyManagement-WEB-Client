@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { SingleKeyBody, SingleKeyHeader, SingleKeyFooter, SingleKeyIcon, SigleKeyInfo, SingleKeyNavigation, SingleKeyButton, SingleKeyIconBox, SingleKeyInfoBox, MiniBox } from './SingleKeyComponent.css'
-import keyIcon from '../../image/png/Key2.png';
+import keys from '../../image/png/keys/index';
 import { fetchUserData } from 'Data/fetch/authentication.fetch';
 import useKeyAction from 'hooks/useKeyAction';
 import { StyledText, ConfirmBox } from 'components';
@@ -13,7 +13,8 @@ const defaultKeyData = {
     isTaken: false,
     isTakenBy: "",
     isTakenData: "",
-    adres: ""
+    adres: "",
+    imageID: 1,
 }
 
 
@@ -58,13 +59,12 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
                             <p><b>Data:</b> {keyData.isTakenData}</p>
                         </SigleKeyInfo>
                     }
-
                 </SingleKeyInfoBox>
             }
 
             {!keyData.isTaken &&
                 <SingleKeyIconBox>
-                    <SingleKeyIcon src={keyIcon} alt="Key Icon" />
+                    <SingleKeyIcon src={keys[keyData.imageID-1]} alt="Key Icon" />
                 </SingleKeyIconBox>
             }
 

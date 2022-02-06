@@ -1,6 +1,6 @@
 import { MyKeyBox, Navigation, SingleKeyIcon, KeyIconBox, HeaderBox, InfoBox, MySingleKeyButton, TransferedInput, Li, Ul, CancelButton } from "./MySingleKeyComponent.css"
 import { ConfirmBox, StyledText } from "components";
-import keyIcon from '../../image/png/Key1.png';
+import keys from '../../image/png/keys/index';
 import useKeyAction from 'hooks/useKeyAction';
 import { Fragment, useState } from 'react';
 import { fetchFindUserToTransfer, fetchIsTransferedToUpdate } from "Data/fetch/data.fetch";
@@ -84,7 +84,7 @@ const MySingleKeyComponent = ({ keyData }) => {
             <HeaderBox>
                 <KeyIconBox>
                     <SingleKeyIcon
-                        src={keyIcon}
+                        src={keys[keyData.imageID-1]}
                         alt="Key Icon" />
 
                 </KeyIconBox>
