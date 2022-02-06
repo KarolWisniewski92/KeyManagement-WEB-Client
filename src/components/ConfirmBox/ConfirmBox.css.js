@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ConfirmButton = styled.button`
 border:none;
 padding: 5px 10px;
-border-radius:5px;
+box-shadow: 0px 2px 5px -2px #7a7a7a;
 margin: 0px 10px;
 cursor: pointer;
 background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(205,205,205,1) 100%);
@@ -24,7 +24,7 @@ justify-content: space-evenly;
 `
 
 export const ConfirmButtonYes = styled(ConfirmButton)`
-background: linear-gradient(180deg, rgba(42,204,3,1) 0%, rgba(67,143,51,1) 100%);
+background: linear-gradient(180deg, rgba(42,204,3,1) 0%, rgba(61,162,6,1) 100%);
 color:#345c1d;
 padding:7px 15px;
 `

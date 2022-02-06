@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { SingleKeyBody, SingleKeyHeader, SingleKeyFooter, SingleKeyIcon, SigleKeyInfo, SingleKeyNavigation, SingleKeyButton, SingleKeyIconBox, SingleKeyInfoBox, MiniBox } from './SingleKeyComponent.css'
-import keyIcon from '../../image/png/Key1.png';
+import keyIcon from '../../image/png/Key2.png';
 import { fetchUserData } from 'Data/fetch/authentication.fetch';
 import useKeyAction from 'hooks/useKeyAction';
 import { StyledText, ConfirmBox } from 'components';
@@ -43,6 +43,7 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
         })()
 
     }, [keyData.isTaken, keyData.isTakenBy])
+
     return (
         <SingleKeyBody>
             <MiniBox set={keyData.set}>{keyData.owner}</MiniBox>

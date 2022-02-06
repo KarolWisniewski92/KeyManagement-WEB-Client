@@ -84,7 +84,6 @@ transition:0.5s;
 //--------------------------------MenuButton-----------------------------------
 
 export const MenuButton = styled(RootButton)`
-border-radius:5px;
 padding: 10px 20px;
 border: none;
 

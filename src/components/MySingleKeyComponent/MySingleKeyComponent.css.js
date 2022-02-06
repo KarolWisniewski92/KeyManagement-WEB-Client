@@ -94,7 +94,7 @@ transition: 0.5s;
 export const MySingleKeyButton = styled.button`
 border:none;
 padding: 5px 10px;
-border-radius:5px;
+box-shadow: 0px 2px 5px -2px #7a7a7a;
 margin: 0px 10px;
 cursor: pointer;
 background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(205,205,205,1) 100%);
