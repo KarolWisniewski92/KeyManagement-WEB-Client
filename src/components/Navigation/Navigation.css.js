@@ -1,23 +1,47 @@
 import styled from "styled-components"
 
+const handleSet = (set, theme) => {
+  switch (set) {
+    case "KP":
+      return theme.templateColors.blue;
+    case "NOC":
+      return theme.templateColors.green;
+    case "DUS":
+      return theme.templateColors.yellow;
+    default:
+      return theme.templateColors.blue;
+  }
+
+}
+
 export const NavigationWrapper = styled.div `
+--name: "NavigationWrapper";
 background-color: #333;
 display:flex;
 flex-flow: row wrap;
 padding:20px;
-justify-content:space-between;
+justify-content:center;
+`
+
+export const NavigationMainWrapper = styled.div `
+width: 80%;
+display:flex;
+justify-content:center;
+align-items:center;
 `
 
 export const NavigationMiniWrapper = styled.div `
+--name: "NavigationMiniWrapper";
 flex:1;
 display:flex;
 flex-direction: row;
-justify-content:center;
+justify-content:flex-end;
 align-items: center;
 
 `
 
 export const NavigationWelcomeText = styled.div `
+--name: "NavigationWelcomeText";
 font-size: 20px;
 display:flex;
 color: white;
@@ -25,6 +49,7 @@ padding: 0 20px;
 `
 
 export const ButtonLogout = styled.button `
+--name: "ButtonLogout";
 color: white;
 background-color: orange;
 cursor: pointer;
@@ -38,6 +63,7 @@ padding:10px;
 `
 
 export const NavigationLoginButton = styled.button `
+--name: "NavigationLoginButton";
 padding:7px 25px;
 margin-right:20px;
 background-color: yellow;
@@ -51,6 +77,7 @@ transition:0.5s;
 `
 
 export const SetsBox = styled.div `
+--name:"SetsBox";
 flex:1;
 display:flex;
 flex-direction: row;
@@ -65,3 +92,27 @@ margin-bottom:10px;
   }
 
 `
+
+export const SetButton = styled.button `
+--name: "SetButton";
+position:relative;
+padding: 10px 20px;
+border: none;
+margin-right:15px;
+background: #255ed8;
+color:white;
+transition: background 0.5s;
+
+:hover{
+  background: #1c4397
+}
+::after{
+  position:absolute;
+  bottom:-5px;
+  right:-5px;
+  border-radius:25%;
+  content:"";
+  width:15px;
+  height:15px;
+  background: ${({ set, theme }) => handleSet(set, theme)};;
+  `

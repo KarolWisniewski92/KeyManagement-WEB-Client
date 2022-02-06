@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { NavigationWrapper, NavigationMiniWrapper, NavigationWelcomeText, ButtonLogout, SetsBox, NavigationLoginButton } from './Navigation.css';
+import { NavigationWrapper, NavigationMiniWrapper, NavigationWelcomeText, ButtonLogout, SetsBox, NavigationLoginButton, SetButton, NavigationMainWrapper } from './Navigation.css';
 import { Button } from 'components';
 import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -23,45 +23,47 @@ const Navigation = ({ user }) => {
     const setsList = ["KP", "NOC", "DUS"];
 
     const sets = setsList.map(el => {
-        return <Button key={el} variant='menu' onClick={e => {
+        return <SetButton key={el} set={el} onClick={e => {
 
             selectSet(dispatch, el);
-        }}>{el}</Button>
+        }}>{el}</SetButton>
 
     })
     return (
 
         <NavigationWrapper>
-            {Object.keys(user).length === 0 &&
-                <div></div>
-            }
-
-            {Object.keys(user).length > 0 &&
-                <SetsBox> {sets}</SetsBox>
-            }
-            <NavigationMiniWrapper>
-                {Object.keys(user).length > 0 &&
-                    <NavigationWelcomeText>Witaj {user.name} {user.surname}!</NavigationWelcomeText>
-                }
+            <NavigationMainWrapper>
                 {Object.keys(user).length === 0 &&
-                    <Fragment>
-                        <Link to="/login">
-                            <NavigationLoginButton>Zaloguj do aplikacji</NavigationLoginButton>
-                        </Link >
-                        <Link to="/register">
-                            <NavigationLoginButton>Zarejestruj</NavigationLoginButton>
-                        </Link >
-                    </Fragment>
+                    <div></div>
                 }
+
                 {Object.keys(user).length > 0 &&
-                    <ButtonLogout
-                        type="button"
-                        color={'orange'}
-                        onClick={logout.logOut}
-                    >Wyloguj
-                    </ButtonLogout>
+                    <SetsBox> {sets}</SetsBox>
                 }
-            </NavigationMiniWrapper>
+                <NavigationMiniWrapper>
+                    {Object.keys(user).length > 0 &&
+                        <NavigationWelcomeText>Witaj {user.name} {user.surname}!</NavigationWelcomeText>
+                    }
+                    {Object.keys(user).length === 0 &&
+                        <Fragment>
+                            <Link to="/login">
+                                <NavigationLoginButton>Zaloguj do aplikacji</NavigationLoginButton>
+                            </Link >
+                            <Link to="/register">
+                                <NavigationLoginButton>Zarejestruj</NavigationLoginButton>
+                            </Link >
+                        </Fragment>
+                    }
+                    {Object.keys(user).length > 0 &&
+                        <ButtonLogout
+                            type="button"
+                            color={'orange'}
+                            onClick={logout.logOut}
+                        >Wyloguj
+                        </ButtonLogout>
+                    }
+                </NavigationMiniWrapper>
+            </NavigationMainWrapper>
         </NavigationWrapper >
     )
 

@@ -21,7 +21,8 @@ const handleSet = (set, theme) => {
 
 }
 
-export const MyKeyBox = styled.div`
+export const MyKeyBox = styled.div `
+position:relative;
 display:flex;
 box-shadow: 0px 0px 10px 0px rgba(0,0,0,28%);
 transition-property: transform, box-shadow;
@@ -29,7 +30,7 @@ transition-duration:0.6s;
 flex-direction:column;
 width:100%;
 padding:10px;
-margin-bottom:20px;
+margin-bottom: 40px;
 background: ${({ set, theme }) => handleSet(set, theme)};
 
 &:hover{
@@ -37,11 +38,11 @@ background: ${({ set, theme }) => handleSet(set, theme)};
 }
 `
 
-export const HeaderBox = styled.div`
+export const HeaderBox = styled.div `
 width: 100%;
 display:flex;
 flex-direction:column;
-margin-bottom:15px;
+margin:15px 0px;
 font-size:14px;
 overflow-wrap: break-word;
 
@@ -51,7 +52,7 @@ overflow-wrap: break-word;
   }
 `
 
-export const KeyIconBox = styled.div`
+export const KeyIconBox = styled.div `
 display:flex;
 justify-content:center;
 align-items:center;
@@ -69,11 +70,11 @@ margin-right:10px;
   }
 `
 
-export const InfoBox = styled.div`
+export const InfoBox = styled.div `
 width:100%;
 `
 
-export const Navigation = styled.div`
+export const Navigation = styled.div `
 display:flex;
 flex-direction: row;
 justify-content: center;
@@ -81,7 +82,7 @@ margin:10px 0px;
 `
 
 
-export const SingleKeyIcon = styled.img`
+export const SingleKeyIcon = styled.img `
 position: relative;
 height:100%;
 transition: 0.5s;
@@ -91,7 +92,7 @@ transition: 0.5s;
 }
 `
 
-export const MySingleKeyButton = styled.button`
+export const MySingleKeyButton = styled.button `
 border:none;
 padding: 5px 10px;
 box-shadow: 0px 2px 5px -2px #7a7a7a;
@@ -104,19 +105,19 @@ transform:scale(1.05)
 }
 `
 
-export const TransferedInput = styled.input`
+export const TransferedInput = styled.input `
 width: calc(100% - 20px);
 padding:5px;
 margin:10px;
 `
 
-export const Ul = styled.ul`
+export const Ul = styled.ul `
 padding-left:20px;
 margin-top:5px;
 `
 
 
-export const Li = styled.li`
+export const Li = styled.li `
 
 background:${props => props.isSelected ? '#00000024' : null};
 padding:${props => props.isSelected ? '5px' : null};
@@ -130,7 +131,7 @@ transition: transform 0.5s;
 }
 `
 
-export const CancelButton = styled.button`
+export const CancelButton = styled.button `
 background: #df1d1d;
 color:white;
 padding:5px 10px;
@@ -143,4 +144,20 @@ cursor:pointer;
 &:hover{
     background: #a91212;
 }
+`
+
+
+export const MiniBox = styled.div `
+padding:10px 20px;
+height:40px;
+background: ${({ set, theme }) => handleSet(set, theme)};
+position:absolute;
+top:-15px;
+right:40px;
+z-index:10;
+display:flex;
+justify-content:center;
+align-items: center;
+box-shadow: 0px 0px 10px 0px rgba(0,0,0,28%);
+
 `
