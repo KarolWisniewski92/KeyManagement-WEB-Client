@@ -1,6 +1,6 @@
 import theme from './utils/theme';
 import { ThemeProvider } from 'styled-components';
-import { Navigation, Wrapper, MainWrapper } from 'components';
+import { Navigation, Wrapper, MainWrapper, Footer } from 'components';
 import {
   Route,
   useHistory
@@ -55,6 +55,7 @@ function App() {
             <Dashboard />
           </Wrapper>
         </Route>
+        <Footer />
       </ErrorBoundary>
     </ThemeProvider >
   );

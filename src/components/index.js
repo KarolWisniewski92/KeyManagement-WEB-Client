@@ -8,3 +8,4 @@ export { default as MySingleKeyComponent } from './MySingleKeyComponent';
 export { default as ConfirmBox } from './ConfirmBox';
 export { default as MainWrapper } from './MainWrapper';
 export { default as TransferredKey } from './TransferredKey';
+export { default as Footer } from './Footer';
