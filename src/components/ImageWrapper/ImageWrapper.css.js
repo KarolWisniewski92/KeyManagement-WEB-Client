@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
-
-
-export const MainWrapperDiv = styled.div `
---name: "MainWrapper";
+export const ImageWrapperDiv = styled.div `
+--name: "ImageWrapperDiv";
 height: 100%;
 background-image: ${props => props.backgrounds};
 transition: 2s linear;
@@ -15,8 +13,8 @@ align-content:center;
 flex:1;
 `
 
-export const MainWrapperHeroImage = styled.div `
---name: MainWrapperHeroImage;
+export const ImageWrapperHeroImage = styled.div `
+--name: ImageWrapperHeroImage;
 position:absolute;
 top:50%;
 left:50%;

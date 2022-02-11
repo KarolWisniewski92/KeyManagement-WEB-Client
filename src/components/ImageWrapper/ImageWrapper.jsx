@@ -1,28 +1,28 @@
-import { MainWrapperDiv, MainWrapperHeroImage } from './MainWrapper.css';
-import { useState, useEffect } from 'react';
-import backgrounds from "./../../image/jpg/background/index.js";
+import { ImageWrapperDiv, ImageWrapperHeroImage } from './ImageWrapper.css';
+import { useState } from 'react';
+import backgrounds from "../../image/jpg/background/index.js";
 import { StyledText } from 'components';
 import { useLocation } from 'react-router-dom'
 
-const MainWrapper = ({ children }) => {
+const ImageWrapper = ({ children }) => {
 
     const [actualImage, setActualImage] = useState(0);
     const location = useLocation();
 
     setTimeout(() => {
-        let test;
+        let counter;
         if (actualImage < 3) {
-            test = actualImage + 1;
+            counter = actualImage + 1;
         } else {
-            test = 0;
+            counter = 0;
         }
-        setActualImage(test);
+        setActualImage(counter);
 
     }, 5000);
 
-    return <MainWrapperDiv backgrounds={`url(${backgrounds[actualImage]})`}>
+    return <ImageWrapperDiv backgrounds={`url(${backgrounds[actualImage]})`}>
         {location.pathname === "/" &&
-            <MainWrapperHeroImage>
+            <ImageWrapperHeroImage>
                 <StyledText
                     size="70px"
                     type="header"
@@ -44,12 +44,12 @@ const MainWrapper = ({ children }) => {
                     tel. 516 105 675<br />
                     karolwisniewski92@gmail.com<br />
                 </StyledText>
-            </MainWrapperHeroImage>
+            </ImageWrapperHeroImage>
         }
 
         {children}
-    </MainWrapperDiv>
+    </ImageWrapperDiv>
 
 }
 
-export default MainWrapper;
+export default ImageWrapper;

@@ -1,6 +1,6 @@
 import theme from './utils/theme';
 import { ThemeProvider } from 'styled-components';
-import { Navigation, Wrapper, MainWrapper, Footer } from 'components';
+import { Navigation, Wrapper, ImageWrapper, Footer } from 'components';
 import {
   Route,
   useHistory
@@ -34,20 +34,23 @@ function App() {
 
         <Route path={["/", "/login", "/register"]} exact>
           <Navigation loginStatus="noLogged" />
-          <MainWrapper>
-            <Route path="/" exact>
-            </Route>
+
+          <ImageWrapper>
+            <Route path="/" exact></Route>
+
             <Route path="/login" exact>
               <Wrapper direction="column" justify="center">
                 <LoginForm />
               </Wrapper>
             </Route>
+
             <Route path="/register" exact>
               <Wrapper direction="column" justify="center">
                 <RegisterForm />
               </Wrapper>
             </Route>
-          </MainWrapper>
+
+          </ImageWrapper>
         </Route>
 
         <Route path="/dashboard">
@@ -56,8 +59,8 @@ function App() {
             <Dashboard />
           </Wrapper>
         </Route>
-        <Footer />
 
+        <Footer />
       </ErrorBoundary>
     </ThemeProvider >
   );
