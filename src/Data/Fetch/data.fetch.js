@@ -1,7 +1,15 @@
-
 //Gets all key for selected set
 export const fetchKeysData = async (set) => {
     return await fetch(`${process.env.REACT_APP_SERVER}/getKeysData?set=${set}`, {
+        method: "GET",
+        withCredentials: true,
+        credentials: 'include'
+    });
+};
+
+//Get key data
+export const fetchKeyData = async (keyID) => {
+    return await fetch(`${process.env.REACT_APP_SERVER}/getKeyData?keyID=${keyID}`, {
         method: "GET",
         withCredentials: true,
         credentials: 'include'

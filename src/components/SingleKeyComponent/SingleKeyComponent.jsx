@@ -4,6 +4,9 @@ import keys from '../../image/png/keys/index';
 import { fetchUserData } from 'Data/fetch/authentication.fetch';
 import useKeyAction from 'hooks/useKeyAction';
 import { StyledText, ConfirmBox } from 'components';
+import {
+    useHistory
+  } from "react-router-dom";
 
 const defaultKeyData = {
     keyID: "",
@@ -24,6 +27,7 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
     const [confirmAction, setConfirmAction] = useState(false);
 
     const keyActions = useKeyAction();
+    let history = useHistory();
 
 
     useEffect(() => {
@@ -86,6 +90,7 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
                     }}> Pobierz klucz!</SingleKeyButton>
                 }
                 <SingleKeyButton last={true} onClick={() => {
+                    history.push(`/dashboard/history?keyID=${keyData.keyID}`)
 
                 }}> Zobacz historię!</SingleKeyButton>
 

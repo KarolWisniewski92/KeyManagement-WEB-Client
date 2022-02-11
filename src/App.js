@@ -58,6 +58,9 @@ function App() {
           <Wrapper direction="column" justify="flex-start">
             <Dashboard />
           </Wrapper>
+          <Route path="/dashboard/history">
+            <History />
+          </Route>
         </Route>
 
         <Footer />
