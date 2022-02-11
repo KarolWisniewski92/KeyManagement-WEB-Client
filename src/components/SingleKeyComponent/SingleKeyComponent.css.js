@@ -58,6 +58,7 @@ position: relative;
 
 export const SingleKeyNavigation = styled(SingleKeyAddon)
 `
+flex-direction:row;
 padding-bottom:15px;
 `
 
@@ -111,6 +112,9 @@ p{
 
 export const SingleKeyButton = styled.button `
 border:none;
+width:80px;
+margin-right:${({last})=>last?'0px':'10px'};
+margin-bottom:10px;
 padding: 5px;
 box-shadow: 0px 2px 5px -2px #7a7a7a;
 cursor: pointer;
@@ -138,7 +142,6 @@ background: ${({ set, theme }) => handleSet(set, theme)};
 position:absolute;
 top:-15px;
 left:15px;
-z-index:10;
 display:flex;
 justify-content:center;
 align-items: center;

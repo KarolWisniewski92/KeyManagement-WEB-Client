@@ -5,7 +5,7 @@ import {
   Route,
   useHistory
 } from "react-router-dom";
-import { LoginForm, RegisterForm, Dashboard } from 'pages';
+import { LoginForm, RegisterForm, Dashboard, History } from 'pages';
 import { useEffect } from 'react';
 import API from './Data/fetch'
 import ErrorBoundary from 'components/ErrorBoundary';
@@ -19,7 +19,7 @@ function App() {
       .then(response => response.json())
       .then((data) => {
         if (Object.keys(data).length !== 0) {
-          history.push("/dashboard")
+          // history.push("/dashboard")
         }
 
       })
@@ -49,7 +49,7 @@ function App() {
           </MainWrapper>
         </Route>
 
-        <Route path="/dashboard" exact>
+        <Route path="/dashboard">
           <Navigation />
           <Wrapper direction="column" justify="flex-start">
             <Dashboard />

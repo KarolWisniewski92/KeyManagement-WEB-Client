@@ -78,28 +78,31 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
                 <StyledText>{keyData.adres}</StyledText>
             </SingleKeyFooter>
 
-            {!keyData.isTaken &&
-                <SingleKeyNavigation set={keyData.set}>
-                    {!confirmAction &&
-                        <SingleKeyButton onClick={() => {
-                            setConfirmAction(true)
-                        }}> Pobierz klucz!</SingleKeyButton>
-                    }
 
-                    {confirmAction &&
-                        <ConfirmBox
-                            yesCallback={() => {
-                                keyActions.getKey(keyData.keyID)
-                                setConfirmAction(false)
-                            }
-                            }
-                            noCallback={() => {
-                                setConfirmAction(false)
-                            }}
-                            title='Potwierdź pobranie' ></ConfirmBox>
-                    }
+            <SingleKeyNavigation set={keyData.set}>
+                {!confirmAction &&
+                    <SingleKeyButton disabled={keyData.isTaken ? true : false} onClick={() => {
+                        setConfirmAction(true)
+                    }}> Pobierz klucz!</SingleKeyButton>
+                }
+                <SingleKeyButton last={true} onClick={() => {
 
-                </SingleKeyNavigation>}
+                }}> Zobacz historię!</SingleKeyButton>
+
+                {confirmAction &&
+                    <ConfirmBox
+                        yesCallback={() => {
+                            keyActions.getKey(keyData.keyID)
+                            setConfirmAction(false)
+                        }
+                        }
+                        noCallback={() => {
+                            setConfirmAction(false)
+                        }}
+                        title='Potwierdź pobranie' ></ConfirmBox>
+                }
+
+            </SingleKeyNavigation>
         </SingleKeyBody>
     )
 }
