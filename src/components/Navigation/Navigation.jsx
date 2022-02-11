@@ -10,11 +10,12 @@ import { useDispatch } from 'react-redux';
 import { selectSet } from 'Data/actions/main.action';
 import { Fragment } from 'react';
 
-const Navigation = ({ user }) => {
+const Navigation = ({ user, loginStatus }) => {
     let history = useHistory();
     let logout = useLogOut();
     let isLogged = useIsLogged();
     const dispatch = useDispatch();
+
 
     useEffect(() => {
         isLogged.isLogged()
@@ -40,7 +41,7 @@ const Navigation = ({ user }) => {
                 {Object.keys(user).length > 0 &&
                     <SetsBox> {sets}</SetsBox>
                 }
-                <NavigationMiniWrapper>
+                <NavigationMiniWrapper loginStatus={loginStatus}>
                     {Object.keys(user).length > 0 &&
                         <NavigationWelcomeText>Witaj {user.name} {user.surname}!</NavigationWelcomeText>
                     }

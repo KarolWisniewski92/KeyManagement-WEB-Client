@@ -14,6 +14,15 @@ const handleSet = (set, theme) => {
 
 }
 
+const handleLoginStatus = (loginStatus) => {
+  switch (loginStatus) {
+    case "logged":
+      return "flex-end";
+    case "noLogged":
+      return "center";
+  }
+}
+
 export const NavigationWrapper = styled.div `
 --name: "NavigationWrapper";
 min-height:80px;
@@ -25,6 +34,7 @@ justify-content:center;
 `
 
 export const NavigationMainWrapper = styled.div `
+--name: "NavigationMainWrapper";
 width: 80%;
 display:flex;
 justify-content:center;
@@ -36,7 +46,7 @@ export const NavigationMiniWrapper = styled.div `
 flex:1;
 display:flex;
 flex-direction: row;
-justify-content:flex-end;
+justify-content:${({ loginStatus }) => handleLoginStatus(loginStatus)};
 align-items: center;
 
 `
@@ -115,5 +125,5 @@ transition: background 0.5s;
   content:"";
   width:15px;
   height:15px;
-  background: ${({ set, theme }) => handleSet(set, theme)};;
+  background: ${({ set, theme }) => handleSet(set, theme)};
   `

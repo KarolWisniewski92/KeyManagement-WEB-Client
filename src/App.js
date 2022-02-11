@@ -31,9 +31,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <ErrorBoundary>
+
         <Route path={["/", "/login", "/register"]} exact>
+          <Navigation loginStatus="noLogged" />
           <MainWrapper>
-            <Navigation />
             <Route path="/" exact>
             </Route>
             <Route path="/login" exact>
@@ -50,12 +51,13 @@ function App() {
         </Route>
 
         <Route path="/dashboard">
-          <Navigation />
+          <Navigation loginStatus="logged" />
           <Wrapper direction="column" justify="flex-start">
             <Dashboard />
           </Wrapper>
         </Route>
         <Footer />
+
       </ErrorBoundary>
     </ThemeProvider >
   );
