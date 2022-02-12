@@ -113,7 +113,23 @@ function useKeyAction() {
 
     // Accept transfered key and take it.
     const getTransferredKey = (keyID) => {
+        const dataToUpdate = {
+            keyID: keyID,
+            isTakenBy: user.user_id,
+            isTaken: true,
+            isTakenData: dateNowJSON
+        }
 
+        API.data.fetchTransferKey(dataToUpdate)
+            .then(response => response.json())
+            .then(data => {
+                getKeysData();
+                getMyKeysData();
+                getKeysTransferedToMe();
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
     }
 
     // Rejected transfered key and not take it.
