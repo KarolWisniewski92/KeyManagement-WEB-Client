@@ -26,9 +26,22 @@ export const fetchMyKeysData = async (userID) => {
 
 }
 
-// Get or return key by user
-export const fetchIsTakenByUpdate = async (data) => {
-    return await fetch(`${process.env.REACT_APP_SERVER}/isTakenByUpdate`, {
+// Get key by user
+export const fetchGetKey = async (data) => {
+    return await fetch(`${process.env.REACT_APP_SERVER}/getKey`, {
+        method: "POST",
+        withCredentials: true,
+        credentials: 'include',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+}
+
+// Return key by user
+export const fetchReturnKey = async (data) => {
+    return await fetch(`${process.env.REACT_APP_SERVER}/returnKey`, {
         method: "POST",
         withCredentials: true,
         credentials: 'include',

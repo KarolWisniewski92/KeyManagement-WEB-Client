@@ -79,7 +79,7 @@ function useKeyAction() {
             isTakenData: dateNowJSON
         }
 
-        API.data.fetchIsTakenByUpdate(dataToUpdate)
+        API.data.fetchGetKey(dataToUpdate)
             .then(response => response.json())
             .then(data => {
                 getKeysData();
@@ -96,10 +96,11 @@ function useKeyAction() {
             keyID: keyID,
             isTakenBy: "",
             isTaken: false,
-            isTakenData: ""
+            isTakenData: "",
+            isReturnedData: new Date()
         }
 
-        API.data.fetchIsTakenByUpdate(dataToUpdate)
+        API.data.fetchReturnKey(dataToUpdate)
             .then(response => response.json())
             .then(data => {
                 getKeysData();

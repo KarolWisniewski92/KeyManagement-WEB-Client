@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { SingleKeyBody, SingleKeyHeader, SingleKeyFooter, SingleKeyIcon, SigleKeyInfo, SingleKeyNavigation, SingleKeyButton, SingleKeyIconBox, SingleKeyInfoBox, MiniBox } from './SingleKeyComponent.css'
 import keys from '../../image/png/keys/index';
 import { fetchUserData } from 'Data/fetch/authentication.fetch';
