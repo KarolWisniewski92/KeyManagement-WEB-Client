@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HistoryBodyHeroImage = styled.div `
 --name: "HistoryBodyHeroImage";
-position:absolute;
+position:fixed;
 top:0;
 left:0;
 width:100%;
@@ -12,7 +12,7 @@ background-color: rgba(0,0,0,0.7);
 
 export const HistoryBody = styled.div `
 --name: "HistoryBody";
-width:50%;
+min-width:50%;
 height:80vh;
 padding:20px;
 background:white;

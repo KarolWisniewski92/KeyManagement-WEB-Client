@@ -6,7 +6,7 @@ import {
 } from 'styled-normalize'
 
 
-export const GlobalStyle = createGlobalStyle `
+export const GlobalStyle = createGlobalStyle`
   ${normalize}
 
   * {
@@ -20,6 +20,8 @@ export const GlobalStyle = createGlobalStyle `
   
   html, body, #root, .App {
     box-sizing:border-box;
+    margin: 0;
+    padding:0;
   }
 
   html, body, .App {

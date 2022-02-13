@@ -39,6 +39,7 @@ width: 80%;
 display:flex;
 justify-content:center;
 align-items:center;
+flex-wrap:wrap;
 `
 
 export const NavigationMiniWrapper = styled.div `
@@ -126,4 +127,5 @@ transition: background 0.5s;
   width:15px;
   height:15px;
   background: ${({ set, theme }) => handleSet(set, theme)};
-  `
+}
+`
