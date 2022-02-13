@@ -6,6 +6,7 @@ import {
     useHistory
 } from "react-router-dom";
 import { StyledText } from 'components';
+import { fetchUserData } from 'Data/fetch/authentication.fetch';
 
 const History = () => {
     const params = new URLSearchParams(window.location.search)
@@ -15,20 +16,44 @@ const History = () => {
 
     const [keyHistory, setKeyHistory] = useState([]);
     const [keyData, setKeyData] = useState([]);
+    const [users, setUsers] = useState([]);
+    const [currentUserData, setCurrentUserData] = useState([]);
+
 
     useEffect(() => {
         fetchKeyHistory(keyID)
             .then(response => response.json())
             .then(data => setKeyHistory(data.reverse()))
             .catch(err => console.log(err.message))
-    }, [keyID]);
 
-    useEffect(() => {
         fetchKeyData(keyID)
             .then(response => response.json())
             .then(data => setKeyData(data[0]))
             .catch(err => console.log(err.message))
+
     }, [keyID]);
+
+    useEffect(() => {
+        let historyUsers = keyHistory.map(el => {
+            return el.isTakenBy
+        })
+        historyUsers = [...new Set(historyUsers)]
+        setUsers(historyUsers);
+    }, [keyHistory])
+
+    useEffect(() => {
+        getUsersPersonalData();
+    }, [users])
+
+    const getUsersPersonalData = async () => {
+        const usersData = await Promise.all(users.map(async el => {
+            return await fetchUserData(el)
+                .then(response => response.json())
+
+        }))
+        setCurrentUserData(usersData);
+    }
+
 
     let historyList = <StyledText marginVertical="50px" align="center">Brak wpisów w historii!</StyledText>
 
@@ -55,8 +80,26 @@ const History = () => {
                             `
                             ${("0" + returnedDate.getDate()).slice(-2)}.${("0" + returnedDate.getMonth() + 1).slice(-2)}.${returnedDate.getFullYear()} ${("0" + returnedDate.getHours()).slice(-2)}:${("0" + returnedDate.getMinutes()).slice(-2)}`;
 
-                        return <tr>
-                            <td>{el.isTakenBy}</td>
+                        const userID = el.isTakenBy;
+                        let user = currentUserData.filter(el => {
+                            if (userID === el.user_id) {
+                                return el
+                            } else {
+                                return null
+                            }
+                        })
+
+                        user = user[0]
+
+                        let userToShow = "";
+                        if (user !== undefined && Object.keys(user).length > 0) {
+                            userToShow = `${user.name} ${user.surname}`
+                        }
+
+
+                        // console.log(user);
+                        return <tr key={el._id}>
+                            <td>{userToShow}</td>
                             <td>{takenDataToShow}</td>
                             <td>{returnedDataToShow}</td>
                         </tr>
