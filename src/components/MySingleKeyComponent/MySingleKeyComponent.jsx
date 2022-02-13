@@ -1,5 +1,5 @@
-import { MyKeyBox, Navigation, SingleKeyIcon, KeyIconBox, HeaderBox, InfoBox, MySingleKeyButton, TransferedInput, Li, Ul, CancelButton, MiniBox } from "./MySingleKeyComponent.css"
-import { ConfirmBox, StyledText } from "components";
+import { MyKeyBox, Navigation, SingleKeyIcon, KeyIconBox, HeaderBox, InfoBox, MySingleKeyButton, TransferedInput, Li, Ul, CancelButton, MiniBox, TransferredBox } from "./MySingleKeyComponent.css"
+import { ConfirmBox, StyledText, Wrapper } from "components";
 import keys from '../../image/png/keys/index';
 import useKeyAction from 'hooks/useKeyAction';
 import { Fragment, useState } from 'react';
@@ -109,7 +109,7 @@ const MySingleKeyComponent = ({ keyData }) => {
 
             </HeaderBox>
 
-            <Navigation>
+            <Navigation set={keyData.set}>
                 {!confirmAction &&
                     <Fragment>
                         <MySingleKeyButton
@@ -143,19 +143,19 @@ const MySingleKeyComponent = ({ keyData }) => {
             </Navigation>
 
             {keyData.isTransferedTo !== "" &&
-                <Fragment>
+                <TransferredBox set={keyData.set} >
                     <StyledText align="center" marginVertical="5px">Klucz jest obecnie przekazywany!</StyledText>
                     <StyledText align="center" marginVertical="5px"> Oczekuje na potwierdzenie:</StyledText>
                     <StyledText align="center" marginVertical="5px">{isTransferedTo.name} {isTransferedTo.surname}<CancelButton onClick={() => {
                         keyActions.rejectTransferredKey(keyData.keyID)
                     }}>Anuluj</CancelButton></StyledText>
-                </Fragment >
+                </TransferredBox >
             }
 
 
             {
                 isTransfered &&
-                <div>
+                <TransferredBox set={keyData.set}>
                     <TransferedInput
                         onKeyUp={findUserToTransfer}
                         onKeyDown={clearFindUserTimeout}
@@ -169,7 +169,7 @@ const MySingleKeyComponent = ({ keyData }) => {
                         color="red">
                         {errorMessage}
                     </StyledText>
-                    <div>
+                    <Wrapper justify="center">
                         <MySingleKeyButton
                             onClick={() => {
                                 if (selectedUser === "") {
@@ -206,9 +206,9 @@ const MySingleKeyComponent = ({ keyData }) => {
                             }}>
                             Anuluj
                         </MySingleKeyButton>
-                    </div>
+                    </Wrapper>
 
-                </div>
+                </TransferredBox>
             }
 
         </MyKeyBox >

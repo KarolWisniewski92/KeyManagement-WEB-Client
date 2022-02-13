@@ -22,6 +22,7 @@ const handleSet = (set, theme) => {
 }
 
 export const MyKeyBox = styled.div `
+--name: "MyKeyBox";
 position:relative;
 display:flex;
 box-shadow: 0px 0px 10px 0px rgba(0,0,0,28%);
@@ -29,9 +30,10 @@ transition-property: transform, box-shadow;
 transition-duration:0.6s;
 flex-direction:column;
 width:100%;
-padding:10px;
+/* padding:10px; */
 margin-bottom: 40px;
-background: ${({ set, theme }) => handleSet(set, theme)};
+background:white;
+
 
 &:hover{
     transform: scale(1.05)
@@ -39,10 +41,12 @@ background: ${({ set, theme }) => handleSet(set, theme)};
 `
 
 export const HeaderBox = styled.div `
+--name: "HeaderBox";
 width: 100%;
 display:flex;
 flex-direction:column;
-margin:15px 0px;
+margin-top:15px;
+padding:15px;
 font-size:14px;
 overflow-wrap: break-word;
 
@@ -53,36 +57,25 @@ overflow-wrap: break-word;
 `
 
 export const KeyIconBox = styled.div `
+--name: "KeyIconBox";
+position: relative;
 display:flex;
 justify-content:center;
 align-items:center;
 background:white;
 width:100%;
-height:120px;
-padding:5px;
-
+height:150px;
 margin-right:10px;
 
-@media (min-width: 1400px) {
-    width:100px;
-    height:100px;
+@media (min-width: 1200px) {
+    width:120px;
+    height:120px;
     
   }
 `
 
-export const InfoBox = styled.div `
-width:100%;
-`
-
-export const Navigation = styled.div `
-display:flex;
-flex-direction: row;
-justify-content: center;
-margin:10px 0px;
-`
-
-
 export const SingleKeyIcon = styled.img `
+--name: "SingleKeyIcon";
 position: relative;
 height:100%;
 transition: 0.5s;
@@ -91,8 +84,22 @@ transition: 0.5s;
     transform: scale(1.05) rotate(20deg) 
 }
 `
+export const InfoBox = styled.div `
+--name: "InfoBox";
+width:100%;
+`
+
+export const Navigation = styled.div `
+--name: "Navigation";
+display:flex;
+flex-direction: row;
+justify-content: center;
+padding:15px 0px;
+background: ${({ set, theme }) => handleSet(set, theme)};
+`
 
 export const MySingleKeyButton = styled.button `
+--name:"MySingleKeyButton";
 border:none;
 padding: 5px 10px;
 box-shadow: 0px 2px 5px -2px #7a7a7a;
@@ -106,9 +113,19 @@ transform:scale(1.05)
 `
 
 export const TransferedInput = styled.input `
+--name:"TransferedInput";
 width: calc(100% - 20px);
+text-align:center;
 padding:5px;
 margin:10px;
+
+`
+
+export const TransferredBox = styled.div `
+--name: "TransferredBox";
+background: ${({ set, theme }) => handleSet(set, theme)};
+padding-bottom:20px;
+
 `
 
 export const Ul = styled.ul `
@@ -123,6 +140,7 @@ background:${props => props.isSelected ? '#00000024' : null};
 padding:${props => props.isSelected ? '5px' : null};
 padding-left:${props => props.isSelected ? '10px' : null};
 margin-bottom: 5px;
+width: calc(100% - 20px);
 list-style-type: none;
 cursor: pointer;
 transition: transform 0.5s;
@@ -132,6 +150,7 @@ transition: transform 0.5s;
 `
 
 export const CancelButton = styled.button `
+--name:"CancelButton";
 background: #df1d1d;
 color:white;
 padding:5px 10px;
@@ -148,6 +167,7 @@ cursor:pointer;
 
 
 export const MiniBox = styled.div `
+--name: "MiniBox";
 padding:10px 20px;
 height:40px;
 background: ${({ set, theme }) => handleSet(set, theme)};
