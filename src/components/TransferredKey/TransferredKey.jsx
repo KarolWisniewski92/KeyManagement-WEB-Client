@@ -63,7 +63,7 @@ const TransferredKey = () => {
                     <FlexWrapper>
                         <ConfirmBox
                             yesCallback={() => {
-                                keyActions.getKey(el.keyID);
+                                keyActions.getTransferredKey(el.keyID);
                             }}
                             noCallback={() => {
                                 keyActions.rejectTransferredKey(el.keyID);

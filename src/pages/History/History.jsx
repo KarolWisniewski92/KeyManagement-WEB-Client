@@ -47,10 +47,13 @@ const History = () => {
                         const takenDate = new Date(el.isTakenData);
                         const returnedDate = new Date(el.isReturnedData);
 
-                        const takenDataToShow = `${takenDate.getDate()}.${takenDate.getMonth() + 1}.${takenDate.getFullYear()} ${takenDate.getHours()}:${takenDate.getMinutes()}`;
+                        const takenDataToShow = `
+                        ${("0" + takenDate.getDate()).slice(-2)}.${("0" + takenDate.getMonth() + 1).slice(-2)}.${takenDate.getFullYear()} 
+                        ${("0" + takenDate.getHours()).slice(-2)}:${("0" + takenDate.getMinutes()).slice(-2)}`;
 
                         const returnedDataToShow = Date.parse(returnedDate) === 0 ? "Nie zwrócono!" :
-                            `${takenDate.getDate()}.${returnedDate.getMonth() + 1}.${returnedDate.getFullYear()} ${returnedDate.getHours()}:${returnedDate.getMinutes()}`;
+                            `
+                            ${("0" + returnedDate.getDate()).slice(-2)}.${("0" + returnedDate.getMonth() + 1).slice(-2)}.${returnedDate.getFullYear()} ${("0" + returnedDate.getHours()).slice(-2)}:${("0" + returnedDate.getMinutes()).slice(-2)}`;
 
                         return <tr>
                             <td>{el.isTakenBy}</td>
