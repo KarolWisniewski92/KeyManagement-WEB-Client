@@ -50,7 +50,7 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
     }, [keyData.isTaken, keyData.isTakenBy])
 
     const sourceData = new Date(keyData.isTakenData);
-    const date = `${("0" + sourceData.getDate()).slice(-2)}.${("0" + sourceData.getMonth() + 1).slice(-2)}.${sourceData.getFullYear()} ${("0" + sourceData.getHours()).slice(-2)}:${("0" + sourceData.getMinutes()).slice(-2)}`
+    const date = `${("0" + sourceData.getDate()).slice(-2)}.${("0" + (sourceData.getMonth() + 1)).slice(-2)}.${sourceData.getFullYear()} ${("0" + sourceData.getHours()).slice(-2)}:${("0" + sourceData.getMinutes()).slice(-2)}`
 
     return (
         <SingleKeyBody>

@@ -73,12 +73,12 @@ const History = () => {
                         const returnedDate = new Date(el.isReturnedData);
 
                         const takenDataToShow = `
-                        ${("0" + takenDate.getDate()).slice(-2)}.${("0" + takenDate.getMonth() + 1).slice(-2)}.${takenDate.getFullYear()} 
+                        ${("0" + takenDate.getDate()).slice(-2)}.${("0" + (takenDate.getMonth() + 1)).slice(-2)}.${takenDate.getFullYear()} 
                         ${("0" + takenDate.getHours()).slice(-2)}:${("0" + takenDate.getMinutes()).slice(-2)}`;
 
                         const returnedDataToShow = Date.parse(returnedDate) === 0 ? "Nie zwrócono!" :
                             `
-                            ${("0" + returnedDate.getDate()).slice(-2)}.${("0" + returnedDate.getMonth() + 1).slice(-2)}.${returnedDate.getFullYear()} ${("0" + returnedDate.getHours()).slice(-2)}:${("0" + returnedDate.getMinutes()).slice(-2)}`;
+                            ${("0" + returnedDate.getDate()).slice(-2)}.${("0" + (returnedDate.getMonth() + 1)).slice(-2)}.${returnedDate.getFullYear()} ${("0" + returnedDate.getHours()).slice(-2)}:${("0" + returnedDate.getMinutes()).slice(-2)}`;
 
                         const userID = el.isTakenBy;
                         let user = currentUserData.filter(el => {
