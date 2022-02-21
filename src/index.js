@@ -11,6 +11,7 @@ import store from 'Data/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 
+
 let persistor = persistStore(store);
 
 ReactDOM.render(
@@ -19,10 +20,11 @@ ReactDOM.render(
       <PersistGate loading={null} persistor={persistor}>
         <GlobalStyle />
         <Router>
-          <App />
+                    <App />
         </Router>
       </PersistGate>
     </Provider>
   </Fragment>,
   document.getElementById('root')
+  
 );

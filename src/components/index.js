@@ -9,3 +9,5 @@ export { default as ConfirmBox } from './ConfirmBox';
 export { default as ImageWrapper } from './ImageWrapper';
 export { default as TransferredKey } from './TransferredKey';
 export { default as Footer } from './Footer';
+export { default as Modal } from './Modal';
+export { default as NotificationBox } from './NotificationBox';

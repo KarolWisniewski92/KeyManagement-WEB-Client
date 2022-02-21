@@ -10,7 +10,6 @@ import { fetchUserData } from 'Data/fetch/authentication.fetch';
 
 const History = () => {
     const params = new URLSearchParams(window.location.search)
-    const isKeyID = params.has('keyID');
     const keyID = params.get('keyID');
     let history = useHistory();
 

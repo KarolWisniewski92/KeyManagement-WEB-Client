@@ -1,6 +1,6 @@
 import theme from './utils/theme';
 import { ThemeProvider } from 'styled-components';
-import { Navigation, Wrapper, ImageWrapper, Footer } from 'components';
+import { Navigation, Wrapper, ImageWrapper, Footer} from 'components';
 import {
   Route,
   useHistory
@@ -19,7 +19,7 @@ function App() {
       .then(response => response.json())
       .then((data) => {
         if (Object.keys(data).length !== 0) {
-          // history.push("/dashboard")
+          history.push("/dashboard")
         }
 
       })
@@ -66,6 +66,7 @@ function App() {
         <Footer />
       </ErrorBoundary>
     </ThemeProvider >
+
   );
 }
 

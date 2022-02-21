@@ -1,16 +1,18 @@
 import { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import API from '../../Data/fetch'
 import { useHistory } from "react-router-dom";
 import { setUserInStore } from 'Data/actions/user.action';
 import { KeyBox, UserBox } from './components';
 import { DashboardBody } from './Dashboard.css';
 import useKeyAction from 'hooks/useKeyAction';
+import { Modal, NotificationBox } from './../../components';
 
 const Dashboard = ({ user, selectedSet, setUserInStore }) => {
 
     let history = useHistory();
     const keyActions = useKeyAction();
+    const notification = useSelector(state => state.notification.notification)
 
     //Pobieramy dane kluczy dla aktualnie wybranego setu.
     useEffect(() => {
@@ -43,9 +45,19 @@ const Dashboard = ({ user, selectedSet, setUserInStore }) => {
             })
     }, [history, setUserInStore]);
 
+    const showNotification = (() => {
+        const notificationList = notification.map(el => {
+            return <NotificationBox type={el.type} title={el.title} message={el.message} />
+        })
+
+        if (notification.length > 0) {
+            return <Modal>{notificationList}</Modal>
+        }
+    })();
 
     return (
         <DashboardBody>
+            {showNotification}
             <KeyBox></KeyBox>
             <UserBox></UserBox>
         </DashboardBody>

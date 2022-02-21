@@ -1,8 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { NavigationWrapper, NavigationMiniWrapper, NavigationWelcomeText, ButtonLogout, SetsBox, NavigationLoginButton, SetButton, NavigationMainWrapper } from './Navigation.css';
-import { Button } from 'components';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import useLogOut from 'hooks/useLogOut';
 import useIsLogged from 'hooks/useIsLogged';
@@ -11,7 +10,6 @@ import { selectSet } from 'Data/actions/main.action';
 import { Fragment } from 'react';
 
 const Navigation = ({ user, loginStatus }) => {
-    let history = useHistory();
     let logout = useLogOut();
     let isLogged = useIsLogged();
     const dispatch = useDispatch();

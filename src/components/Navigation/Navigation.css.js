@@ -20,6 +20,8 @@ const handleLoginStatus = (loginStatus) => {
       return "flex-end";
     case "noLogged":
       return "center";
+    default:
+      return "flex-end";
   }
 }
 

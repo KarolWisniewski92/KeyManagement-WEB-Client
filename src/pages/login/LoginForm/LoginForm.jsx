@@ -50,16 +50,6 @@ const LoginForm = ({ user, setUserInStore }) => {
             })
     };
 
-    const checkUser = () => {
-        API.authentication.checkUser()
-            .then(response => response.json())
-            .then((data) => {
-            })
-            .catch(err => {
-                console.log(err.message);
-            })
-    };
-
     return (
         <LoginBox>
             <StyledText color="white" type="header">Zaloguj się:</StyledText>

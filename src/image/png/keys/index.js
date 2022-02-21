@@ -6,7 +6,7 @@ import key05 from './key05.png'
 import key06 from './key06.png'
 import key07 from './key07.png'
 
-export default [
+const keys = [
     key01,
     key02,
     key03,
@@ -14,4 +14,6 @@ export default [
     key05,
     key06,
     key07,
-]
+];
+
+export default keys;

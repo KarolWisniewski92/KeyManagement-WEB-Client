@@ -8,6 +8,7 @@ import {
     useHistory
 } from "react-router-dom";
 
+
 const defaultKeyData = {
     keyID: "",
     set: "",
@@ -81,6 +82,7 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
                     textTransform="UPPERCASE"><b>{keyData.name}</b></StyledText>
                 <StyledText>{keyData.adres}</StyledText>
             </SingleKeyFooter>
+            
 
 
             <SingleKeyNavigation set={keyData.set}>
