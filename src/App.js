@@ -1,11 +1,11 @@
 import theme from './utils/theme';
 import { ThemeProvider } from 'styled-components';
-import { Navigation, Wrapper, ImageWrapper, Footer} from 'components';
+import { Navigation, Wrapper, ImageWrapper, Footer } from 'components';
 import {
   Route,
   useHistory
 } from "react-router-dom";
-import { LoginForm, RegisterForm, Dashboard, History } from 'pages';
+import { LoginForm, RegisterForm, Dashboard, History, AddKey } from 'pages';
 import { useEffect } from 'react';
 import API from './Data/fetch'
 import ErrorBoundary from 'components/ErrorBoundary';
@@ -19,7 +19,7 @@ function App() {
       .then(response => response.json())
       .then((data) => {
         if (Object.keys(data).length !== 0) {
-          history.push("/dashboard")
+          // history.push("/dashboard")
         }
 
       })
@@ -60,6 +60,13 @@ function App() {
           </Wrapper>
           <Route path="/dashboard/history">
             <History />
+          </Route>
+        </Route>
+        
+        <Route path="/admin">
+          <Navigation loginStatus="logged" />
+          <Route path="/admin/addKey">
+            <AddKey />
           </Route>
         </Route>
 
