@@ -1,18 +1,30 @@
-import { AddKeyBody, AddKeyFormBody, AddKeyFormButtonBar, Input, FormButton, CheckBoxGroup, CheckBoxSingleBody, SelectPhotoBody, SelectPhotoSingleBody, KeyImage } from './AddKey.css';
+import { AddKeyBody, AddKeyFormBody, AddKeyFormButtonBar, Input, FormButton, CheckBoxGroup, CheckBoxSingleBody, SelectPhotoBody, SelectPhotoSingleBody, KeyImage, ValidationErrorSpan } from './AddKey.css';
 import { StyledText } from 'components';
 import { Form, Field } from 'react-final-form';
 import images from '../../image/png/keys';
+import { useState } from 'react';
 
 const AddKey = () => {
 
+    const required = value => (value ? undefined : 'Wymagane');
 
-    const onSubmit = (test) => {
-        console.log(test);
+
+    const onSubmit = (values) => {
+        console.log(values);
 
     }
 
     const sets = ["KP", "NOC", "DUS"];
 
+    const Error = ({ name }) => (
+        <Field
+            name={name}
+            subscription={{ touched: true, error: true }}
+            render={({ meta: { touched, error } }) =>
+                touched && error ? <ValidationErrorSpan>{error}</ValidationErrorSpan> : null
+            }
+        />
+    )
 
     return (
         <AddKeyBody>
@@ -30,36 +42,55 @@ const AddKey = () => {
 
                 <Form
                     onSubmit={onSubmit}
+                    validate={values => {
+                        const errors = {
+                        }
+
+                        if (values.set === undefined || values.set.length === 0) {
+                            errors.set = "Pole wymagane!"
+                        }
+                        if (values.photo === undefined || values.photo.length === 0) {
+                            errors.photo = "Pole wymagane!"
+                        }
+                        return errors
+                    }}
                     render={({ handleSubmit, form, submitting, pristine, values }) => (
                         <form onSubmit={handleSubmit}>
 
-                            <Field name="name">
+                            <Field
+                                name="name"
+                                validate={required}>
                                 {({ input, meta }) => (
                                     <div>
+                                        {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
                                         <Input {...input} type="text" placeholder="Nazwa" />
-                                        {meta.error && meta.touched && <span>{meta.error}</span>}
                                     </div>
                                 )}
                             </Field>
 
-                            <Field name="adres">
+                            <Field
+                                name="adres"
+                                validate={required}>
                                 {({ input, meta }) => (
                                     <div>
+                                        {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
                                         <Input {...input} type="text" placeholder="Adres" />
-                                        {meta.error && meta.touched && <span>{meta.error}</span>}
                                     </div>
                                 )}
                             </Field>
 
-                            <Field name="owner">
+                            <Field
+                                name="owner"
+                                validate={required}>
                                 {({ input, meta }) => (
                                     <div>
+                                        {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
                                         <Input {...input} type="text" placeholder="Właściciel" />
-                                        {meta.error && meta.touched && <span>{meta.error}</span>}
                                     </div>
                                 )}
                             </Field>
                             <StyledText align="center">Dodaj do zestawu:</StyledText>
+                            <Error name="set" />
 
                             <CheckBoxGroup>
                                 {sets.map(el => {
@@ -72,6 +103,7 @@ const AddKey = () => {
                                             value={el}
                                             id={el}
                                         >
+
                                             {({ input, meta }) => (
                                                 <CheckBoxSingleBody>
                                                     <Input {...input} type="checkbox" />
@@ -83,6 +115,8 @@ const AddKey = () => {
                                 })}
                             </CheckBoxGroup>
 
+                            <StyledText align="center">Wybierz zdjęcie:</StyledText>
+                            <Error name="photo" />
                             <SelectPhotoBody>
                                 {images.map((el, index) => {
                                     return (

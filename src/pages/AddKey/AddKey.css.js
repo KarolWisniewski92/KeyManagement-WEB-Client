@@ -33,6 +33,7 @@ export const Input = styled.input `
 max-width:500px;
 padding:5px;
 margin-bottom:10px;
+margin-top:5px;
 width:100%;
 `
 export const FormButton = styled.button `
@@ -76,4 +77,10 @@ export const KeyImage = styled.img `
 --name: "KeyImage";
 width:120px;
 margin-bottom:10px;
+`
+
+export const ValidationErrorSpan = styled.span `
+--name: "ValidationErrorSpan";
+margin-bottom:5px;
+color:red;
 `
