@@ -32,8 +32,8 @@ function App() {
   const notification = useSelector(state => state.notification.notification)
 
   const showNotification = (() => {
-    const notificationList = notification.map(el => {
-      return <NotificationBox type={el.type} title={el.title} message={el.message} />
+    const notificationList = notification.map((el, index) => {
+      return <NotificationBox key={index} type={el.type} title={el.title} message={el.message} />
     })
 
     if (notification.length > 0) {

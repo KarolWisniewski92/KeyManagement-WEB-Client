@@ -17,12 +17,6 @@ import {
 import {
     myKeys
 } from 'Data/actions/data.action';
-import {
-    addNotification
-} from 'Data/actions/notification.action';
-import {
-    errorUserNotLogged
-} from 'utils/errors';
 
 function useKeyAction() {
 
