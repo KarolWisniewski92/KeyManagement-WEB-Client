@@ -8,11 +8,13 @@ import useIsLogged from 'hooks/useIsLogged';
 import { useDispatch } from 'react-redux';
 import { selectSet } from 'Data/actions/main.action';
 import { Fragment } from 'react';
+import { useHistory } from "react-router-dom";
 
 const Navigation = ({ user, loginStatus }) => {
     let logout = useLogOut();
     let isLogged = useIsLogged();
     const dispatch = useDispatch();
+    const history = useHistory();
 
 
     useEffect(() => {
@@ -23,6 +25,9 @@ const Navigation = ({ user, loginStatus }) => {
 
     const sets = setsList.map(el => {
         return <SetButton key={el} set={el} onClick={e => {
+            if (window.location.pathname !== "/dashboard") {
+                history.push('/dashboard')
+            }
 
             selectSet(dispatch, el);
         }}>{el}</SetButton>

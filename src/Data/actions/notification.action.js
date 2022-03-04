@@ -6,12 +6,12 @@ const {
 
 
 export const addNotification = (dispatch, notification) => {
+    // expected payload {type, title, message}
 
     dispatch({
         type: ADD_NOTIFICATION,
         payload: notification
     })
-
 };
 export const removeNotification = (dispatch, notification) => {
 

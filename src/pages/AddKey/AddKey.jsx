@@ -2,19 +2,51 @@ import { AddKeyBody, AddKeyFormBody, AddKeyFormButtonBar, Input, FormButton, Che
 import { StyledText } from 'components';
 import { Form, Field } from 'react-final-form';
 import images from '../../image/png/keys';
-import { useState } from 'react';
+import { fetchAddNewKey } from 'Data/fetch/admin.fetch';
+import { addNotification } from 'Data/actions/notification.action';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 
 const AddKey = () => {
+
+    useEffect(() => {
+        if (userPermision !== "admin") {
+            history.push('/dashboard');
+        }
+
+    }, [])
+
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const userPermision = useSelector(state => state.user.user.role)
+
+    const sets = ["KP", "NOC", "DUS"];
 
     const required = value => (value ? undefined : 'Wymagane');
 
 
     const onSubmit = (values) => {
-        console.log(values);
-
+        const newKeyData = values;
+        fetchAddNewKey(newKeyData)
+            .then(response => response.json())
+            .then(data => {
+                if (!data.error) {
+                    addNotification(dispatch, {
+                        type: "success",
+                        title: "Sukces",
+                        message: "Poprawnie dodano klucz!"
+                    })
+                } else {
+                    addNotification(dispatch, {
+                        type: "faile",
+                        title: "Wystąpił błąd!",
+                        message: data.message
+                    })
+                }
+            })
     }
 
-    const sets = ["KP", "NOC", "DUS"];
 
     const Error = ({ name }) => (
         <Field
@@ -32,14 +64,6 @@ const AddKey = () => {
                 <StyledText type="header" align="center">
                     Dodaj klucz!
                 </StyledText>
-
-                {/*
-            name: "Czempiń (pow. Kościański)",
-            adres: "ul. Przedszkolna 1",
-            owner: "WSS",
-            set: "NOC",
-            imageID: 2 */}
-
                 <Form
                     onSubmit={onSubmit}
                     validate={values => {
@@ -151,7 +175,7 @@ const AddKey = () => {
                                 <FormButton
                                     type="submit"
                                     color="blue"
-                                    disabled={submitting || pristine}
+                                    disabled={submitting}
                                 >
                                     Dodaj klucz!</FormButton>
 

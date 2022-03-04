@@ -1,6 +1,6 @@
 import theme from './utils/theme';
 import { ThemeProvider } from 'styled-components';
-import { Navigation, Wrapper, ImageWrapper, Footer } from 'components';
+import { Navigation, Wrapper, ImageWrapper, Footer, Modal, NotificationBox } from 'components';
 import {
   Route,
   useHistory
@@ -9,6 +9,7 @@ import { LoginForm, RegisterForm, Dashboard, History, AddKey } from 'pages';
 import { useEffect } from 'react';
 import API from './Data/fetch'
 import ErrorBoundary from 'components/ErrorBoundary';
+import { useSelector } from 'react-redux';
 
 function App() {
 
@@ -28,9 +29,22 @@ function App() {
       })
   }, [history]);
 
+  const notification = useSelector(state => state.notification.notification)
+
+  const showNotification = (() => {
+    const notificationList = notification.map(el => {
+      return <NotificationBox type={el.type} title={el.title} message={el.message} />
+    })
+
+    if (notification.length > 0) {
+      return <Modal>{notificationList}</Modal>
+    }
+  })();
+
   return (
     <ThemeProvider theme={theme}>
       <ErrorBoundary>
+        {showNotification}
 
         <Route path={["/", "/login", "/register"]} exact>
           <Navigation loginStatus="noLogged" />
@@ -62,7 +76,7 @@ function App() {
             <History />
           </Route>
         </Route>
-        
+
         <Route path="/admin">
           <Navigation loginStatus="logged" />
           <Route path="/admin/addKey">
