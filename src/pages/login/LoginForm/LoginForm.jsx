@@ -71,7 +71,7 @@ const LoginForm = ({ user, setUserInStore }) => {
                         <Field name="password">
                             {({ input, meta }) => (
                                 <div>
-                                    <Input {...input} type="text" placeholder="hasło" />
+                                    <Input {...input} type="password" placeholder="hasło" />
                                     {meta.error && meta.touched && <span>{meta.error}</span>}
                                 </div>
                             )}

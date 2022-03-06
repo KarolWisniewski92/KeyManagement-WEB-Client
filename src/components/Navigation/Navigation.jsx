@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { NavigationWrapper, NavigationMiniWrapper, NavigationWelcomeText, ButtonLogout, SetsBox, NavigationLoginButton, SetButton, NavigationMainWrapper } from './Navigation.css';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import useLogOut from 'hooks/useLogOut';
 import useIsLogged from 'hooks/useIsLogged';
 import { useDispatch } from 'react-redux';
@@ -15,7 +15,7 @@ const Navigation = ({ user, loginStatus }) => {
     let isLogged = useIsLogged();
     const dispatch = useDispatch();
     const history = useHistory();
-
+    const userPermision = useSelector(state => state.user.user.role)
 
     useEffect(() => {
         isLogged.isLogged()
@@ -37,13 +37,25 @@ const Navigation = ({ user, loginStatus }) => {
 
         <NavigationWrapper>
             <NavigationMainWrapper>
+
+
                 {Object.keys(user).length === 0 &&
                     <div></div>
                 }
 
                 {Object.keys(user).length > 0 &&
-                    <SetsBox> {sets}</SetsBox>
+                    <SetsBox>
+
+                        {sets}</SetsBox>
                 }
+
+                {userPermision === 'admin' &&
+                    <div>
+                        <Link to="/admin/addKey">Dodaj klucz</Link>
+
+                    </div>
+                }
+
                 <NavigationMiniWrapper loginStatus={loginStatus}>
                     {Object.keys(user).length > 0 &&
                         <NavigationWelcomeText>Witaj {user.name} {user.surname}!</NavigationWelcomeText>

@@ -42,6 +42,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-wrap:wrap;
+position:relative;
 `
 
 export const NavigationMiniWrapper = styled.div `
@@ -56,6 +57,7 @@ align-items: center;
 
 export const NavigationWelcomeText = styled.div `
 --name: "NavigationWelcomeText";
+position:relative;
 font-size: 20px;
 display:flex;
 color: white;
@@ -98,6 +100,7 @@ flex-direction: row;
 justify-content: center;
 align-items:center;
 margin-bottom:10px;
+position:relative;
 
 @media (min-width: 768px) {
     justify-content: flex-start;
