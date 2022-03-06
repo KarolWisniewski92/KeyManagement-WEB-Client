@@ -119,6 +119,7 @@ margin-right:15px;
 background: #255ed8;
 color:white;
 transition: background 0.5s;
+cursor: pointer;
 
 :hover{
   background: #1c4397

@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { selectSet } from 'Data/actions/main.action';
 import { Fragment } from 'react';
 import { useHistory } from "react-router-dom";
+import BurgerMenu from 'components/BurgerMenu';
 
 const Navigation = ({ user, loginStatus }) => {
     let logout = useLogOut();
@@ -50,10 +51,25 @@ const Navigation = ({ user, loginStatus }) => {
                 }
 
                 {userPermision === 'admin' &&
-                    <div>
-                        <Link to="/admin/addKey">Dodaj klucz</Link>
+                    <BurgerMenu menuTitle="Akcje administratora" items={[
+                        {
+                            title: "Dodaj klucz",
+                            route: "/admin/addKey",
+                            disabled: false
+                        },
+                        {
+                            title: "Zarządzaj użytkownikami",
+                            route: "/admin/editUser",
+                            disabled: true
+                        },
+                        {
+                            title: "Zarządzaj uprawnieniami",
+                            route: "/admin/editUserPermision",
+                            disabled: true
+                        },
 
-                    </div>
+                    ]} />
+
                 }
 
                 <NavigationMiniWrapper loginStatus={loginStatus}>

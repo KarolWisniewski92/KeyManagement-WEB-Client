@@ -1,0 +1,46 @@
+import styled from "styled-components";
+
+export const BurgerMenuIcon = styled.div `
+
+`
+export const BurgerMenuIconClose = styled.div `
+
+`
+export const BurgerMenuHeder = styled.div `
+background-color: #f05c5c;
+padding:5px;
+display:flex;
+justify-content:center;
+align-items:center;
+text-transform:uppercase;
+border-bottom: 2px solid black;
+cursor: pointer;
+`
+
+export const BurgerMenuBody = styled.div `
+z-index:10;
+width:100%;
+position:absolute;
+display:${({showMenu})=>showMenu?"flex":"none"};
+flex-direction: column;
+transition:0.5;
+`
+
+export const MenuButton = styled.button `
+border:none;
+padding:7px 5px;
+background:#dcdcdc;
+border-bottom:1px solid #333;
+cursor: pointer;
+transition: 0.3s;
+:hover{
+    transform:scale(1.02);
+    background:#c8c7c7;
+}
+
+`
+
+export const BurgerMenuMain = styled.div `
+min-width: 200px;
+position:relative;
+`

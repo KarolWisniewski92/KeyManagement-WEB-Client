@@ -31,10 +31,10 @@ justify-content:center;
 export const Input = styled.input `
 --name: "Input";
 max-width:500px;
+width:100%;
 padding:5px;
 margin-bottom:10px;
 margin-top:5px;
-width:100%;
 `
 export const FormButton = styled.button `
 --name: "FormButton";
