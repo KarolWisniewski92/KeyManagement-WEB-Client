@@ -13,7 +13,7 @@ align-items: center;
 
 export const AddKeyFormBody = styled.div `
 --name: "AddKeyFormBody";
-width:500px;
+width:50%;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -83,4 +83,11 @@ export const ValidationErrorSpan = styled.span `
 --name: "ValidationErrorSpan";
 margin-bottom:5px;
 color:red;
+`
+
+export const InputContainer = styled.div `
+--name: "InputContainer";
+display: flex;
+justify-content:center;
+align-items:center;
 `

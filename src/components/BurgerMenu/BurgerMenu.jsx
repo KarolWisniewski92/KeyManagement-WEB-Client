@@ -24,7 +24,7 @@ const BurgerMenu = ({ items, menuTitle }) => {
 
 
     const menuToShow = items.map(el => {
-        return <MenuButton disabled={el.disabled} onClick={() => {
+        return <MenuButton key={el.title} disabled={el.disabled} onClick={() => {
 
             history.push(el.route)
 

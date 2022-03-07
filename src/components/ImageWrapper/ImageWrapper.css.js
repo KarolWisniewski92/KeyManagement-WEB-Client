@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ImageWrapperDiv = styled.div `
 --name: "ImageWrapperDiv";
+position:relative;
 height: 100%;
 background-image: ${props => props.backgrounds};
 transition: 2s linear;

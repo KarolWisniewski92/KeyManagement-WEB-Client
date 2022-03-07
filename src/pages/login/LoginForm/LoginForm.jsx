@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { LoginBox, ErrorBox } from './LoginForm.css';
+import { LoginBox, ErrorBox, InputContainer, Form100,ValidationErrorSpan } from './LoginForm.css';
 import { Form, Field } from 'react-final-form';
 import { Link, useHistory } from 'react-router-dom';
 import { Button, Input, StyledText } from 'components';
@@ -11,6 +11,7 @@ const LoginForm = ({ user, setUserInStore }) => {
 
     let history = useHistory();
     const [errorText, setTextError] = useState("");
+    const required = value => (value ? undefined : 'Wymagane');
 
     useEffect(() => {
         API.authentication.checkUser()
@@ -52,37 +53,41 @@ const LoginForm = ({ user, setUserInStore }) => {
 
     return (
         <LoginBox>
-            <StyledText color="white" type="header">Zaloguj się:</StyledText>
+            <StyledText align="center" color="white" type="header">Zaloguj się:</StyledText>
 
             <Form
                 onSubmit={onSubmit}
                 render={({ handleSubmit, form, submitting, pristine, values }) => (
-                    <form onSubmit={handleSubmit}>
+                    <Form100 onSubmit={handleSubmit}>
 
-                        <Field name="email">
+                        <Field
+                            name="email"
+                            validate={required}>
                             {({ input, meta }) => (
-                                <div>
+                                <InputContainer>
+                                    {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
                                     <Input {...input} type="email" placeholder="email" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
+                                </InputContainer>
                             )}
                         </Field>
 
-                        <Field name="password">
+                        <Field
+                            name="password"
+                            validate={required}>
                             {({ input, meta }) => (
-                                <div>
+                                <InputContainer>
+                                    {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
                                     <Input {...input} type="password" placeholder="hasło" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
+                                </InputContainer>
                             )}
                         </Field>
 
                         <Field name="remember" defaultValue={false}>
                             {({ input, meta }) => (
-                                <div>
+                                <InputContainer>
                                     <Input {...input} name="remember" id="remember" type="checkbox" />
                                     <label htmlFor="remember">Zapamiętaj mnie! </label>
-                                </div>
+                                </InputContainer>
                             )}
                         </Field>
 
@@ -107,11 +112,11 @@ const LoginForm = ({ user, setUserInStore }) => {
                             </ErrorBox>
                         }
 
-                        <Link to="/register">Nie masz jeszcze konta? Zarejestruj się!</Link>
-                    </form>
+                        <Link to="/register"><StyledText align="center" marginVertical="5px">Nie masz jeszcze konta?<br />Zarejestruj się!</StyledText></Link>
+                    </Form100>
                 )}
             />
-        </LoginBox>
+        </LoginBox >
 
     )
 }

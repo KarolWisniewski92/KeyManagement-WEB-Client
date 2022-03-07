@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { NavigationWrapper, NavigationMiniWrapper, NavigationWelcomeText, ButtonLogout, SetsBox, NavigationLoginButton, SetButton, NavigationMainWrapper } from './Navigation.css';
+import { NavigationWrapper, NavigationMiniWrapper, NavigationWelcomeText, ButtonLogout, SetsBox, NavigationLoginButton, SetButton, NavigationMainWrapper, ButtonBox } from './Navigation.css';
 import { Link } from 'react-router-dom';
 import { connect, useSelector } from 'react-redux';
 import useLogOut from 'hooks/useLogOut';
@@ -37,17 +37,12 @@ const Navigation = ({ user, loginStatus }) => {
     return (
 
         <NavigationWrapper>
-            <NavigationMainWrapper>
-
-
-                {Object.keys(user).length === 0 &&
-                    <div></div>
-                }
+            <NavigationMainWrapper loginStatus={loginStatus}>
 
                 {Object.keys(user).length > 0 &&
                     <SetsBox>
-
-                        {sets}</SetsBox>
+                        {sets}
+                    </SetsBox>
                 }
 
                 {userPermision === 'admin' &&
@@ -77,14 +72,14 @@ const Navigation = ({ user, loginStatus }) => {
                         <NavigationWelcomeText>Witaj {user.name} {user.surname}!</NavigationWelcomeText>
                     }
                     {Object.keys(user).length === 0 &&
-                        <Fragment>
+                        <ButtonBox>
                             <Link to="/login">
                                 <NavigationLoginButton>Zaloguj do aplikacji</NavigationLoginButton>
                             </Link >
                             <Link to="/register">
                                 <NavigationLoginButton>Zarejestruj</NavigationLoginButton>
                             </Link >
-                        </Fragment>
+                        </ButtonBox>
                     }
                     {Object.keys(user).length > 0 &&
                         <ButtonLogout

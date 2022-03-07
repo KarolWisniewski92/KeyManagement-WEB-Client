@@ -1,4 +1,4 @@
-import { AddKeyBody, AddKeyFormBody, AddKeyFormButtonBar, Input, FormButton, CheckBoxGroup, CheckBoxSingleBody, SelectPhotoBody, SelectPhotoSingleBody, KeyImage, ValidationErrorSpan } from './AddKey.css';
+import { AddKeyBody, AddKeyFormBody, AddKeyFormButtonBar, Input, FormButton, CheckBoxGroup, CheckBoxSingleBody, SelectPhotoBody, SelectPhotoSingleBody, KeyImage, ValidationErrorSpan,InputContainer } from './AddKey.css';
 import { StyledText } from 'components';
 import { Form, Field } from 'react-final-form';
 import images from '../../image/png/keys';
@@ -85,10 +85,10 @@ const AddKey = () => {
                                 name="name"
                                 validate={required}>
                                 {({ input, meta }) => (
-                                    <div>
+                                    <InputContainer >
                                         {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
                                         <Input {...input} type="text" placeholder="Nazwa" />
-                                    </div>
+                                    </InputContainer>
                                 )}
                             </Field>
 
@@ -96,10 +96,10 @@ const AddKey = () => {
                                 name="adres"
                                 validate={required}>
                                 {({ input, meta }) => (
-                                    <div>
+                                    <InputContainer>
                                         {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
                                         <Input {...input} type="text" placeholder="Adres" />
-                                    </div>
+                                    </InputContainer>
                                 )}
                             </Field>
 
@@ -107,10 +107,10 @@ const AddKey = () => {
                                 name="owner"
                                 validate={required}>
                                 {({ input, meta }) => (
-                                    <div>
+                                    <InputContainer>
                                         {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
                                         <Input {...input} type="text" placeholder="Właściciel" />
-                                    </div>
+                                    </InputContainer>
                                 )}
                             </Field>
                             <StyledText align="center">Dodaj do zestawu:</StyledText>

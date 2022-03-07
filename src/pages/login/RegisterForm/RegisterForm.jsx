@@ -1,4 +1,4 @@
-import { RegisterBox } from "./RegisterForm.css";
+import { RegisterBox, InputContainer, Form100, ButtonBox, ValidationErrorSpan } from "./RegisterForm.css";
 import { Input, Button, StyledText } from 'components';
 import { Form, Field } from 'react-final-form';
 import API from '../../../Data/fetch'
@@ -21,6 +21,8 @@ const RegisterForm = () => {
 
     let history = useHistory();
 
+    const required = value => (value ? undefined : 'Wymagane');
+
     useEffect(() => {
         API.authentication.checkUser()
             .then(response => response.json())
@@ -36,81 +38,101 @@ const RegisterForm = () => {
 
     return (
         <RegisterBox>
-            <StyledText color="white" type="header">Zarejestruj się!</StyledText>
+            <StyledText align="center" color="white" type="header">Zarejestruj się!</StyledText>
             <Form
                 onSubmit={onSubmit}
                 render={({ handleSubmit, form, submitting, pristine, values }) => (
-                    <form onSubmit={handleSubmit}>
+                    <Form100 onSubmit={handleSubmit}>
 
-                        <Field name="name">
+                        <Field
+                            name="name"
+                            validate={required}
+                        >
                             {({ input, meta }) => (
-                                <div>
+                                <InputContainer>
+                                    {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
                                     <Input {...input} type="text" placeholder="Imię" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
+                                </InputContainer>
                             )}
                         </Field>
 
-                        <Field name="surname">
+                        <Field
+                            name="surname"
+                            validate={required}
+                        >
                             {({ input, meta }) => (
-                                <div>
+                                <InputContainer>
+                                    {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
                                     <Input {...input} type="text" placeholder="Nazwisko" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
+                                </InputContainer>
                             )}
                         </Field>
 
-                        <Field name="email">
+                        <Field
+                            name="email"
+                            validate={required}
+                        >
                             {({ input, meta }) => (
-                                <div>
+                                <InputContainer>
+                                    {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
                                     <Input {...input} type="email" placeholder="Adres email" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
+                                </InputContainer>
                             )}
                         </Field>
 
-                        <Field name="phone">
+                        <Field
+                            name="phone"
+                            validate={required}
+                        >
                             {({ input, meta }) => (
-                                <div>
+                                <InputContainer>
+                                    {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
                                     <Input {...input} type="phone" placeholder="Numer telefonu" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
+                                </InputContainer>
                             )}
                         </Field>
 
-                        <Field name="password">
+                        <Field
+                            name="password"
+                            validate={required}
+                        >
                             {({ input, meta }) => (
-                                <div>
+                                <InputContainer>
+                                    {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
                                     <Input {...input} type="password" placeholder="Hasło" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
+                                </InputContainer>
                             )}
                         </Field>
-                        <Field name="repeatPassword">
+                        <Field
+                            name="repeatPassword"
+                            validate={required}
+                        >
                             {({ input, meta }) => (
-                                <div>
+                                <InputContainer>
+                                    {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
                                     <Input {...input} type="password" placeholder="Powtórz hasło" />
-                                    {meta.error && meta.touched && <span>{meta.error}</span>}
-                                </div>
+                                </InputContainer>
                             )}
                         </Field>
+                        <ButtonBox>
+                            <Button
+                                type="submit"
+                                color="blue"
+                                disabled={submitting || pristine}
+                            >
+                                Zarejestruj się!</Button>
 
-                        <Button
-                            type="submit"
-                            color="blue"
-                            disabled={submitting || pristine}
-                        >
-                            Zarejestruj się!</Button>
+                            <Button
+                                type="button"
+                                color={'yellow'}
+                                onClick={form.reset}
+                                disabled={submitting || pristine}
+                            >
+                                Wyczyść!</Button>
+                        </ButtonBox>
 
-                        <Button
-                            type="button"
-                            color={'yellow'}
-                            onClick={form.reset}
-                            disabled={submitting || pristine}
-                        >
-                            Wyczyść!</Button>
 
-                    </form>
+                    </Form100>
                 )}
             />
 

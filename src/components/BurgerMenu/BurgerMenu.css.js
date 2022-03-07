@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
-export const BurgerMenuIcon = styled.div `
+export const BurgerMenuMain = styled.div `
+min-width: 200px;
+position:relative;
 
+@media (max-width: 768px) {
+    margin-bottom:15px;
+  };
 `
-export const BurgerMenuIconClose = styled.div `
 
-`
 export const BurgerMenuHeder = styled.div `
 background-color: #f05c5c;
 padding:5px;
@@ -38,9 +41,4 @@ transition: 0.3s;
     background:#c8c7c7;
 }
 
-`
-
-export const BurgerMenuMain = styled.div `
-min-width: 200px;
-position:relative;
 `
