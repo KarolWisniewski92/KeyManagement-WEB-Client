@@ -19,6 +19,12 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 padding:10px;
+
+@media (max-width: 768px) {
+    width:90%;
+
+  }
+
 `
 
 export const AddKeyFormButtonBar = styled.div `
@@ -77,6 +83,11 @@ export const KeyImage = styled.img `
 --name: "KeyImage";
 width:120px;
 margin-bottom:10px;
+
+@media (max-width: 768px) {
+    width:80px;
+
+  }
 `
 
 export const ValidationErrorSpan = styled.span `
@@ -88,6 +99,7 @@ color:red;
 export const InputContainer = styled.div `
 --name: "InputContainer";
 display: flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
 `

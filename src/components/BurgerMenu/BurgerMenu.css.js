@@ -24,9 +24,11 @@ export const BurgerMenuBody = styled.div `
 z-index:10;
 width:100%;
 position:absolute;
-display:${({showMenu})=>showMenu?"flex":"none"};
+display:flex;
+transform:scaleY(${({showMenu})=>showMenu?1:0});
+transform-origin:top;
 flex-direction: column;
-transition:0.5;
+transition:0.5s;
 `
 
 export const MenuButton = styled.button `
