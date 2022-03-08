@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { LoginBox, ErrorBox, InputContainer, Form100,ValidationErrorSpan } from './LoginForm.css';
+import { LoginBox, ErrorBox, InputContainer, Form100, ValidationErrorSpan } from './LoginForm.css';
 import { Form, Field } from 'react-final-form';
 import { Link, useHistory } from 'react-router-dom';
 import { Button, Input, StyledText } from 'components';
@@ -53,7 +53,7 @@ const LoginForm = ({ user, setUserInStore }) => {
 
     return (
         <LoginBox>
-            <StyledText align="center" color="white" type="header">Zaloguj się:</StyledText>
+            <StyledText align="center" color="white" type="header" marginVertical="10px">Zaloguj się:</StyledText>
 
             <Form
                 onSubmit={onSubmit}

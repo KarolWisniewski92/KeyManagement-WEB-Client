@@ -38,7 +38,7 @@ const RegisterForm = () => {
 
     return (
         <RegisterBox>
-            <StyledText align="center" color="white" type="header">Zarejestruj się!</StyledText>
+            <StyledText align="center" color="white" type="header" marginVertical="10px">Zarejestruj się!</StyledText>
             <Form
                 onSubmit={onSubmit}
                 render={({ handleSubmit, form, submitting, pristine, values }) => (

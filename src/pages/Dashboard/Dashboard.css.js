@@ -5,7 +5,7 @@ export const DashboardBody = styled.div `
 display:flex;
 flex-direction:row;
 align-items:flex-start;
-width:100%;
+width:80%;
 
 @media (max-width: 768px) {
 
@@ -13,4 +13,12 @@ width:100%;
     align-items:center;
 
   }
+`
+
+export const DashboardWrapper = styled.div `
+--name:"DashboardWrapper";
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
 `

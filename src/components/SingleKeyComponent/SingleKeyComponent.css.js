@@ -15,7 +15,7 @@ const handleSet = (set, theme) => {
 }
 
 
-export const SingleKeyBody = styled.div `
+export const SingleKeyBody = styled.div`
 display:flex;
 flex-direction:column;
 width:200px;
@@ -34,7 +34,7 @@ transition-duration:0.6s;
 }
 `
 
-export const SingleKeyAddon = styled.div `
+export const SingleKeyAddon = styled.div`
 display:flex;
 justify-content:center;
 align-content: center;
@@ -44,38 +44,38 @@ min-height:40px;
 background: ${({ set, theme }) => handleSet(set, theme)};
 `
 
-export const SingleKeyHeader = styled.div `
+export const SingleKeyHeader = styled.div`
 height:25px;
 background:white;
 `
 
-export const SingleKeyIconBox = styled.div `
+export const SingleKeyIconBox = styled.div`
 height:150px;
 background:white;
 position: relative;
-/* padding: 20px 0px; */
 `
 
 export const SingleKeyNavigation = styled(SingleKeyAddon)
-`
+    `
+--name:SingleKeyNavigation;
 flex-direction:row;
 padding-bottom:15px;
 justify-content:space-evenly;
 `
 
 export const SingleKeyFooter = styled(SingleKeyAddon)
-`
+    `
+--name:"SingleKeyFooter";
 justify-content:flex-start;
-padding:0px 15px;
+padding:15px;
 bottom:0px;
 word-break: break-word;
 text-align:center;
 flex-grow:1;
-padding-bottom:15px;
 
 `
 
-export const SingleKeyIcon = styled.img `
+export const SingleKeyIcon = styled.img`
 --name:"SingleKeyIcon";
 position: relative;
 left:50%;
@@ -88,7 +88,7 @@ transition: 0.5s;
 }
 `
 
-export const SingleKeyInfoBox = styled.div `
+export const SingleKeyInfoBox = styled.div`
 --name:"SingleKeyInfoBox";
 background: white;
 display:flex;
@@ -99,7 +99,7 @@ min-height:150px;
 `
 
 
-export const SigleKeyInfo = styled.div `
+export const SigleKeyInfo = styled.div`
 --name:"SigleKeyInfo";
 position: relative;
 margin:10px;
@@ -114,7 +114,8 @@ p{
     }
 `
 
-export const SingleKeyButton = styled.button `
+export const SingleKeyButton = styled.button`
+--name:"SingleKeyButton";
 border:none;
 width:80px;
 margin-bottom:10px;
@@ -128,17 +129,17 @@ transform:scale(1.05)
 }
 `
 
-export const NavigationWrapper = styled.div `
+export const NavigationWrapper = styled.div`
 display:flex;
 flex-direction: column;
 `
-export const ButtonWrapper = styled.div `
+export const ButtonWrapper = styled.div`
 display:flex;
 flex-direction: row;
 justify-content: space-evenly;
 `
 
-export const MiniBox = styled.div `
+export const MiniBox = styled.div`
 padding:10px 20px;
 height:40px;
 background: ${({ set, theme }) => handleSet(set, theme)};

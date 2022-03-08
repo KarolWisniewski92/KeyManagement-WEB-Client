@@ -17,22 +17,25 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     font-family: 'Lato', sans-serif;
   }
+  html{
+    height:100vh;
+  }
   
   html, body, #root, .App {
     box-sizing:border-box;
     margin: 0;
     padding:0;
   }
-
-  html, body, .App {
+  body, .App {
     height: 100%;
   }
   
   #root {
-    height:100vh;
-    /* display:flex;
-    flex-direction:column; */
+    height:100%;
     position:relative;
+    display:flex;
+    flex-direction:column;
+
   }
   
 `

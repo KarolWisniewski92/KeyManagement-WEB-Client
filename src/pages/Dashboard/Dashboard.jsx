@@ -4,7 +4,7 @@ import API from '../../Data/fetch'
 import { useHistory } from "react-router-dom";
 import { setUserInStore } from 'Data/actions/user.action';
 import { KeyBox, UserBox } from './components';
-import { DashboardBody } from './Dashboard.css';
+import { DashboardBody, DashboardWrapper } from './Dashboard.css';
 import useKeyAction from 'hooks/useKeyAction';
 
 
@@ -48,10 +48,12 @@ const Dashboard = ({ user, selectedSet, setUserInStore }) => {
 
 
     return (
-        <DashboardBody>
-            <KeyBox></KeyBox>
-            <UserBox></UserBox>
-        </DashboardBody>
+        <DashboardWrapper>
+            <DashboardBody>
+                <KeyBox></KeyBox>
+                <UserBox></UserBox>
+            </DashboardBody>
+        </DashboardWrapper>
     )
 }
 

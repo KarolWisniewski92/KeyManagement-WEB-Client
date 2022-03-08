@@ -39,7 +39,7 @@ const handleLoginStatusMainWrapper = (loginStatus, size) => {
 
 export const NavigationWrapper = styled.div `
 --name: "NavigationWrapper";
-min-height:80px;
+width:100%;
 background-color: #333;
 display:flex;
 flex-flow: row wrap;

@@ -78,11 +78,15 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
 
             <SingleKeyFooter set={keyData.set}>
                 <StyledText
-                    margin="20px 0px 10px 0px"
-                    textTransform="UPPERCASE"><b>{keyData.name}</b></StyledText>
-                <StyledText>{keyData.adres}</StyledText>
+                    margin="0px"
+                    textTransform="UPPERCASE">
+                    <b>{keyData.name}</b>
+                </StyledText>
+                <StyledText marginVertical="5px">
+                    {keyData.adres}
+                </StyledText>
             </SingleKeyFooter>
-            
+
 
 
             <SingleKeyNavigation set={keyData.set}>
