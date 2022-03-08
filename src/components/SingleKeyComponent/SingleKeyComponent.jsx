@@ -91,7 +91,7 @@ const SingleKeyComponent = ({ keyData = defaultKeyData }) => {
                         setConfirmAction(true)
                     }}> Pobierz klucz!</SingleKeyButton>
                 }
-                <SingleKeyButton last={true} onClick={() => {
+                <SingleKeyButton onClick={() => {
                     history.push(`/dashboard/history?keyID=${keyData.keyID}`)
 
                 }}> Zobacz historię!</SingleKeyButton>

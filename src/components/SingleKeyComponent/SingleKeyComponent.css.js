@@ -60,6 +60,7 @@ export const SingleKeyNavigation = styled(SingleKeyAddon)
 `
 flex-direction:row;
 padding-bottom:15px;
+justify-content:space-evenly;
 `
 
 export const SingleKeyFooter = styled(SingleKeyAddon)
@@ -75,6 +76,7 @@ padding-bottom:15px;
 `
 
 export const SingleKeyIcon = styled.img `
+--name:"SingleKeyIcon";
 position: relative;
 left:50%;
 transform: translate(-50%, 0%);
@@ -87,18 +89,20 @@ transition: 0.5s;
 `
 
 export const SingleKeyInfoBox = styled.div `
+--name:"SingleKeyInfoBox";
 background: white;
 display:flex;
 justify-content: center;
 align-items:center;
-height:150px;
+min-height:150px;
 
 `
 
 
 export const SigleKeyInfo = styled.div `
+--name:"SigleKeyInfo";
 position: relative;
-margin:0px 10px;
+margin:10px;
 box-shadow:2px 2px 10px -2px gray;
 padding:10px;
 
@@ -106,14 +110,13 @@ background: ${({ set, theme }) => handleSet(set, theme)};
 
 p{
     text-align: center;
-    margin: 5px;
-}
+    margin: 5px 0px;
+    }
 `
 
 export const SingleKeyButton = styled.button `
 border:none;
 width:80px;
-margin-right:${({last})=>last?'0px':'10px'};
 margin-bottom:10px;
 padding: 5px;
 box-shadow: 0px 2px 5px -2px #7a7a7a;

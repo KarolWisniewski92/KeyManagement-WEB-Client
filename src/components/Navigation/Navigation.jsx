@@ -73,12 +73,10 @@ const Navigation = ({ user, loginStatus }) => {
                     }
                     {Object.keys(user).length === 0 &&
                         <ButtonBox>
-                            <Link to="/login">
-                                <NavigationLoginButton>Zaloguj do aplikacji</NavigationLoginButton>
-                            </Link >
-                            <Link to="/register">
-                                <NavigationLoginButton>Zarejestruj</NavigationLoginButton>
-                            </Link >
+
+                            <NavigationLoginButton><Link to="/login">Zaloguj do aplikacji</Link ></NavigationLoginButton>
+                            <NavigationLoginButton><Link to="/register">Zarejestruj</Link ></NavigationLoginButton>
+
                         </ButtonBox>
                     }
                     {Object.keys(user).length > 0 &&

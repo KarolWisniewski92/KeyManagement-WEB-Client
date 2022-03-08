@@ -51,14 +51,15 @@ export const NavigationMainWrapper = styled.div `
 --name: "NavigationMainWrapper";
 width: 80%;
 display:flex;
-justify-content:${({ loginStatus }) => handleLoginStatusMainWrapper(loginStatus, "M")};
+justify-content:${({ loginStatus }) => handleLoginStatusMainWrapper(loginStatus, "S")};
 align-items:center;
 flex-wrap:wrap;
+flex-direction:row;
 position:relative;
 
-@media (min-width: 768px) {
-  justify-content:${({ loginStatus }) => handleLoginStatusMainWrapper(loginStatus, "S")};
-
+@media (max-width: 768px) {
+  justify-content:${({ loginStatus }) => handleLoginStatusMainWrapper(loginStatus, "M")};
+  flex-direction:column;
   }
 
 
@@ -105,7 +106,6 @@ padding:10px;
 export const ButtonBox = styled.div `
 --name: "ButtonBox";
 display:flex;
-margin-bottom:10px;
 flex-direction:column;
 justify-content:center;
 align-items:center;
@@ -113,25 +113,36 @@ align-items:center;
 @media (min-width: 768px) {
   flex-direction:row;
   }
-
 `
 
 export const NavigationLoginButton = styled.button `
 --name: "NavigationLoginButton";
 padding:7px 25px;
-margin-right:20px;
 background-color: yellow;
 border:none;
 cursor: pointer;
 transition:0.5s;
-margin-bottom: 10px;
+margin-bottom: 0px;
+margin-right:20px;
+a{
+  text-decoration:none;
+  color:black;
+}
+:last-child{
+  margin-right:0px;
+}
 
 :hover{
   background-color: #ffbc00
 }
 
-@media (min-width: 768px) {
-  margin-bottom: 0px;
+@media (max-width: 768px) {
+  margin-bottom: 10px;
+  margin-right:0px;
+  :last-child{
+  margin-bottom:0px;
+}
+
   }
 
 
@@ -144,15 +155,15 @@ display:flex;
 flex-direction: row;
 justify-content: center;
 align-items:center;
-margin-bottom:20px;
+margin-bottom:0px;
 position:relative;
 
 :last-child{
   margin-right: 0px;
 }
 
-@media (min-width: 768px) {
-    margin-bottom: 0px;
+@media (max-width: 768px) {
+    margin-bottom: 20px;
   };
 
 `

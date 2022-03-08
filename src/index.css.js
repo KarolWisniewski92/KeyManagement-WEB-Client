@@ -30,6 +30,8 @@ export const GlobalStyle = createGlobalStyle`
   
   #root {
     height:100vh;
+    /* display:flex;
+    flex-direction:column; */
     position:relative;
   }
   

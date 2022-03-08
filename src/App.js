@@ -69,9 +69,9 @@ function App() {
 
         <Route path="/dashboard">
           <Navigation loginStatus="logged" />
-          <Wrapper direction="column" justify="flex-start">
+          {/* <Wrapper direction="column" justify="flex-start">
+          </Wrapper> */}
             <Dashboard />
-          </Wrapper>
           <Route path="/dashboard/history">
             <History />
           </Route>
