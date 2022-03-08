@@ -35,8 +35,8 @@ width:100%;
 bottom:-50px;
 transform-origin:top;
 display:flex;
-
 `
+
 export const Button = styled.button `
 --name:"Button";
 flex-grow:1;

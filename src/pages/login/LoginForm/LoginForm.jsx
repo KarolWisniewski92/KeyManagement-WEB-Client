@@ -58,14 +58,14 @@ const LoginForm = ({ user, setUserInStore }) => {
                 render={({ handleSubmit, form, submitting, pristine, values }) => (
                     <Form100 onSubmit={handleSubmit}>
                         <FormWrapper>
-                            <StyledText align="center" color="white" type="header" marginVertical="10px">Zaloguj się:</StyledText>
+                            <StyledText align="center" color="white" type="header" margin="0px 0px 20px 0px">Zaloguj się:</StyledText>
                             <Field
                                 name="email"
                                 validate={required}>
                                 {({ input, meta }) => (
                                     <InputContainer>
                                         {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
-                                        <Input {...input} type="email" placeholder="email" />
+                                        <Input {...input} type="email" placeholder="Email" />
                                     </InputContainer>
                                 )}
                             </Field>
@@ -76,7 +76,7 @@ const LoginForm = ({ user, setUserInStore }) => {
                                 {({ input, meta }) => (
                                     <InputContainer>
                                         {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
-                                        <Input {...input} type="password" placeholder="hasło" />
+                                        <Input {...input} type="password" placeholder="Hasło" />
                                     </InputContainer>
                                 )}
                             </Field>
