@@ -95,10 +95,6 @@ const LoginForm = ({ user, setUserInStore }) => {
                                     <StyledText margin="0px" align="center" color="red">{errorText}</StyledText>
                                 </ErrorBox>
                             }
-
-                            <StyledText align="center" marginVertical="5px">
-                                <Link to="/register">Nie masz jeszcze konta?<br />Zarejestruj się!</Link>
-                            </StyledText>
                         </FormWrapper>
                         <ButtonBox>
                             <Button type="submit" disabled={submitting || pristine}>
