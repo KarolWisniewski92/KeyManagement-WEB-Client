@@ -19,6 +19,10 @@ const theme = {
         pink: {
             normal: 'rgb(219, 112, 147)',
         },
+        blue: {
+            light: '#1f96c5',
+            dark: '#0b5876',
+        }
     },
     templateColors: {
         red: '#ff4f4f',

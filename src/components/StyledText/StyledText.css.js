@@ -37,6 +37,11 @@ margin: ${({ margin }) => margin ? `${margin}` : null};
 text-transform: ${({ textTransform }) => textTransform ? textTransform : null};
 word-break: break-word;
 
+a{
+  text-decoration:none;
+  color: ${({ color }) => color ? color : null};
+}
+
 @media (max-width: 600px) {
     Font-size: ${({ s_size }) => s_size ? `${s_size}` : null};
   }

@@ -2,11 +2,10 @@ import styled from "styled-components";
 
 export const LoginBox = styled.div `
 --name: "LoginBox";
-padding:15px;
+position:relative;
 width:20%;
 background-color: #1f96c5;
-border-radius: 25px;
-box-shadow: 0px 10px 20px -5px #5f5f5f;
+box-shadow: 0px 0px 10px 0px rgba(0,0,0,28%);
 
 display: flex;
 flex-direction:column;
@@ -27,7 +26,32 @@ align-items: center;
     width:90%;
 
   }
+`
 
+export const ButtonBox = styled.div `
+--name:"ButtonBox";
+height:50px;
+width:100%;
+bottom:-50px;
+transform-origin:top;
+display:flex;
+
+`
+export const Button = styled.button `
+--name:"Button";
+flex-grow:1;
+border:none;
+background:${({theme})=>(theme.colors.blue.dark)};
+color:white;
+border-right:1px solid ${({theme})=>(theme.colors.blue.light)};
+cursor: pointer;
+transition: 0.5s;
+:last-child{
+  border-right:none;
+}
+:hover{
+  background-color:#ffbc00;
+}
 
 `
 
@@ -46,12 +70,16 @@ justify-content:center;
 align-items:center;
 `
 
+export const FormWrapper = styled.div `
+width:100%;
+padding:20px;
+`
+
 export const ErrorBox = styled.div `
 --name:"ErrorBox";
 background: white;
 padding: 5px;
 margin:10px 0px;
-border-radius:5px;
 `
 export const ValidationErrorSpan = styled.span `
 --name: "ValidationErrorSpan";

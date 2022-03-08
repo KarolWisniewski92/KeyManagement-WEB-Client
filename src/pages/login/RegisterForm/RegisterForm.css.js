@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 export const RegisterBox = styled.div `
 --name:"RegisterBox";
-padding:15px;
+padding:20px;
 width:20%;
 background-color: #1f96c5;
-border-radius: 25px;
 box-shadow: 0px 10px 20px -5px #5f5f5f;
 
 display: flex;

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { LoginBox, ErrorBox, InputContainer, Form100, ValidationErrorSpan } from './LoginForm.css';
+import { LoginBox, ErrorBox, InputContainer, Form100, ValidationErrorSpan, ButtonBox, Button, FormWrapper } from './LoginForm.css';
 import { Form, Field } from 'react-final-form';
 import { Link, useHistory } from 'react-router-dom';
-import { Button, Input, StyledText } from 'components';
+import { Input, StyledText } from 'components';
 import API from '../../../Data/fetch'
 import { connect } from 'react-redux';
 import { setUserInStore } from 'Data/actions/user.action';
@@ -53,66 +53,66 @@ const LoginForm = ({ user, setUserInStore }) => {
 
     return (
         <LoginBox>
-            <StyledText align="center" color="white" type="header" marginVertical="10px">Zaloguj się:</StyledText>
-
             <Form
                 onSubmit={onSubmit}
                 render={({ handleSubmit, form, submitting, pristine, values }) => (
                     <Form100 onSubmit={handleSubmit}>
+                        <FormWrapper>
+                            <StyledText align="center" color="white" type="header" marginVertical="10px">Zaloguj się:</StyledText>
+                            <Field
+                                name="email"
+                                validate={required}>
+                                {({ input, meta }) => (
+                                    <InputContainer>
+                                        {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
+                                        <Input {...input} type="email" placeholder="email" />
+                                    </InputContainer>
+                                )}
+                            </Field>
 
-                        <Field
-                            name="email"
-                            validate={required}>
-                            {({ input, meta }) => (
-                                <InputContainer>
-                                    {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
-                                    <Input {...input} type="email" placeholder="email" />
-                                </InputContainer>
-                            )}
-                        </Field>
+                            <Field
+                                name="password"
+                                validate={required}>
+                                {({ input, meta }) => (
+                                    <InputContainer>
+                                        {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
+                                        <Input {...input} type="password" placeholder="hasło" />
+                                    </InputContainer>
+                                )}
+                            </Field>
 
-                        <Field
-                            name="password"
-                            validate={required}>
-                            {({ input, meta }) => (
-                                <InputContainer>
-                                    {meta.error && meta.touched && <ValidationErrorSpan>{meta.error}</ValidationErrorSpan>}
-                                    <Input {...input} type="password" placeholder="hasło" />
-                                </InputContainer>
-                            )}
-                        </Field>
+                            <Field name="remember" defaultValue={false}>
+                                {({ input, meta }) => (
+                                    <InputContainer>
+                                        <Input {...input} name="remember" id="remember" type="checkbox" />
+                                        <label htmlFor="remember">Zapamiętaj mnie! </label>
+                                    </InputContainer>
+                                )}
+                            </Field>
 
-                        <Field name="remember" defaultValue={false}>
-                            {({ input, meta }) => (
-                                <InputContainer>
-                                    <Input {...input} name="remember" id="remember" type="checkbox" />
-                                    <label htmlFor="remember">Zapamiętaj mnie! </label>
-                                </InputContainer>
-                            )}
-                        </Field>
+                            {errorText !== "" &&
+                                <ErrorBox>
+                                    <StyledText margin="0px" align="center" color="red">{errorText}</StyledText>
+                                </ErrorBox>
+                            }
 
-                        <div className="buttons">
+                            <StyledText align="center" marginVertical="5px">
+                                <Link to="/register">Nie masz jeszcze konta?<br />Zarejestruj się!</Link>
+                            </StyledText>
+                        </FormWrapper>
+                        <ButtonBox>
                             <Button type="submit" disabled={submitting || pristine}>
                                 Zaloguj
                             </Button>
 
                             <Button
-                                type="button"
-                                color={'yellow'}
                                 onClick={form.reset}
                                 disabled={submitting || pristine}
                             >
                                 Zresetuj
                             </Button>
 
-                        </div>
-                        {errorText !== "" &&
-                            <ErrorBox>
-                                <StyledText margin="0px" align="center" color="red">{errorText}</StyledText>
-                            </ErrorBox>
-                        }
-
-                        <Link to="/register"><StyledText align="center" marginVertical="5px">Nie masz jeszcze konta?<br />Zarejestruj się!</StyledText></Link>
+                        </ButtonBox>
                     </Form100>
                 )}
             />

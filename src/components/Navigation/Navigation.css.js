@@ -118,7 +118,7 @@ align-items:center;
 export const NavigationLoginButton = styled.button `
 --name: "NavigationLoginButton";
 padding:7px 25px;
-background-color: yellow;
+background-color: #0b5876;
 border:none;
 cursor: pointer;
 transition:0.5s;
@@ -126,7 +126,7 @@ margin-bottom: 0px;
 margin-right:20px;
 a{
   text-decoration:none;
-  color:black;
+  color:white;
 }
 :last-child{
   margin-right:0px;
@@ -174,7 +174,7 @@ position:relative;
 padding: 10px 20px;
 border: none;
 margin-right:15px;
-background: #255ed8;
+background: ${({theme})=>(theme.colors.blue.dark)};
 color:white;
 transition: background 0.5s;
 cursor: pointer;
@@ -184,7 +184,7 @@ cursor: pointer;
 }
 
 :hover{
-  background: #1c4397
+  background: #074056
 }
 ::after{
   position:absolute;
