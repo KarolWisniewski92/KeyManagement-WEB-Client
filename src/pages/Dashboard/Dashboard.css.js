@@ -1,16 +1,18 @@
 import styled from "styled-components";
 
 export const DashboardBody = styled.div `
---name:"DashboardBody";
-display:flex;
-flex-direction:row;
-align-items:flex-start;
-width:80%;
+  --name:"DashboardBody";
+  display:flex;
+  flex-direction:column-reverse;
+  align-items:center;
+  width:90%;
+  justify-content:space-between;
 
-@media (max-width: 768px) {
-
-    flex-direction:column-reverse;
-    align-items:center;
+@media (min-width: 768px) {
+  flex-direction:row;
+  align-items:flex-start;
+  width:80%;
+    
 
   }
 `

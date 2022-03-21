@@ -1,4 +1,4 @@
-import { MyKeyBox, Navigation, SingleKeyIcon, KeyIconBox, HeaderBox, InfoBox, MySingleKeyButton, TransferedInput, Li, Ul, CancelButton, MiniBox, TransferredBox } from "./MySingleKeyComponent.css"
+import { MyKeyBox, Navigation, SingleKeyIcon, KeyIconBox, HeaderBox, InfoBox, MySingleKeyButton, TransferedInput, Li, Ul, CancelButton, MiniBox, MySingleKeyHeader, TransferredBox, TransferredBoxConfirmButtonBox } from "./MySingleKeyComponent.css"
 import { ConfirmBox, StyledText, Wrapper } from "components";
 import keys from '../../image/png/keys/index';
 import useKeyAction from 'hooks/useKeyAction';
@@ -82,6 +82,7 @@ const MySingleKeyComponent = ({ keyData }) => {
     return (
         <MyKeyBox set={keyData.set}>
             <MiniBox set={keyData.set}>{keyData.owner}</MiniBox>
+            <MySingleKeyHeader />
             <HeaderBox>
                 <KeyIconBox>
                     <SingleKeyIcon
@@ -169,7 +170,7 @@ const MySingleKeyComponent = ({ keyData }) => {
                         color="red">
                         {errorMessage}
                     </StyledText>
-                    <Wrapper justify="center">
+                    <TransferredBoxConfirmButtonBox>
                         <MySingleKeyButton
                             onClick={() => {
                                 if (selectedUser === "") {
@@ -206,7 +207,7 @@ const MySingleKeyComponent = ({ keyData }) => {
                             }}>
                             Anuluj
                         </MySingleKeyButton>
-                    </Wrapper>
+                    </TransferredBoxConfirmButtonBox>
 
                 </TransferredBox>
             }

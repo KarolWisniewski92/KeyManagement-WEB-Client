@@ -115,7 +115,7 @@ const History = () => {
                 }}>
                     X
                 </CloseHistoryBTN>
-                <StyledText type="header" align="center">{keyData.name}<br />{keyData.adres}</StyledText>
+                <StyledText size="1.5em" type="header" align="center" l_size="2em">{keyData.name}<br />{keyData.adres}</StyledText>
                 {historyList}
             </HistoryBody>
         </HistoryBodyHeroImage>

@@ -29,15 +29,23 @@ box-shadow: 0px 0px 10px 0px rgba(0,0,0,28%);
 transition-property: transform, box-shadow;
 transition-duration:0.6s;
 flex-direction:column;
-width:100%;
-/* padding:10px; */
+width:200px;
+margin:10px;
 margin-bottom: 40px;
-background:white;
-
+background: ${({ set, theme }) => handleSet(set, theme)};
 
 &:hover{
     transform: scale(1.05)
 }
+
+@media (min-width: 768px) {
+    width:100%;
+  }
+`
+export const MySingleKeyHeader = styled.div `
+--name:"MySingleKeyHeader";
+height:25px;
+background:white;
 `
 
 export const HeaderBox = styled.div `
@@ -45,10 +53,10 @@ export const HeaderBox = styled.div `
 width: 100%;
 display:flex;
 flex-direction:column;
-margin-top:15px;
 padding:15px;
 font-size:14px;
 overflow-wrap: break-word;
+background:white;
 
 @media (min-width: 1200px) {
     flex-direction:row;
@@ -97,6 +105,10 @@ justify-content: center;
 padding:15px 0px;
 background: ${({ set, theme }) => handleSet(set, theme)};
 `
+export const TransferredBoxConfirmButtonBox = styled.div `
+display:flex;
+justify-content:center;
+`
 
 export const MySingleKeyButton = styled.button `
 --name:"MySingleKeyButton";
@@ -111,6 +123,12 @@ transition: transform 0.5s;
 transform:scale(1.05)
 }
 `
+export const MySingleKeyButtonTransfer = styled(MySingleKeyButton)
+`
+--name:"MySingleKeyButtonTransfer";
+margin: 10px;
+`
+
 
 export const TransferedInput = styled.input `
 --name:"TransferedInput";

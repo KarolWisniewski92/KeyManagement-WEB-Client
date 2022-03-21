@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const TransferredKeyBox = styled.div`
+export const TransferredKeyBox = styled.div `
 display:flex;
 flex-direction:column;
-width:100%;
+margin:10px;
 padding:10px;
 margin-bottom:20px;
 box-shadow: 0px 0px 10px 0px rgba(0,0,0,28%);
@@ -16,7 +16,7 @@ transition-duration:0.6s;
 }
 `
 
-export const FlexWrapper = styled.div`
+export const FlexWrapper = styled.div `
 display:flex;
 justify-content:center;
 align-items:center;

@@ -16,6 +16,7 @@ const handleSet = (set, theme) => {
 
 
 export const SingleKeyBody = styled.div`
+--name:"SingleKeyBody";
 display:flex;
 flex-direction:column;
 width:200px;
@@ -27,7 +28,6 @@ box-shadow: 0px 0px 10px 0px rgba(0,0,0,28%);
 transition-property: transform, box-shadow;
 transition-duration:0.6s;
 
-
 &:hover{
     transform: scale(1.05);
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,50%);
@@ -35,6 +35,7 @@ transition-duration:0.6s;
 `
 
 export const SingleKeyAddon = styled.div`
+--name:"SingleKeyAddon";
 display:flex;
 justify-content:center;
 align-content: center;
@@ -45,6 +46,7 @@ background: ${({ set, theme }) => handleSet(set, theme)};
 `
 
 export const SingleKeyHeader = styled.div`
+--name:"SingleKeyHeader";
 height:25px;
 background:white;
 `
@@ -124,8 +126,13 @@ box-shadow: 0px 2px 5px -2px #7a7a7a;
 cursor: pointer;
 background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(205,205,205,1) 100%);
 transition: transform 0.5s;
+
 &:hover{
 transform:scale(1.05)
+}
+
+@media (max-width: 768px) {
+width:70px;
 }
 `
 

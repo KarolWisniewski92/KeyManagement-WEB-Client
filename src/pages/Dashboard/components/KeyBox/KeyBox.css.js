@@ -2,17 +2,17 @@ import styled from "styled-components"
 
 export const KeyBoxWrapper = styled.div `
 --name:"KeyBoxWrapper";
-width:70%;
+width:100%;
 display:flex;
 flex-direction: column;
-@media (min-width: 992px) {
+
+@media (min-width: 768px) {
     width:80%;
-  }
+}
 `
 
 export const KeyBoxBody = styled.div `
 --name:"KeyBoxBody";
-margin-right:10px;
 display:flex;
 flex-flow: row wrap;
 justify-content:center;

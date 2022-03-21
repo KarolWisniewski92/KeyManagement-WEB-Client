@@ -12,7 +12,7 @@ background-color: rgba(0,0,0,0.7);
 
 export const HistoryBody = styled.div `
 --name: "HistoryBody";
-min-width:50%;
+min-width:80%;
 height:80vh;
 padding:20px;
 background:white;
@@ -22,6 +22,11 @@ left:50%;
 transform:translate(-50%, -50%);
 box-shadow: 0px 0px 10px 0px rgba(0,0,0,28%);
 border:none;
+
+@media (min-width: 768px) {
+    min-width:50%;
+  }
+
 `
 
 export const CloseHistoryBTN = styled.button `

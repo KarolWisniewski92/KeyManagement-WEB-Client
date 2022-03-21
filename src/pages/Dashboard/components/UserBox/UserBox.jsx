@@ -38,10 +38,18 @@ const UserBox = ({ myKeys }) => {
                 align="center">MOJE KLUCZE:</StyledText>
 
             <UserBoxBody>
-                <TransferredKey></TransferredKey>
-                <TransitionGroup>
-                    {myKeysList}
-                </TransitionGroup>
+                <TransferredKey />
+                <div
+                style={{
+                    "display":"flex",
+                    "flexWrap": "wrap",
+                    "justifyContent":"center",
+                    "align-items":"stretch"
+                }}>
+                    <TransitionGroup component={null}>
+                        {myKeysList}
+                    </TransitionGroup>
+                </div>
             </UserBoxBody>
         </UserBoxWrapper>
     )

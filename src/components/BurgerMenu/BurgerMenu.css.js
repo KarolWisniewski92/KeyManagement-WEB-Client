@@ -16,7 +16,7 @@ display:flex;
 justify-content:center;
 align-items:center;
 text-transform:uppercase;
-border-bottom: 2px solid black;
+border-bottom: 1px solid black;
 cursor: pointer;
 `
 
