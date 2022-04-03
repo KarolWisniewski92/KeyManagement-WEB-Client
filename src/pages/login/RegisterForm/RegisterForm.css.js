@@ -46,6 +46,12 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 `
+export const ErrorBox = styled.div `
+--name:"ErrorBox";
+background: white;
+padding: 5px;
+margin:10px 0px;
+`
 
 export const ButtonBox = styled.div `
 --name:"ButtonBox";

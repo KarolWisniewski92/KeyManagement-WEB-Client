@@ -1,25 +1,14 @@
-import { RegisterBox, InputContainer, Form100, ButtonBox, ValidationErrorSpan, FormWrapper, Button } from "./RegisterForm.css";
+import { RegisterBox, InputContainer, Form100, ButtonBox, ValidationErrorSpan, FormWrapper, Button, ErrorBox } from "./RegisterForm.css";
 import { Input, StyledText } from 'components';
 import { Form, Field } from 'react-final-form';
 import API from '../../../Data/fetch'
 import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
-
-
-const onSubmit = (values) => {
-
-    API.authentication.fetchRegister(values)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
-        .catch(err => {
-            console.log(err.message);
-        })
-};
+import { useEffect, useState } from 'react';
 
 const RegisterForm = () => {
 
+    const [errorText, setTextError] = useState("");
+    const [errorTextColor, setTextErrorColor] = useState("red");
     let history = useHistory();
 
     const required = value => (value ? undefined : 'Wymagane');
@@ -36,6 +25,31 @@ const RegisterForm = () => {
                 console.log(err.message);
             })
     }, [history])
+
+    const onSubmit = async (values, form) => {
+        API.authentication.fetchRegister(values)
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    setTextError(data.message)
+                    setTextErrorColor("red");
+
+                }
+                else {
+                    setTextError(data.message)
+                    setTextErrorColor("green");
+                    Object.keys(values).forEach(el => {
+                        form.change(el, undefined)
+                        form.resetFieldState(el)
+
+                    })
+                }
+                console.log(data);
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+    };
 
     return (
         <RegisterBox>
@@ -116,8 +130,14 @@ const RegisterForm = () => {
                                 )}
                             </Field>
 
+                            {errorText !== "" &&
+                                <ErrorBox>
+                                    <StyledText margin="0px" align="center" color={errorTextColor}>{errorText}</StyledText>
+                                </ErrorBox>
+                            }
 
                         </FormWrapper>
+
                         <ButtonBox>
                             <Button
                                 type="submit"
@@ -128,7 +148,12 @@ const RegisterForm = () => {
 
                             <Button
                                 type="button"
-                                onClick={form.reset}
+                                onClick={() => {
+                                    form.restart();
+                                    setTextError("");
+                                    setTextErrorColor("red");
+                                }
+                                }
                                 disabled={submitting}
                             >
                                 Wyczyść!</Button>

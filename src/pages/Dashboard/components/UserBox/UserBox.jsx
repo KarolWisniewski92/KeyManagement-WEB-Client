@@ -1,5 +1,5 @@
 import { MySingleKeyComponent, StyledText, TransferredKey } from 'components';
-import { UserBoxBody, UserBoxWrapper } from './UserBox.css';
+import { UserBoxBody, UserBoxWrapper, MyKeysListBox } from './UserBox.css';
 import { connect } from 'react-redux';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import '../../../../utils/animation.css';
@@ -39,17 +39,11 @@ const UserBox = ({ myKeys }) => {
 
             <UserBoxBody>
                 <TransferredKey />
-                <div
-                style={{
-                    "display":"flex",
-                    "flexWrap": "wrap",
-                    "justifyContent":"center",
-                    "align-items":"stretch"
-                }}>
+                <MyKeysListBox>
                     <TransitionGroup component={null}>
                         {myKeysList}
                     </TransitionGroup>
-                </div>
+                </MyKeysListBox>
             </UserBoxBody>
         </UserBoxWrapper>
     )

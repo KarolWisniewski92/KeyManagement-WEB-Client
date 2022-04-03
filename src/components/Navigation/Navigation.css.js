@@ -26,7 +26,6 @@ const handleLoginStatus = (loginStatus) => {
 }
 
 const handleLoginStatusMainWrapper = (loginStatus, size) => {
-  console.log(size)
   switch (loginStatus) {
     case "logged":
       return size === "M" ? "center" : "space-between";

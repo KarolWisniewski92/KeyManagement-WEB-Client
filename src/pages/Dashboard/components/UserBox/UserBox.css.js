@@ -22,3 +22,11 @@ export const UserBoxBody = styled.div `
 --name:"UserBoxBody";
 padding:10px;
 `
+
+export const MyKeysListBox = styled.div `
+--name: "MyKeysListBox";
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+align-items: stretch;
+`
