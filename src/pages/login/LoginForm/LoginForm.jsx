@@ -102,7 +102,10 @@ const LoginForm = ({ user, setUserInStore }) => {
                             </Button>
 
                             <Button
-                                onClick={form.reset}
+                                onClick={() => {
+                                    form.restart();
+                                    setTextError("");
+                                }}
                                 disabled={submitting || pristine}
                             >
                                 Zresetuj
